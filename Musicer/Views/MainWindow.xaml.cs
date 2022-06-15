@@ -1,7 +1,7 @@
-﻿using System.Windows;
-
-namespace Musicer.Views
+﻿namespace Musicer.Views
 {
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
