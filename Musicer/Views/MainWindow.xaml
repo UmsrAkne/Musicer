@@ -8,6 +8,15 @@
     Height="700"
     prism:ViewModelLocator.AutoWireViewModel="True">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/ListViewResource.xaml" />
+                <ResourceDictionary Source="Resources/TreeViewResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
