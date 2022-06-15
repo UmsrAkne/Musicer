@@ -1,10 +1,9 @@
-﻿using Musicer.Views;
-using Prism.Ioc;
-using Prism.Modularity;
-using System.Windows;
-
-namespace Musicer
+﻿namespace Musicer
 {
+    using System.Windows;
+    using Musicer.Views;
+    using Prism.Ioc;
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -17,7 +16,6 @@ namespace Musicer
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
         }
     }
 }
