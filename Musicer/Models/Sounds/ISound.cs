@@ -4,6 +4,10 @@
 
     public interface ISound
     {
+        event EventHandler Ended;
+
+        event EventHandler BeforeEnd;
+
         string Name { get; }
 
         TimeSpan Duration { get; }
