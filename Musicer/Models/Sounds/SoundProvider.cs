@@ -8,7 +8,7 @@
 
         public bool LoopPlay { get; set; }
 
-        public int Index { get; private set; }
+        public int Index { get; set; }
 
         public List<ISound> Source
         {
