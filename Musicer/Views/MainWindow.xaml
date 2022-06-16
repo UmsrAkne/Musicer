@@ -62,6 +62,7 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
+            ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
             ItemsSource="{Binding Musics}" />
 
         <Border

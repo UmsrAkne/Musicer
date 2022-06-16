@@ -12,11 +12,11 @@
             fileInfo = f;
         }
 
-        public string Name => throw new NotImplementedException();
+        public string Name => fileInfo.Name;
 
-        public TimeSpan Duration => throw new NotImplementedException();
+        public TimeSpan Duration => new TimeSpan(0);
 
-        public double CurrentPosition => throw new NotImplementedException();
+        public double CurrentPosition => 0;
 
         public void Play()
         {
