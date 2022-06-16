@@ -21,7 +21,7 @@
             else
             {
                 var f = new FileInfo(path);
-                IsSoundFile = f.Extension == ".mp3" || f.Extension == ".ogg" || f.Extension == ".wav";
+                IsSoundFile = IsSoundFileExtension(f.Extension);
                 IsM3U = f.Extension == ".m3u";
                 FileSystemInfo = f;
             }
@@ -56,10 +56,29 @@
             }
         }
 
+        public bool HasSoundFile
+        {
+            get
+            {
+                if (!IsDirectory)
+                {
+                    return false;
+                }
+
+                var innerFiles = (FileSystemInfo as DirectoryInfo).GetFiles();
+                return innerFiles.Any(f => IsSoundFileExtension(f.Extension));
+            }
+        }
+
         public bool IsDirectory { get; private set; }
 
         public bool IsSoundFile { get; private set; }
 
         public bool IsM3U { get; private set; }
+
+        private bool IsSoundFileExtension(string extension)
+        {
+            return extension == ".mp3" || extension == ".ogg" || extension == ".wav";
+        }
     }
 }
