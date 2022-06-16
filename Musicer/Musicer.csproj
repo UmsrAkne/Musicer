@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Models\Files\ExtendFileInfo.cs" />
     <Compile Include="Models\Sounds\ISound.cs" />
+    <Compile Include="Models\Sounds\Player.cs" />
     <Compile Include="Models\Sounds\Sound.cs" />
     <Compile Include="Models\Sounds\SoundProvider.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
