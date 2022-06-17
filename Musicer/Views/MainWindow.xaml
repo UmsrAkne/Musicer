@@ -70,7 +70,24 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Height="60"
-            Background="Gray" />
+            Padding="10"
+            Background="Gray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="0"
+                    Width="100"
+                    Height="25"
+                    VerticalAlignment="Top"
+                    Command="{Binding PlayCommand}"
+                    Content="Play" />
+            </Grid>
+        </Border>
 
         <StatusBar
             Grid.Row="3"
