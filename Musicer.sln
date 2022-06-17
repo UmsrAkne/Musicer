@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musicer", "Musicer\Musicer.csproj", "{B3361311-ABAD-4D65-B32C-C2D818810EBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicerTests", "MusicerTests\MusicerTests.csproj", "{0F26F7FE-B01B-46FE-A6E2-5F2B877E143C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B3361311-ABAD-4D65-B32C-C2D818810EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3361311-ABAD-4D65-B32C-C2D818810EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3361311-ABAD-4D65-B32C-C2D818810EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F26F7FE-B01B-46FE-A6E2-5F2B877E143C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F26F7FE-B01B-46FE-A6E2-5F2B877E143C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F26F7FE-B01B-46FE-A6E2-5F2B877E143C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F26F7FE-B01B-46FE-A6E2-5F2B877E143C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
