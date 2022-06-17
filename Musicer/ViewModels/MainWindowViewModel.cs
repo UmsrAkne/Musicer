@@ -15,6 +15,7 @@
     {
         private string title = "Prism Application";
 
+        private Player player = new Player();
         private ExtendFileInfo selectedDirectory;
         private ObservableCollection<ExtendFileInfo> directories = new ObservableCollection<ExtendFileInfo>();
         private List<ISound> musics;
@@ -51,8 +52,11 @@
                 if (directory.HasSoundFile)
                 {
                     Musics = (directory.FileSystemInfo as DirectoryInfo).GetFiles().Select(f => new Sound(f) as ISound).ToList();
+                    player.SoundProvider.Source = Musics;
                 }
             }));
         }
+
+        public DelegateCommand PlayCommand => new DelegateCommand(() => player.Play());
     }
 }

@@ -5,7 +5,7 @@
 
     public class Player
     {
-        private SoundProvider soundProvider;
+        private SoundProvider soundProvider = new SoundProvider();
 
         public List<ISound> PlayingSound { get; private set; } = new List<ISound>();
 
