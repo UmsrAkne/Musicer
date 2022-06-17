@@ -1,7 +1,6 @@
 ﻿namespace Musicer.Models.Sounds
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     public class Player
     {
@@ -40,8 +39,15 @@
             if (sound != null)
             {
                 PlayingSound.Add(sound);
-                PlayingSound.LastOrDefault().Play();
+                sound.Play();
+                sound.Ended += SoundEndedEventHandler;
             }
+        }
+
+        private void SoundEndedEventHandler(object sender, System.EventArgs e)
+        {
+            ToNext();
+            (sender as ISound).Ended -= SoundEndedEventHandler;
         }
     }
 }
