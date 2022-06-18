@@ -12,6 +12,36 @@
 
         public int ManagementSoundCount => sounds.Count;
 
+        public double VolumeUpperLimit { get; set; } = 1.0;
+
+        /// <summary>
+        /// AddSound(ISound) によって入力したオブジェクトが２つの時、サウンドのクロスフェードを行います。
+        /// また、入力されているサウンドオブジェクトが２つ未満の場合は、このメソッドは何の処理も行いません。
+        /// </summary>
+        /// <param name="down">古い方のサウンドオブジェクトの音量を指定値だけ下げます</param>
+        /// <param name="up">新しい方のサウンドオブジェクトの音量を指定値だけ上げます</param>
+        public void CrossFade(double down, double up)
+        {
+            if (sounds.Count <= 1)
+            {
+                // sounds の要素が 0 or 1 の時はクロスフェードの必要がないため中断する。
+                return;
+            }
+
+            var first = sounds.First();
+            var last = sounds.Last();
+
+            if (first.Volume >= 0)
+            {
+                first.Volume -= down;
+            }
+
+            if (last.Volume <= VolumeUpperLimit)
+            {
+                last.Volume += up;
+            }
+        }
+
         public void AddSound(ISound sound)
         {
             sounds.Add(sound);
