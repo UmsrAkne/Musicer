@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Models\Files\ExtendFileInfo.cs" />
     <Compile Include="Models\Sounds\DummySound.cs" />
+    <Compile Include="Models\Sounds\Fader.cs" />
     <Compile Include="Models\Sounds\ISound.cs" />
     <Compile Include="Models\Sounds\Player.cs" />
     <Compile Include="Models\Sounds\Sound.cs" />
