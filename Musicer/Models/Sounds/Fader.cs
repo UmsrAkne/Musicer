@@ -34,11 +34,21 @@
             if (first.Volume >= 0)
             {
                 first.Volume -= down;
+
+                if (first.Volume <= 0)
+                {
+                    first.Volume = 0;
+                }
             }
 
             if (last.Volume <= VolumeUpperLimit)
             {
                 last.Volume += up;
+
+                if (last.Volume >= VolumeUpperLimit)
+                {
+                    last.Volume = VolumeUpperLimit;
+                }
             }
         }
 

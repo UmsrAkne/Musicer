@@ -4,8 +4,6 @@
 
     public class DummySound : ISound
     {
-        private double volume = 1.0;
-
         public event EventHandler Ended;
 
         public event EventHandler BeforeEnd;
@@ -18,7 +16,7 @@
 
         public bool IsPlaying { get; private set; }
 
-        public double Volume { get; set; }
+        public double Volume { get; set; } = 1.0;
 
         public void Play()
         {
