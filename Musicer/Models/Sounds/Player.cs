@@ -1,10 +1,12 @@
 ﻿namespace Musicer.Models.Sounds
 {
+    using System;
     using System.Collections.Generic;
 
     public class Player
     {
         private SoundProvider soundProvider = new SoundProvider();
+        private Fader fader = new Fader();
 
         public List<ISound> PlayingSound { get; private set; } = new List<ISound>();
 
@@ -38,13 +40,28 @@
 
             if (sound != null)
             {
+                if (sound.IsLongSound)
+                {
+                    sound.BeforeEnd += SoundBeforeEndEventHandler;
+                }
+                else
+                {
+                    sound.Ended += SoundEndedEventHandler;
+                }
+
                 PlayingSound.Add(sound);
                 sound.Play();
-                sound.Ended += SoundEndedEventHandler;
+                fader.AddSound(sound);
             }
         }
 
-        private void SoundEndedEventHandler(object sender, System.EventArgs e)
+        private void SoundBeforeEndEventHandler(object sender, EventArgs e)
+        {
+            ToNext();
+            (sender as ISound).BeforeEnd -= SoundBeforeEndEventHandler;
+        }
+
+        private void SoundEndedEventHandler(object sender, EventArgs e)
         {
             ToNext();
             (sender as ISound).Ended -= SoundEndedEventHandler;
