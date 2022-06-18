@@ -16,6 +16,10 @@
 
         public bool IsPlaying { get; private set; }
 
+        public double Volume { get; set; } = 1.0;
+
+        public bool IsLongSound { get; set; }
+
         public void Play()
         {
             throw new NotImplementedException();

@@ -21,11 +21,38 @@
 
         public event EventHandler BeforeEnd;
 
+        public static TimeSpan LongSoundLength { get; set; } = TimeSpan.FromSeconds(50);
+
         public string Name => fileInfo.Name;
 
         public TimeSpan Duration { get; set; }
 
         public double CurrentPosition => 0;
+
+        public double Volume
+        {
+            get => reader != null ? reader.Volume : 0;
+            set
+            {
+                if (reader != null)
+                {
+                    reader.Volume = (float)value;
+                }
+            }
+        }
+
+        public bool IsLongSound
+        {
+            get
+            {
+                if (reader == null)
+                {
+                    return false;
+                }
+
+                return reader.TotalTime >= LongSoundLength;
+            }
+        }
 
         public void Play()
         {

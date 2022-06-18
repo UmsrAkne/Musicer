@@ -14,6 +14,10 @@
 
         double CurrentPosition { get; }
 
+        double Volume { get; set; }
+
+        bool IsLongSound { get; }
+
         void Play();
 
         void Stop();
