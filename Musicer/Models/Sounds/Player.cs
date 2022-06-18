@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Threading;
 
     public class Player
@@ -24,18 +25,20 @@
 
         public SoundProvider SoundProvider { get => soundProvider; set => soundProvider = value; }
 
-        public double VolumeUpAmount { get; set; } = 0.1;
+        public double VolumeUpAmount { get; set; } = 0.01;
 
-        public double VolumeDownAmount { get; set; } = 0.1;
+        public double VolumeDownAmount { get; set; } = 0.01;
 
         public void Play()
         {
             SoundProvider.Index = 0;
+            timer.Start();
             ToNext();
         }
 
         public void Stop()
         {
+            timer.Stop();
         }
 
         public void Pause()
@@ -61,6 +64,8 @@
 
             if (sound != null)
             {
+                sound.Play();
+
                 if (sound.IsLongSound)
                 {
                     sound.BeforeEnd += SoundBeforeEndEventHandler;
@@ -71,7 +76,6 @@
                 }
 
                 PlayingSound.Add(sound);
-                sound.Play();
                 fader.AddSound(sound);
             }
         }
@@ -79,6 +83,7 @@
         private void SoundBeforeEndEventHandler(object sender, EventArgs e)
         {
             ToNext();
+            PlayingSound.Last().Volume = 0;
             (sender as ISound).BeforeEnd -= SoundBeforeEndEventHandler;
         }
 

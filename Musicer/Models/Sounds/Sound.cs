@@ -41,7 +41,18 @@
             }
         }
 
-        public bool IsLongSound { get; set; }
+        public bool IsLongSound
+        {
+            get
+            {
+                if (reader == null)
+                {
+                    return false;
+                }
+
+                return reader.TotalTime >= LongSoundLength;
+            }
+        }
 
         public void Play()
         {

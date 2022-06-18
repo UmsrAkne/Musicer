@@ -16,7 +16,7 @@
 
         double Volume { get; set; }
 
-        bool IsLongSound { get; set; }
+        bool IsLongSound { get; }
 
         void Play();
 
