@@ -27,6 +27,8 @@
 
         public double CurrentPosition => 0;
 
+        public double Volume { get; set; }
+
         public void Play()
         {
             if (reader == null)

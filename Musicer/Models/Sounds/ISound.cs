@@ -14,6 +14,8 @@
 
         double CurrentPosition { get; }
 
+        double Volume { get; set; }
+
         void Play();
 
         void Stop();
