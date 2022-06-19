@@ -24,6 +24,29 @@
         }
 
         [Test]
+        [Description("AddSound()のテスト")]
+        public void 同じサウンドを入力した際の挙動のテスト()
+        {
+            Fader fader = new Fader();
+            Assert.AreEqual(fader.ManagementSoundCount, 0);
+
+            var dummyA = new DummySound();
+            var dummyB = new DummySound();
+
+            fader.AddSound(dummyA);
+            Assert.AreEqual(fader.ManagementSoundCount, 1);
+
+            fader.AddSound(dummyA);
+            Assert.AreEqual(fader.ManagementSoundCount, 1, "連続で同じものを入れても弾かれるので要素数は維持される。");
+
+            fader.AddSound(dummyB);
+            Assert.AreEqual(fader.ManagementSoundCount, 2, "別の要素で、要素数 1 であるので要素数が増える");
+
+            fader.AddSound(dummyB);
+            Assert.AreEqual(fader.ManagementSoundCount, 2, "数は増えない");
+        }
+
+        [Test]
         public void サウンド入力０と１のときのクロスフェードのテスト()
         {
             Fader fader = new Fader();
