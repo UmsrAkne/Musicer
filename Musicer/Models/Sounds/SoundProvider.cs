@@ -45,5 +45,33 @@
 
             return Source[Index++];
         }
+
+        /// <summary>
+        /// 実行する毎に Source の中のサウンドを逆順で取得します。
+        /// </summary>
+        /// <returns>Source に含まれるサウンドを取得します</returns>
+        public ISound GetPreviousSound()
+        {
+            if (Source == null || Source.Count == 0)
+            {
+                return null;
+            }
+
+            Index--;
+
+            if (Index < 0)
+            {
+                if (!LoopPlay)
+                {
+                    return null;
+                }
+                else
+                {
+                    Index = Source.Count - 1;
+                }
+            }
+
+            return Source[Index];
+        }
     }
 }
