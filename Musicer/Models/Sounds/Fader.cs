@@ -9,6 +9,7 @@
     public class Fader
     {
         private List<ISound> sounds = new List<ISound>();
+        private ISound lastAddedSound;
 
         public int ManagementSoundCount => sounds.Count;
 
@@ -54,7 +55,14 @@
 
         public void AddSound(ISound sound)
         {
+            if (lastAddedSound == sound)
+            {
+                // ２回連続して同じサウンドが入るとこのクラスは動作しないので弾く。
+                return;
+            }
+
             sounds.Add(sound);
+            lastAddedSound = sound;
 
             while (sounds.Count > 2)
             {
