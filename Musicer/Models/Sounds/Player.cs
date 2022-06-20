@@ -21,6 +21,8 @@
             timer.Interval = TimeSpan.FromMilliseconds(200);
         }
 
+        public event EventHandler PlayStarted;
+
         public List<ISound> PlayingSound { get; private set; } = new List<ISound>();
 
         public SoundProvider SoundProvider { get => soundProvider; set => soundProvider = value; }
@@ -80,6 +82,7 @@
 
                 PlayingSound.Add(sound);
                 fader.AddSound(sound);
+                PlayStarted?.Invoke(this, EventArgs.Empty);
             }
         }
 

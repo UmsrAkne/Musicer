@@ -26,6 +26,7 @@
         public MainWindowViewModel()
         {
             Directories.Add(new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
+            player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
         }
 
         public string Title
@@ -61,6 +62,11 @@
         }
 
         public string CurrentDirectoryPath { get => currentDirectoryPath; set => SetProperty(ref currentDirectoryPath, value); }
+
+        public string PlayingMusicName
+        {
+            get => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
+        }
 
         public DelegateCommand PlayCommand => new DelegateCommand(() => player.Play());
 
