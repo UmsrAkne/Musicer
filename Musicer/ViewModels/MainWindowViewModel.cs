@@ -21,6 +21,8 @@
         private List<ISound> musics;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
 
+        private string currentDirectoryPath;
+
         public MainWindowViewModel()
         {
             Directories.Add(new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
@@ -48,6 +50,7 @@
                 }
 
                 selectedDirectory = directory;
+                CurrentDirectoryPath = directory.FileSystemInfo.FullName;
 
                 if (directory.HasSoundFile)
                 {
@@ -56,6 +59,8 @@
                 }
             }));
         }
+
+        public string CurrentDirectoryPath { get => currentDirectoryPath; set => SetProperty(ref currentDirectoryPath, value); }
 
         public DelegateCommand PlayCommand => new DelegateCommand(() => player.Play());
 

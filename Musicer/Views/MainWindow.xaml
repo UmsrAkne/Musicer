@@ -41,7 +41,10 @@
                 <MenuItem Header="File" />
             </Menu>
 
-            <TextBlock Text="path" />
+            <TextBlock
+                Margin="5,1"
+                FontSize="14"
+                Text="{Binding CurrentDirectoryPath}" />
 
         </StackPanel>
 
