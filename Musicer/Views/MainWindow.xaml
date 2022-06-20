@@ -41,7 +41,10 @@
                 <MenuItem Header="File" />
             </Menu>
 
-            <TextBlock Text="path" />
+            <TextBlock
+                Margin="5,1"
+                FontSize="14"
+                Text="{Binding CurrentDirectoryPath}" />
 
         </StackPanel>
 
@@ -70,8 +73,9 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Height="60"
-            Padding="10"
+            Padding="5,1,1,0"
             Background="Gray">
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
@@ -79,7 +83,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
                 <Button
+                    Grid.Row="0"
                     Grid.Column="0"
                     Width="100"
                     Height="25"
@@ -88,6 +99,7 @@
                     Content="Play" />
 
                 <Button
+                    Grid.Row="0"
                     Grid.Column="1"
                     Width="100"
                     Height="25"
@@ -95,6 +107,19 @@
                     VerticalAlignment="Top"
                     Command="{Binding StopCommand}"
                     Content="Stop" />
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Foreground="White"
+                    Text="{Binding PlayingMusicName}" />
+
+                <ProgressBar
+                    Grid.Row="2"
+                    Height="5"
+                    VerticalAlignment="Bottom"
+                    Background="LawnGreen" />
+
             </Grid>
         </Border>
 

@@ -21,9 +21,12 @@
         private List<ISound> musics;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
 
+        private string currentDirectoryPath;
+
         public MainWindowViewModel()
         {
             Directories.Add(new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
+            player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
         }
 
         public string Title
@@ -48,6 +51,7 @@
                 }
 
                 selectedDirectory = directory;
+                CurrentDirectoryPath = directory.FileSystemInfo.FullName;
 
                 if (directory.HasSoundFile)
                 {
@@ -57,8 +61,21 @@
             }));
         }
 
-        public DelegateCommand PlayCommand => new DelegateCommand(() => player.Play());
+        public string CurrentDirectoryPath { get => currentDirectoryPath; set => SetProperty(ref currentDirectoryPath, value); }
 
-        public DelegateCommand StopCommand => new DelegateCommand(() => player.Stop());
+        public string PlayingMusicName
+        {
+            get => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
+        }
+
+        public DelegateCommand PlayCommand => new DelegateCommand(() =>
+        {
+            player.Play();
+        });
+
+        public DelegateCommand StopCommand => new DelegateCommand(() =>
+        {
+            player.Stop();
+        });
     }
 }

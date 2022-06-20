@@ -27,7 +27,7 @@
 
         public TimeSpan Duration { get; set; }
 
-        public double CurrentPosition => 0;
+        public double CurrentPosition => reader != null ? reader.CurrentTime.TotalSeconds : 0;
 
         public double Volume
         {
