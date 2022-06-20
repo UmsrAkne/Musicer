@@ -58,5 +58,7 @@
         }
 
         public DelegateCommand PlayCommand => new DelegateCommand(() => player.Play());
+
+        public DelegateCommand StopCommand => new DelegateCommand(() => player.Stop());
     }
 }

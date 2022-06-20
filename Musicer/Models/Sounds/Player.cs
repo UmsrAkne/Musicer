@@ -39,6 +39,9 @@
         public void Stop()
         {
             timer.Stop();
+            PlayingSound.Last().Stop();
+            SoundProvider.Index = 0;
+            fader.Reset();
         }
 
         public void Pause()

@@ -75,7 +75,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
@@ -86,6 +86,15 @@
                     VerticalAlignment="Top"
                     Command="{Binding PlayCommand}"
                     Content="Play" />
+
+                <Button
+                    Grid.Column="1"
+                    Width="100"
+                    Height="25"
+                    Margin="10,0"
+                    VerticalAlignment="Top"
+                    Command="{Binding StopCommand}"
+                    Content="Stop" />
             </Grid>
         </Border>
 
