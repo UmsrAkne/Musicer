@@ -56,11 +56,7 @@
 
         public void Play()
         {
-            if (reader == null)
-            {
-                reader = new AudioFileReader(fileInfo.FullName);
-            }
-
+            reader = new AudioFileReader(fileInfo.FullName);
             waveOut = new WaveOutEvent();
             waveOut.Init(reader);
             waveOut.Play();

@@ -71,5 +71,10 @@
                 sounds.Remove(s);
             }
         }
+
+        public void Reset()
+        {
+            sounds = new List<ISound>();
+        }
     }
 }
