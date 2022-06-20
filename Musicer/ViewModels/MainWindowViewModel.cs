@@ -68,8 +68,14 @@
             get => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
         }
 
-        public DelegateCommand PlayCommand => new DelegateCommand(() => player.Play());
+        public DelegateCommand PlayCommand => new DelegateCommand(() =>
+        {
+            player.Play();
+        });
 
-        public DelegateCommand StopCommand => new DelegateCommand(() => player.Stop());
+        public DelegateCommand StopCommand => new DelegateCommand(() =>
+        {
+            player.Stop();
+        });
     }
 }

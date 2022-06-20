@@ -73,7 +73,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Height="60"
-            Padding="10"
+            Padding="5,1,1,0"
             Background="Gray">
 
             <Grid>
@@ -84,6 +84,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
+                    <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
@@ -112,6 +113,12 @@
                     Grid.Column="0"
                     Foreground="White"
                     Text="{Binding PlayingMusicName}" />
+
+                <ProgressBar
+                    Grid.Row="2"
+                    Height="5"
+                    VerticalAlignment="Bottom"
+                    Background="LawnGreen" />
 
             </Grid>
         </Border>
