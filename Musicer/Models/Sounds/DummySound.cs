@@ -29,5 +29,15 @@
         {
             throw new NotImplementedException();
         }
+
+        public void DispatchEndedEvent()
+        {
+            Ended.Invoke(this, EventArgs.Empty);
+        }
+
+        public void DispatchBeforeEnd()
+        {
+            BeforeEnd.Invoke(this, EventArgs.Empty);
+        }
     }
 }

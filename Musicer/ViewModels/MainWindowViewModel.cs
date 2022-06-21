@@ -39,6 +39,8 @@
 
         public List<ISound> Musics { get => musics; set => SetProperty(ref musics, value); }
 
+        public SoundViewer SoundViewer => player.SoundViewer;
+
         public DelegateCommand<TreeView> SetTreeViewSelectedItemCommand
         {
             get => setTreeViewSelectedItemCommand ?? (setTreeViewSelectedItemCommand = new DelegateCommand<TreeView>((tv) =>

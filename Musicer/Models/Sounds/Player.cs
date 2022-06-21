@@ -27,6 +27,8 @@
 
         public SoundProvider SoundProvider { get => soundProvider; set => soundProvider = value; }
 
+        public SoundViewer SoundViewer { get; } = new SoundViewer();
+
         public double VolumeUpAmount { get; set; } = 0.01;
 
         public double VolumeDownAmount { get; set; } = 0.01;
@@ -82,6 +84,7 @@
 
                 PlayingSound.Add(sound);
                 fader.AddSound(sound);
+                SoundViewer.Add(sound);
                 PlayStarted?.Invoke(this, EventArgs.Empty);
             }
         }
