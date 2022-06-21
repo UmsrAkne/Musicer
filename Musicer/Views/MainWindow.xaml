@@ -112,7 +112,7 @@
                     Grid.Row="1"
                     Grid.Column="0"
                     Foreground="White"
-                    Text="{Binding PlayingMusicName}" />
+                    Text="{Binding SoundViewer.PlayingMusicName}" />
 
                 <ProgressBar
                     Grid.Row="2"
