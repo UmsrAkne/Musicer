@@ -16,9 +16,22 @@
 
             while (sounds.Count > 2)
             {
+                sounds[0].Ended -= SoundEndedEventHandler;
                 sounds.RemoveAt(0);
             }
 
+            sound.Ended += SoundEndedEventHandler;
+            Update();
+        }
+
+        public void Reset()
+        {
+            sounds = new List<ISound>();
+            Update();
+        }
+
+        private void Update()
+        {
             if (sounds.Count == 0)
             {
                 PlayingMusicName = string.Empty;
@@ -31,6 +44,13 @@
             {
                 PlayingMusicName = $"{sounds[0].Name} >>> {sounds[1].Name}";
             }
+        }
+
+        private void SoundEndedEventHandler(object sender, System.EventArgs e)
+        {
+            sounds.Remove(sender as ISound);
+            (sender as ISound).Ended -= SoundEndedEventHandler;
+            Update();
         }
     }
 }
