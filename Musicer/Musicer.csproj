@@ -87,6 +87,7 @@
     <Compile Include="Models\Sounds\Player.cs" />
     <Compile Include="Models\Sounds\Sound.cs" />
     <Compile Include="Models\Sounds\SoundProvider.cs" />
+    <Compile Include="Models\Sounds\SoundViewer.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
