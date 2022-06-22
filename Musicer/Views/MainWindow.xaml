@@ -19,6 +19,10 @@
 
             <models:TimeSpanConverter x:Key="TimeSpanConverter" />
 
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -45,10 +49,7 @@
                 <MenuItem Header="File" />
             </Menu>
 
-            <TextBlock
-                Margin="5,1"
-                FontSize="14"
-                Text="{Binding CurrentDirectoryPath}" />
+            <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />
 
         </StackPanel>
 

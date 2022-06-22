@@ -5,7 +5,13 @@
         DataType="local:ExtendFileInfo"
         ItemsSource="{Binding ChildDirectories}">
 
-        <TextBlock FontSize="14" Text="{Binding Name}" />
+        <HierarchicalDataTemplate.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </HierarchicalDataTemplate.Resources>
+
+        <TextBlock Text="{Binding Name}" />
 
     </HierarchicalDataTemplate>
 
