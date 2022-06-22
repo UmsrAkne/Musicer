@@ -18,7 +18,7 @@
 
     <Style x:Key="ListViewItemContainerStyle" TargetType="ListViewItem">
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Padding" Value="5,2" />
         <Setter Property="BorderThickness" Value="0,0.5" />
         <Setter Property="BorderBrush" Value="LightGray" />
 
