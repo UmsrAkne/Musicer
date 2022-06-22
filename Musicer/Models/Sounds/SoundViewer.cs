@@ -66,14 +66,14 @@
             else if (sounds.Count == 1)
             {
                 PlayingMusicName = sounds[0].Name;
-                CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
-                TotalTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].Duration.TotalSeconds));
+                CurrentTime = TimeSpan.FromSeconds(sounds[0].CurrentPosition);
+                TotalTime = TimeSpan.FromSeconds(sounds[0].Duration.TotalSeconds);
             }
             else
             {
                 PlayingMusicName = $"{sounds[0].Name} >>> {sounds[1].Name}";
-                CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
-                TotalTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].Duration.TotalSeconds));
+                CurrentTime = TimeSpan.FromSeconds(sounds[0].CurrentPosition);
+                TotalTime = TimeSpan.FromSeconds(sounds[0].Duration.TotalSeconds);
             }
         }
 
