@@ -10,6 +10,7 @@
         private List<ISound> sounds = new List<ISound>();
         private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
         private string playingMusicName;
+        private TimeSpan currentTime;
 
         public SoundViewer()
         {
@@ -17,6 +18,8 @@
         }
 
         public string PlayingMusicName { get => playingMusicName; set => SetProperty(ref playingMusicName, value); }
+
+        public TimeSpan CurrentTime { get => currentTime; set => SetProperty(ref currentTime, value); }
 
         public void Add(ISound sound)
         {
@@ -55,14 +58,17 @@
             if (sounds.Count == 0)
             {
                 PlayingMusicName = string.Empty;
+                CurrentTime = TimeSpan.Zero;
             }
             else if (sounds.Count == 1)
             {
                 PlayingMusicName = sounds[0].Name;
+                CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
             }
             else
             {
                 PlayingMusicName = $"{sounds[0].Name} >>> {sounds[1].Name}";
+                CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
             }
         }
 

@@ -114,6 +114,13 @@
                     Foreground="White"
                     Text="{Binding SoundViewer.PlayingMusicName}" />
 
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10,0"
+                    Foreground="White"
+                    Text="{Binding SoundViewer.CurrentTime}" />
+
                 <ProgressBar
                     Grid.Row="2"
                     Height="5"
