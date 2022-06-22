@@ -19,6 +19,10 @@
 
             <models:TimeSpanConverter x:Key="TimeSpanConverter" />
 
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -45,10 +49,7 @@
                 <MenuItem Header="File" />
             </Menu>
 
-            <TextBlock
-                Margin="5,1"
-                FontSize="14"
-                Text="{Binding CurrentDirectoryPath}" />
+            <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />
 
         </StackPanel>
 
@@ -56,6 +57,7 @@
             Name="treeView"
             Grid.Row="1"
             Grid.Column="0"
+            ItemContainerStyle="{StaticResource ResourceKey=TreeViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=hierarchicalDataTemplate}"
             ItemsSource="{Binding Directories}">
 
@@ -69,6 +71,9 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
+            HorizontalContentAlignment="Stretch"
+            AlternationCount="2"
+            ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
             ItemsSource="{Binding Musics}" />
 
