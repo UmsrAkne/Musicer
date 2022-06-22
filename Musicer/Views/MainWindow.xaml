@@ -57,6 +57,7 @@
             Name="treeView"
             Grid.Row="1"
             Grid.Column="0"
+            ItemContainerStyle="{StaticResource ResourceKey=TreeViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=hierarchicalDataTemplate}"
             ItemsSource="{Binding Directories}">
 
