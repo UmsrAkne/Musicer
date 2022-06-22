@@ -9,7 +9,20 @@
         </DataTemplate.Resources>
 
         <Border>
+
             <TextBlock Text="{Binding Name}" />
+
         </Border>
+
     </DataTemplate>
+
+    <Style x:Key="ListViewItemContainerStyle" TargetType="ListViewItem">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="0,0.5" />
+        <Setter Property="BorderBrush" Value="LightGray" />
+
+        <Style.Triggers />
+    </Style>
+
 </ResourceDictionary>

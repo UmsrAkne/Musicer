@@ -70,6 +70,8 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
+            HorizontalContentAlignment="Stretch"
+            ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
             ItemsSource="{Binding Musics}" />
 
