@@ -73,7 +73,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Height="60"
-            Padding="5,1,1,0"
+            Padding="0,1,1,0"
             Background="Gray">
 
             <Grid>
@@ -94,6 +94,7 @@
                     Grid.Column="0"
                     Width="100"
                     Height="25"
+                    Margin="5,0"
                     VerticalAlignment="Top"
                     Command="{Binding PlayCommand}"
                     Content="Play" />
@@ -103,7 +104,7 @@
                     Grid.Column="1"
                     Width="100"
                     Height="25"
-                    Margin="10,0"
+                    Margin="5,0"
                     VerticalAlignment="Top"
                     Command="{Binding StopCommand}"
                     Content="Stop" />
@@ -123,9 +124,14 @@
 
                 <ProgressBar
                     Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     Height="5"
                     VerticalAlignment="Bottom"
-                    Background="LawnGreen" />
+                    Background="PaleGreen"
+                    Foreground="LimeGreen"
+                    Maximum="{Binding SoundViewer.TotalTime.Ticks, Mode=OneWay}"
+                    Value="{Binding SoundViewer.CurrentTime.Ticks, Mode=OneWay}" />
 
             </Grid>
         </Border>

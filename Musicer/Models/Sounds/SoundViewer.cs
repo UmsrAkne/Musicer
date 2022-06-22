@@ -11,6 +11,7 @@
         private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
         private string playingMusicName;
         private TimeSpan currentTime;
+        private TimeSpan totalTime;
 
         public SoundViewer()
         {
@@ -20,6 +21,8 @@
         public string PlayingMusicName { get => playingMusicName; set => SetProperty(ref playingMusicName, value); }
 
         public TimeSpan CurrentTime { get => currentTime; set => SetProperty(ref currentTime, value); }
+
+        public TimeSpan TotalTime { get => totalTime; set => SetProperty(ref totalTime, value); }
 
         public void Add(ISound sound)
         {
@@ -64,11 +67,13 @@
             {
                 PlayingMusicName = sounds[0].Name;
                 CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
+                TotalTime = sounds[0].Duration;
             }
             else
             {
                 PlayingMusicName = $"{sounds[0].Name} >>> {sounds[1].Name}";
                 CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
+                TotalTime = sounds[0].Duration;
             }
         }
 
