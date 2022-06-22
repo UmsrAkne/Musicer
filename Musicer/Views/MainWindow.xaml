@@ -109,18 +109,30 @@
                     Command="{Binding StopCommand}"
                     Content="Stop" />
 
-                <TextBlock
+                <StackPanel
                     Grid.Row="1"
                     Grid.Column="0"
-                    Foreground="White"
-                    Text="{Binding SoundViewer.PlayingMusicName}" />
+                    Orientation="Horizontal">
 
-                <TextBlock
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="10,0"
-                    Foreground="White"
-                    Text="{Binding SoundViewer.CurrentTime}" />
+
+                    <TextBlock Foreground="White" Text="{Binding SoundViewer.PlayingMusicName}" />
+
+                    <TextBlock
+                        Margin="10,0"
+                        Foreground="White"
+                        Text="{Binding SoundViewer.CurrentTime}" />
+
+                    <TextBlock
+                        Margin="10,0"
+                        Foreground="White"
+                        Text="/" />
+
+                    <TextBlock
+                        Margin="10,0"
+                        Foreground="White"
+                        Text="{Binding SoundViewer.TotalTime}" />
+
+                </StackPanel>
 
                 <ProgressBar
                     Grid.Row="2"

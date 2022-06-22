@@ -67,13 +67,13 @@
             {
                 PlayingMusicName = sounds[0].Name;
                 CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
-                TotalTime = sounds[0].Duration;
+                TotalTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].Duration.TotalSeconds));
             }
             else
             {
                 PlayingMusicName = $"{sounds[0].Name} >>> {sounds[1].Name}";
                 CurrentTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].CurrentPosition));
-                TotalTime = sounds[0].Duration;
+                TotalTime = TimeSpan.FromSeconds(Math.Floor(sounds[0].Duration.TotalSeconds));
             }
         }
 
