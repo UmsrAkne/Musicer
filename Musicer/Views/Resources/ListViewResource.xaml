@@ -22,7 +22,12 @@
         <Setter Property="BorderThickness" Value="0,0.5" />
         <Setter Property="BorderBrush" Value="LightGray" />
 
-        <Style.Triggers />
+        <Style.Triggers>
+            <Trigger Property="ListView.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="WhiteSmoke" />
+            </Trigger>
+
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
