@@ -80,6 +80,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Converters\TimeSpanConverter.cs" />
     <Compile Include="Models\Files\ExtendFileInfo.cs" />
     <Compile Include="Models\Sounds\DummySound.cs" />
     <Compile Include="Models\Sounds\Fader.cs" />

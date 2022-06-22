@@ -36,6 +36,7 @@
         public void Play()
         {
             SoundProvider.Index = 0;
+            SoundViewer.SetAutoUpdate(true);
             timer.Start();
             ToNext();
         }
@@ -44,6 +45,7 @@
         {
             timer.Stop();
             PlayingSound.Last().Stop();
+            SoundViewer.SetAutoUpdate(false);
             SoundProvider.Index = 0;
             fader.Reset();
         }
