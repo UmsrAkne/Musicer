@@ -1,12 +1,20 @@
 ﻿namespace Musicer.Models.Sounds
 {
+    using System;
     using System.Collections.Generic;
+    using System.Windows.Threading;
     using Prism.Mvvm;
 
     public class SoundViewer : BindableBase
     {
         private List<ISound> sounds = new List<ISound>();
+        private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
         private string playingMusicName;
+
+        public SoundViewer()
+        {
+            timer.Tick += (sender, e) => Update();
+        }
 
         public string PlayingMusicName { get => playingMusicName; set => SetProperty(ref playingMusicName, value); }
 
@@ -28,6 +36,18 @@
         {
             sounds = new List<ISound>();
             Update();
+        }
+
+        public void SetAutoUpdate(bool b)
+        {
+            if (b)
+            {
+                timer.Start();
+            }
+            else
+            {
+                timer.Stop();
+            }
         }
 
         private void Update()
