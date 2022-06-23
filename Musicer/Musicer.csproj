@@ -81,6 +81,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Converters\TimeSpanConverter.cs" />
+    <Compile Include="Models\Files\DirectoryExpander.cs" />
     <Compile Include="Models\Files\ExtendFileInfo.cs" />
     <Compile Include="Models\Sounds\DummySound.cs" />
     <Compile Include="Models\Sounds\Fader.cs" />
@@ -125,6 +126,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

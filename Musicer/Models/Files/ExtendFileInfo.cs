@@ -3,10 +3,14 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Prism.Mvvm;
 
-    public class ExtendFileInfo
+    public class ExtendFileInfo : BindableBase
     {
         private List<ExtendFileInfo> childDirectories;
+
+        private bool isExpanded;
+        private bool isSelected;
 
         public ExtendFileInfo(string path)
         {
@@ -55,6 +59,10 @@
                 }
             }
         }
+
+        public bool IsExpanded { get => isExpanded; set => SetProperty(ref isExpanded, value); }
+
+        public bool IsSelected { get => isSelected; set => SetProperty(ref isSelected, value); }
 
         public bool HasSoundFile
         {
