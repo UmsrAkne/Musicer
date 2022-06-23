@@ -8,6 +8,21 @@
         <HierarchicalDataTemplate.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="2,0" />
+
+                <Style.Triggers>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+
+                            <Condition Binding="{Binding HasSoundFile}" Value="False" />
+                            <Condition Binding="{Binding HasChildDirectory}" Value="False" />
+
+                        </MultiDataTrigger.Conditions>
+
+                        <Setter Property="Opacity" Value="0.4" />
+
+                    </MultiDataTrigger>
+                </Style.Triggers>
             </Style>
         </HierarchicalDataTemplate.Resources>
 

@@ -15,6 +15,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/ListViewResource.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewResource.xaml" />
+                <ResourceDictionary Source="Resources/ButtonResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <models:TimeSpanConverter x:Key="TimeSpanConverter" />
@@ -86,37 +87,32 @@
             Background="Gray">
 
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
-                    <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Button
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Width="100"
-                    Height="25"
-                    Margin="5,0"
-                    VerticalAlignment="Top"
-                    Command="{Binding PlayCommand}"
-                    Content="Play" />
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
 
-                <Button
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Width="100"
-                    Height="25"
-                    Margin="5,0"
-                    VerticalAlignment="Top"
-                    Command="{Binding StopCommand}"
-                    Content="Stop" />
+                    <Button
+                        Grid.Row="0"
+                        Width="100"
+                        Margin="5,0"
+                        VerticalAlignment="Top"
+                        Command="{Binding PlayCommand}"
+                        Content="Play"
+                        Template="{StaticResource buttonTemplate}" />
+
+                    <Button
+                        Grid.Row="0"
+                        Width="100"
+                        Margin="5,0"
+                        VerticalAlignment="Top"
+                        Command="{Binding StopCommand}"
+                        Content="Stop"
+                        Template="{StaticResource buttonTemplate}" />
+                </StackPanel>
 
                 <StackPanel
                     Grid.Row="1"
@@ -124,7 +120,10 @@
                     Orientation="Horizontal">
 
 
-                    <TextBlock Foreground="White" Text="{Binding SoundViewer.PlayingMusicName}" />
+                    <TextBlock
+                        Margin="5,0"
+                        Foreground="White"
+                        Text="{Binding SoundViewer.PlayingMusicName}" />
 
                     <TextBlock
                         Margin="10,0"
