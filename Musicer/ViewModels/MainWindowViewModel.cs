@@ -25,7 +25,10 @@
 
         public MainWindowViewModel()
         {
-            Directories.Add(new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
+            var defaultFileInfo = new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
+            defaultFileInfo.IsExpanded = true;
+
+            Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
         }
 

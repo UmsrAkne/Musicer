@@ -31,6 +31,7 @@
     </HierarchicalDataTemplate>
 
     <Style x:Key="TreeViewItemContainerStyle" TargetType="TreeViewItem">
+        <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
         <Setter Property="Padding" Value="5,0" />
     </Style>
 
