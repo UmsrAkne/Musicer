@@ -62,6 +62,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\Files\DirectoryExpanderTests.cs" />
     <Compile Include="Models\Sounds\FaderTests.cs" />
     <Compile Include="Models\Sounds\SoundProviderTests.cs" />
     <Compile Include="Models\Sounds\SoundViewerTests.cs" />
