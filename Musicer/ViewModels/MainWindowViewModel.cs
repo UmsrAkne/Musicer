@@ -28,6 +28,11 @@
             var defaultFileInfo = new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
             defaultFileInfo.IsExpanded = true;
 
+            if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
+            {
+                DirectoryExpander.ExpandDirectories(defaultFileInfo, new DirectoryInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
+            }
+
             Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
         }
@@ -57,6 +62,8 @@
 
                 selectedDirectory = directory;
                 CurrentDirectoryPath = directory.FileSystemInfo.FullName;
+                Properties.Settings.Default.LastSelectedDirectoryPath = directory.FileSystemInfo.FullName;
+                Properties.Settings.Default.Save();
 
                 if (directory.HasSoundFile)
                 {
