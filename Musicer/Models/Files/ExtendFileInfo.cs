@@ -10,6 +10,7 @@
         private List<ExtendFileInfo> childDirectories;
 
         private bool isExpanded;
+        private bool isSelected;
 
         public ExtendFileInfo(string path)
         {
@@ -60,6 +61,8 @@
         }
 
         public bool IsExpanded { get => isExpanded; set => SetProperty(ref isExpanded, value); }
+
+        public bool IsSelected { get => isSelected; set => SetProperty(ref isSelected, value); }
 
         public bool HasSoundFile
         {

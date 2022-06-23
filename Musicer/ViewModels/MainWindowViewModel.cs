@@ -30,7 +30,8 @@
 
             if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
             {
-                DirectoryExpander.ExpandDirectories(defaultFileInfo, new DirectoryInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
+                var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new DirectoryInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
+                LoadMusics(dir);
             }
 
             Directories.Add(defaultFileInfo);
@@ -55,20 +56,9 @@
             {
                 var directory = tv.SelectedItem as ExtendFileInfo;
 
-                if (directory == selectedDirectory)
+                if (directory != selectedDirectory)
                 {
-                    return;
-                }
-
-                selectedDirectory = directory;
-                CurrentDirectoryPath = directory.FileSystemInfo.FullName;
-                Properties.Settings.Default.LastSelectedDirectoryPath = directory.FileSystemInfo.FullName;
-                Properties.Settings.Default.Save();
-
-                if (directory.HasSoundFile)
-                {
-                    Musics = (directory.FileSystemInfo as DirectoryInfo).GetFiles().Select(f => new Sound(f) as ISound).ToList();
-                    player.SoundProvider.Source = Musics;
+                    LoadMusics(directory);
                 }
             }));
         }
@@ -89,5 +79,19 @@
         {
             player.Stop();
         });
+
+        public void LoadMusics(ExtendFileInfo directory)
+        {
+            selectedDirectory = directory;
+            CurrentDirectoryPath = directory.FileSystemInfo.FullName;
+            Properties.Settings.Default.LastSelectedDirectoryPath = directory.FileSystemInfo.FullName;
+            Properties.Settings.Default.Save();
+
+            if (directory.HasSoundFile)
+            {
+                Musics = (directory.FileSystemInfo as DirectoryInfo).GetFiles().Select(f => new Sound(f) as ISound).ToList();
+                player.SoundProvider.Source = Musics;
+            }
+        }
     }
 }
