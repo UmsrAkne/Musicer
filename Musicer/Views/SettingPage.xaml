@@ -40,7 +40,8 @@
             <TextBox
                 Grid.Row="0"
                 Grid.Column="1"
-                Margin="5" />
+                Margin="5"
+                Text="{Binding RootDirectoryPath}" />
 
             <Border
                 Height="1"
@@ -57,7 +58,7 @@
                     Width="30"
                     Margin="5,0"
                     HorizontalContentAlignment="Center"
-                    Text="0" />
+                    Text="{Binding CrossFadeGoUpSec}" />
 
                 <TextBlock Text="秒" />
 
@@ -72,7 +73,8 @@
                     Width="30"
                     Margin="5,0"
                     HorizontalContentAlignment="Center"
-                    Text="0" />
+                    Text="{Binding CrossFadeGoDownSec}" />
+
                 <TextBlock Text="秒" />
 
 
