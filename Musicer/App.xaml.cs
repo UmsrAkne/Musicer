@@ -1,6 +1,7 @@
 ﻿namespace Musicer
 {
     using System.Windows;
+    using Musicer.ViewModels;
     using Musicer.Views;
     using Prism.Ioc;
 
@@ -16,6 +17,7 @@
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterDialog<SettingPage, SettingPageViewModel>();
         }
     }
 }

@@ -34,5 +34,41 @@ namespace Musicer.Properties {
                 this["LastSelectedDirectoryPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RootDirectoryPath {
+            get {
+                return ((string)(this["RootDirectoryPath"]));
+            }
+            set {
+                this["RootDirectoryPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int CrossFadeGoUpSec {
+            get {
+                return ((int)(this["CrossFadeGoUpSec"]));
+            }
+            set {
+                this["CrossFadeGoUpSec"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int CrossFadeGoDownSec {
+            get {
+                return ((int)(this["CrossFadeGoDownSec"]));
+            }
+            set {
+                this["CrossFadeGoDownSec"] = value;
+            }
+        }
     }
 }

@@ -46,8 +46,10 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2">
+
             <Menu>
                 <MenuItem Header="File" />
+                <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
             </Menu>
 
             <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />
