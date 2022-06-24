@@ -4,13 +4,16 @@
     using System.IO;
     using System.Windows.Threading;
     using NAudio.Wave;
+    using Prism.Mvvm;
 
-    public class Sound : ISound
+    public class Sound : BindableBase, ISound
     {
         private FileInfo fileInfo;
         private AudioFileReader reader;
         private WaveOutEvent waveOut;
         private DispatcherTimer timer;
+
+        private bool isPlaying;
 
         public Sound(FileInfo f)
         {
@@ -54,6 +57,8 @@
             }
         }
 
+        public bool IsPlaying { get => isPlaying; set => SetProperty(ref isPlaying, value); }
+
         public void Play()
         {
             reader = new AudioFileReader(fileInfo.FullName);
@@ -62,6 +67,7 @@
             waveOut.Play();
             waveOut.PlaybackStopped += EndedEventHandler;
             Duration = reader.TotalTime;
+            IsPlaying = true;
 
             timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - 15) };
             timer.Tick += BeforeEndEventHandler;
@@ -82,11 +88,14 @@
                 timer.Stop();
                 timer = null;
             }
+
+            IsPlaying = false;
         }
 
         private void EndedEventHandler(object sender, EventArgs e)
         {
             waveOut.PlaybackStopped -= EndedEventHandler;
+            IsPlaying = false;
             Ended?.Invoke(this, EventArgs.Empty);
         }
 
