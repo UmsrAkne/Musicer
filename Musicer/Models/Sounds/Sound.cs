@@ -4,13 +4,16 @@
     using System.IO;
     using System.Windows.Threading;
     using NAudio.Wave;
+    using Prism.Mvvm;
 
-    public class Sound : ISound
+    public class Sound : BindableBase, ISound
     {
         private FileInfo fileInfo;
         private AudioFileReader reader;
         private WaveOutEvent waveOut;
         private DispatcherTimer timer;
+
+        private bool isPlaying;
 
         public Sound(FileInfo f)
         {
@@ -54,7 +57,7 @@
             }
         }
 
-        public bool IsPlaying { get; private set; }
+        public bool IsPlaying { get => isPlaying; set => SetProperty(ref isPlaying, value); }
 
         public void Play()
         {
