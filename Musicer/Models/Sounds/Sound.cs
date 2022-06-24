@@ -54,6 +54,8 @@
             }
         }
 
+        public bool IsPlaying { get; private set; }
+
         public void Play()
         {
             reader = new AudioFileReader(fileInfo.FullName);
@@ -62,6 +64,7 @@
             waveOut.Play();
             waveOut.PlaybackStopped += EndedEventHandler;
             Duration = reader.TotalTime;
+            IsPlaying = true;
 
             timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - 15) };
             timer.Tick += BeforeEndEventHandler;
@@ -82,11 +85,14 @@
                 timer.Stop();
                 timer = null;
             }
+
+            IsPlaying = false;
         }
 
         private void EndedEventHandler(object sender, EventArgs e)
         {
             waveOut.PlaybackStopped -= EndedEventHandler;
+            IsPlaying = false;
             Ended?.Invoke(this, EventArgs.Empty);
         }
 

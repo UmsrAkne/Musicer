@@ -18,6 +18,8 @@
 
         bool IsLongSound { get; }
 
+        bool IsPlaying { get; }
+
         void Play();
 
         void Stop();
