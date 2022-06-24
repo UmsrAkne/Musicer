@@ -6,16 +6,89 @@
     xmlns:local="clr-namespace:Musicer.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="SettingPage"
-    Width="400"
-    Height="300"
+    Width="500"
+    Background="White"
     mc:Ignorable="d">
 
-    <Grid>
+    <Page.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/ButtonResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Margin="4">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="設定" />
+        <StackPanel>
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="ルートディレクトリ" />
+
+            <TextBox
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="5" />
+
+            <Border
+                Height="1"
+                Margin="5,10"
+                HorizontalAlignment="Stretch"
+                Background="Gray" />
+
+            <TextBlock Text="クロスフェード秒数" />
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Text="開始後" />
+
+                <TextBox
+                    Width="30"
+                    Margin="5,0"
+                    HorizontalContentAlignment="Center"
+                    Text="0" />
+
+                <TextBlock Text="秒" />
+
+                <Border
+                    Width="1"
+                    Margin="10,0"
+                    Background="Gray" />
+
+                <TextBlock Text="終了前" />
+
+                <TextBox
+                    Width="30"
+                    Margin="5,0"
+                    HorizontalContentAlignment="Center"
+                    Text="0" />
+                <TextBlock Text="秒" />
+
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <Button
+            Grid.Row="1"
+            Width="100"
+            Height="30"
+            Margin="10"
+            HorizontalAlignment="Right"
+            Command="{Binding CloseCommand}"
+            Content="保存して終了"
+            Template="{StaticResource buttonTemplate}" />
+
     </Grid>
 </Page>
