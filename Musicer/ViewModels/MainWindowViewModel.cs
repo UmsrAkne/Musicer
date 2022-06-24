@@ -8,8 +8,10 @@
     using System.Windows.Controls;
     using Musicer.Models.Files;
     using Musicer.Models.Sounds;
+    using Musicer.Views;
     using Prism.Commands;
     using Prism.Mvvm;
+    using Prism.Services.Dialogs;
 
     public class MainWindowViewModel : BindableBase
     {
@@ -20,11 +22,14 @@
         private ObservableCollection<ExtendFileInfo> directories = new ObservableCollection<ExtendFileInfo>();
         private List<ISound> musics;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
+        private IDialogService dialogService;
 
         private string currentDirectoryPath;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IDialogService dialogService)
         {
+            this.dialogService = dialogService;
+
             var defaultFileInfo = new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
             defaultFileInfo.IsExpanded = true;
 
@@ -78,6 +83,11 @@
         public DelegateCommand StopCommand => new DelegateCommand(() =>
         {
             player.Stop();
+        });
+
+        public DelegateCommand ShowSettingWindowCommand => new DelegateCommand(() =>
+        {
+            dialogService.ShowDialog(nameof(SettingPage), new DialogParameters(), result => { });
         });
 
         public void LoadMusics(ExtendFileInfo directory)
