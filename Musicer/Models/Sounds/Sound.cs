@@ -69,9 +69,13 @@
             Duration = reader.TotalTime;
             IsPlaying = true;
 
-            timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - 15) };
-            timer.Tick += BeforeEndEventHandler;
-            timer.Start();
+            if (IsLongSound)
+            {
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - Properties.Settings.Default.CrossFadeGoDownSec);
+                timer.Tick += BeforeEndEventHandler;
+                timer.Start();
+            }
         }
 
         public void Stop()

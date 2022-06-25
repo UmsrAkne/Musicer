@@ -67,6 +67,13 @@
             fader.CrossFade(VolumeDownAmount, VolumeUpAmount);
         }
 
+        public void UpdateSetting()
+        {
+            // ボリュームの変化は １秒あたり５回行われる(インターバルが 200ms)
+            VolumeUpAmount = 1.0 / Properties.Settings.Default.CrossFadeGoUpSec / 5;
+            VolumeDownAmount = 1.0 / Properties.Settings.Default.CrossFadeGoDownSec / 5;
+        }
+
         private void ToNext()
         {
             var sound = SoundProvider.GetSound();
