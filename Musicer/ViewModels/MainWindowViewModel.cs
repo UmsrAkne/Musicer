@@ -30,7 +30,12 @@
         {
             this.dialogService = dialogService;
 
-            var defaultFileInfo = new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
+            var rootPath = Properties.Settings.Default.RootDirectoryPath;
+
+            ExtendFileInfo defaultFileInfo = (!string.IsNullOrWhiteSpace(rootPath) && Directory.Exists(rootPath))
+                ? new ExtendFileInfo(rootPath)
+                : new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
+
             defaultFileInfo.IsExpanded = true;
 
             if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
@@ -41,6 +46,7 @@
 
             Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
+            player.UpdateSetting();
         }
 
         public string Title
@@ -88,6 +94,7 @@
         public DelegateCommand ShowSettingWindowCommand => new DelegateCommand(() =>
         {
             dialogService.ShowDialog(nameof(SettingPage), new DialogParameters(), result => { });
+            player.UpdateSetting();
         });
 
         public void LoadMusics(ExtendFileInfo directory)
