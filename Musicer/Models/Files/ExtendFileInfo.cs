@@ -26,7 +26,7 @@
             {
                 var f = new FileInfo(path);
                 IsSoundFile = IsSoundFileExtension(f.Extension);
-                IsM3U = f.Extension == ".m3u";
+                IsM3U = IsM3UExtension(f.Extension);
                 FileSystemInfo = f;
             }
         }
