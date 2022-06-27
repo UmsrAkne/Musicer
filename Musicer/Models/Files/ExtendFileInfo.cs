@@ -20,7 +20,7 @@
             {
                 var d = new DirectoryInfo(path);
                 FileSystemInfo = d;
-                HasChildDirectory = d.GetDirectories().Length > 0;
+                HasChildDirectory = d.GetDirectories().Length > 0 || d.GetFiles().Any(f => f.Extension == ".m3u");
             }
             else
             {
@@ -49,7 +49,11 @@
                 if (HasChildDirectory && IsDirectory)
                 {
                     var directories = (FileSystemInfo as DirectoryInfo).GetDirectories().ToList();
+                    var m3us = (FileSystemInfo as DirectoryInfo).GetFiles().Where(f => IsM3UExtension(f.Extension)).ToList();
+
                     childDirectories = directories.Select(d => new ExtendFileInfo(d.FullName)).ToList();
+                    childDirectories.AddRange(m3us.Select(f => new ExtendFileInfo(f.FullName)).ToList());
+
                     return childDirectories;
                 }
                 else
@@ -105,6 +109,11 @@
         private bool IsSoundFileExtension(string extension)
         {
             return extension == ".mp3" || extension == ".ogg" || extension == ".wav";
+        }
+
+        private bool IsM3UExtension(string extension)
+        {
+            return extension == ".m3u" || extension == ".m3u8" || extension == ".m3u16";
         }
     }
 }
