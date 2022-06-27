@@ -41,7 +41,15 @@
             if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
             {
                 var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new DirectoryInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
-                LoadMusics(dir);
+
+                if (dir == null)
+                {
+                    LoadMusics(defaultFileInfo);
+                }
+                else
+                {
+                    LoadMusics(dir);
+                }
             }
 
             Directories.Add(defaultFileInfo);
