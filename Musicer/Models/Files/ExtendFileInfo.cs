@@ -20,13 +20,13 @@
             {
                 var d = new DirectoryInfo(path);
                 FileSystemInfo = d;
-                HasChildDirectory = d.GetDirectories().Length > 0;
+                HasChildDirectory = d.GetDirectories().Length > 0 || d.GetFiles().Any(f => f.Extension == ".m3u");
             }
             else
             {
                 var f = new FileInfo(path);
                 IsSoundFile = IsSoundFileExtension(f.Extension);
-                IsM3U = f.Extension == ".m3u";
+                IsM3U = IsM3UExtension(f.Extension);
                 FileSystemInfo = f;
             }
         }
@@ -49,7 +49,11 @@
                 if (HasChildDirectory && IsDirectory)
                 {
                     var directories = (FileSystemInfo as DirectoryInfo).GetDirectories().ToList();
+                    var m3us = (FileSystemInfo as DirectoryInfo).GetFiles().Where(f => IsM3UExtension(f.Extension)).ToList();
+
                     childDirectories = directories.Select(d => new ExtendFileInfo(d.FullName)).ToList();
+                    childDirectories.AddRange(m3us.Select(f => new ExtendFileInfo(f.FullName)).ToList());
+
                     return childDirectories;
                 }
                 else
@@ -68,13 +72,18 @@
         {
             get
             {
-                if (!IsDirectory)
+                if (IsDirectory)
                 {
-                    return false;
+                    var innerFiles = (FileSystemInfo as DirectoryInfo).GetFiles();
+                    return innerFiles.Any(f => IsSoundFileExtension(f.Extension));
                 }
 
-                var innerFiles = (FileSystemInfo as DirectoryInfo).GetFiles();
-                return innerFiles.Any(f => IsSoundFileExtension(f.Extension));
+                if (IsM3U)
+                {
+                    return GetPlayListFromM3U(File.ReadAllLines(FileSystemInfo.FullName)).Count > 0;
+                }
+
+                return false;
             }
         }
 
@@ -84,9 +93,27 @@
 
         public bool IsM3U { get; private set; }
 
+        /// <summary>
+        /// m3uファイル(行毎にパスが記述されたファイル)のテキストを FileInfo のリストにして返します。
+        /// </summary>
+        /// <param name="m3uText">m3u ファイルを System.IO.File.ReadAllLines() で読み込んだ値を入力する。</param>
+        /// <returns>サウンドファイルの情報をもった ExtendFileInfo のリストを返します。</returns>
+        public List<ExtendFileInfo> GetPlayListFromM3U(string[] m3uText)
+        {
+            return m3uText.Where(line => !line.StartsWith("#") && File.Exists(line))
+                          .Select(line => new ExtendFileInfo(line))
+                          .Where(fi => fi.IsSoundFile)
+                          .ToList();
+        }
+
         private bool IsSoundFileExtension(string extension)
         {
             return extension == ".mp3" || extension == ".ogg" || extension == ".wav";
+        }
+
+        private bool IsM3UExtension(string extension)
+        {
+            return extension == ".m3u" || extension == ".m3u8" || extension == ".m3u16";
         }
     }
 }

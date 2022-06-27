@@ -112,6 +112,14 @@
             Properties.Settings.Default.LastSelectedDirectoryPath = directory.FileSystemInfo.FullName;
             Properties.Settings.Default.Save();
 
+            if (directory.IsM3U)
+            {
+                Musics = directory.GetPlayListFromM3U(File.ReadAllLines(directory.FileSystemInfo.FullName))
+                    .Select(f => new Sound((FileInfo)f.FileSystemInfo) as ISound).ToList();
+                player.SoundProvider.Source = Musics;
+                return;
+            }
+
             if (directory.HasSoundFile)
             {
                 Musics = (directory.FileSystemInfo as DirectoryInfo).GetFiles().Select(f => new Sound(f) as ISound).ToList();
