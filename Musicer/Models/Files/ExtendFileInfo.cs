@@ -68,13 +68,18 @@
         {
             get
             {
-                if (!IsDirectory)
+                if (IsDirectory)
                 {
-                    return false;
+                    var innerFiles = (FileSystemInfo as DirectoryInfo).GetFiles();
+                    return innerFiles.Any(f => IsSoundFileExtension(f.Extension));
                 }
 
-                var innerFiles = (FileSystemInfo as DirectoryInfo).GetFiles();
-                return innerFiles.Any(f => IsSoundFileExtension(f.Extension));
+                if (IsM3U)
+                {
+                    return GetPlayListFromM3U(File.ReadAllLines(FileSystemInfo.FullName)).Count > 0;
+                }
+
+                return false;
             }
         }
 
@@ -83,6 +88,19 @@
         public bool IsSoundFile { get; private set; }
 
         public bool IsM3U { get; private set; }
+
+        /// <summary>
+        /// m3uファイル(行毎にパスが記述されたファイル)のテキストを FileInfo のリストにして返します。
+        /// </summary>
+        /// <param name="m3uText">m3u ファイルを System.IO.File.ReadAllLines() で読み込んだ値を入力する。</param>
+        /// <returns>サウンドファイルの情報をもった ExtendFileInfo のリストを返します。</returns>
+        public List<ExtendFileInfo> GetPlayListFromM3U(string[] m3uText)
+        {
+            return m3uText.Where(line => !line.StartsWith("#") && File.Exists(line))
+                          .Select(line => new ExtendFileInfo(line))
+                          .Where(fi => fi.IsSoundFile)
+                          .ToList();
+        }
 
         private bool IsSoundFileExtension(string extension)
         {
