@@ -85,8 +85,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Height="60"
-            Padding="0,1,1,0"
-            Background="Gray">
+            Padding="0,1,1,0">
 
             <Grid>
 
@@ -121,26 +120,13 @@
                     Grid.Column="0"
                     Orientation="Horizontal">
 
+                    <TextBlock Margin="5,0" Text="{Binding SoundViewer.PlayingMusicName}" />
 
-                    <TextBlock
-                        Margin="5,0"
-                        Foreground="White"
-                        Text="{Binding SoundViewer.PlayingMusicName}" />
+                    <TextBlock Margin="10,0" Text="{Binding SoundViewer.CurrentTime, Converter={StaticResource TimeSpanConverter}}" />
 
-                    <TextBlock
-                        Margin="10,0"
-                        Foreground="White"
-                        Text="{Binding SoundViewer.CurrentTime, Converter={StaticResource TimeSpanConverter}}" />
+                    <TextBlock Margin="10,0" Text="/" />
 
-                    <TextBlock
-                        Margin="10,0"
-                        Foreground="White"
-                        Text="/" />
-
-                    <TextBlock
-                        Margin="10,0"
-                        Foreground="White"
-                        Text="{Binding SoundViewer.TotalTime, Converter={StaticResource TimeSpanConverter}}" />
+                    <TextBlock Margin="10,0" Text="{Binding SoundViewer.TotalTime, Converter={StaticResource TimeSpanConverter}}" />
 
                 </StackPanel>
 
