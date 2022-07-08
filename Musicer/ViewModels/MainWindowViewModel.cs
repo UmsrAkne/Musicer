@@ -115,14 +115,21 @@
             if (directory.IsM3U)
             {
                 Musics = directory.GetPlayListFromM3U(File.ReadAllLines(directory.FileSystemInfo.FullName))
-                    .Select(f => new Sound((FileInfo)f.FileSystemInfo) as ISound).ToList();
+                    .Select(f => new ExtendFileInfo(f.FileSystemInfo.FullName))
+                    .Where(f => f.IsSoundFile)
+                    .Select(f => (ISound)new Sound(f.FileSystemInfo as FileInfo)).ToList();
+
                 player.SoundProvider.Source = Musics;
                 return;
             }
 
             if (directory.HasSoundFile)
             {
-                Musics = (directory.FileSystemInfo as DirectoryInfo).GetFiles().Select(f => new Sound(f) as ISound).ToList();
+                Musics = (directory.FileSystemInfo as DirectoryInfo).GetFiles()
+                    .Select(f => new ExtendFileInfo(f.FullName))
+                    .Where(f => f.IsSoundFile)
+                    .Select(f => (ISound)new Sound(f.FileSystemInfo as FileInfo)).ToList();
+
                 player.SoundProvider.Source = Musics;
             }
         }
