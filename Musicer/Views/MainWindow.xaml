@@ -5,6 +5,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:models="clr-namespace:Musicer.Models.Converters"
     xmlns:prism="http://prismlibrary.com/"
+    x:Name="window"
     Title="{Binding Title}"
     Width="1024"
     Height="700"
@@ -78,7 +79,8 @@
             AlternationCount="2"
             ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
-            ItemsSource="{Binding Musics}" />
+            ItemsSource="{Binding Musics}"
+            SelectedIndex="{Binding SelectedSoundIndex}" />
 
         <Border
             Grid.Row="2"
