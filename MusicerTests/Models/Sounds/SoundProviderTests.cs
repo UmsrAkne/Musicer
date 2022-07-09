@@ -157,5 +157,24 @@
             Assert.AreEqual(soundProvider.GetPreviousSound(), soundB);
             Assert.AreEqual(soundProvider.GetPreviousSound(), soundA);
         }
+
+        [Test]
+        [Description("GetSound() のテスト")]
+        public void 途中のインデックスから再生()
+        {
+            SoundProvider soundProvider = new SoundProvider();
+
+            var soundA = new Sound(new System.IO.FileInfo("testA.mp3"));
+            var soundB = new Sound(new System.IO.FileInfo("testB.mp3"));
+            var soundC = new Sound(new System.IO.FileInfo("testB.mp3"));
+
+            soundProvider.Source = new List<ISound>() { soundA, soundB, soundC };
+            soundProvider.LoopPlay = true;
+            soundProvider.Index = 1;
+
+            Assert.AreEqual(soundProvider.GetSound(), soundB);
+            Assert.AreEqual(soundProvider.GetSound(), soundC);
+            Assert.AreEqual(soundProvider.GetSound(), soundA);
+        }
     }
 }
