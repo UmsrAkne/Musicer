@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Resources/ListViewResource.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewResource.xaml" />
                 <ResourceDictionary Source="Resources/ButtonResource.xaml" />
+                <ResourceDictionary Source="Resources/TextBlockResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <models:TimeSpanConverter x:Key="TimeSpanConverter" />
@@ -157,7 +158,10 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal">
 
-                    <TextBlock Margin="5,0" Text="{Binding SoundViewer.PlayingMusicName}" />
+                    <TextBlock
+                        Margin="5,0"
+                        Style="{StaticResource TextOpacityAnimationStyle}"
+                        Text="{Binding SoundViewer.PlayingMusicName, NotifyOnTargetUpdated=True}" />
 
                     <TextBlock Margin="10,0" Text="{Binding SoundViewer.CurrentTime, Converter={StaticResource TimeSpanConverter}}" />
 
