@@ -127,7 +127,11 @@
 
                 <DockPanel Grid.Row="0" Grid.Column="1">
                     <TextBlock Margin="10,0" Text="Volume" />
-                    <Slider HorizontalAlignment="Stretch" />
+
+                    <Slider
+                        HorizontalAlignment="Stretch"
+                        Maximum="1.0"
+                        Value="{Binding Volume}" />
                 </DockPanel>
 
                 <StackPanel
