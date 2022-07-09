@@ -96,7 +96,15 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Orientation="Horizontal">
 
                     <Button
                         Grid.Row="0"
@@ -117,9 +125,15 @@
                         Template="{StaticResource buttonTemplate}" />
                 </StackPanel>
 
+                <DockPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Margin="10,0" Text="Volume" />
+                    <Slider HorizontalAlignment="Stretch" />
+                </DockPanel>
+
                 <StackPanel
                     Grid.Row="1"
                     Grid.Column="0"
+                    Grid.ColumnSpan="2"
                     Orientation="Horizontal">
 
                     <TextBlock Margin="5,0" Text="{Binding SoundViewer.PlayingMusicName}" />
