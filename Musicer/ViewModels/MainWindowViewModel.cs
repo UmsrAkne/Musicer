@@ -22,6 +22,7 @@
         private ObservableCollection<ExtendFileInfo> directories = new ObservableCollection<ExtendFileInfo>();
         private List<ISound> musics;
         private int selectedSoundIndex;
+        private double volume = 1.0;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
         private IDialogService dialogService;
 
@@ -56,6 +57,7 @@
             Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
             player.UpdateSetting();
+            Volume = Properties.Settings.Default.Volume;
         }
 
         public string Title
@@ -71,6 +73,18 @@
         public SoundViewer SoundViewer => player.SoundViewer;
 
         public int SelectedSoundIndex { get => selectedSoundIndex; set => SetProperty(ref selectedSoundIndex, value); }
+
+        public double Volume
+        {
+            get => volume;
+            set
+            {
+                player.VolumeUpperLimit = value;
+                SetProperty(ref volume, value);
+                Properties.Settings.Default.Volume = value;
+                Properties.Settings.Default.Save();
+            }
+        }
 
         public DelegateCommand<TreeView> SetTreeViewSelectedItemCommand
         {

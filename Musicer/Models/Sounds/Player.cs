@@ -33,6 +33,8 @@
 
         public double VolumeDownAmount { get; set; } = 0.01;
 
+        public double VolumeUpperLimit { get => fader.VolumeUpperLimit; set => fader.VolumeUpperLimit = value; }
+
         public void Play()
         {
             SoundProvider.Index = 0;
@@ -89,6 +91,7 @@
             if (sound != null)
             {
                 sound.Play();
+                sound.Volume = VolumeUpperLimit;
 
                 if (sound.IsLongSound)
                 {
