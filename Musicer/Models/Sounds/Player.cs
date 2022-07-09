@@ -41,6 +41,14 @@
             ToNext();
         }
 
+        public void Play(int index)
+        {
+            SoundProvider.Index = index;
+            SoundViewer.SetAutoUpdate(true);
+            timer.Start();
+            ToNext();
+        }
+
         public void Stop()
         {
             timer.Stop();

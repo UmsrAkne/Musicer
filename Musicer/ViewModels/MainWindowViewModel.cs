@@ -21,6 +21,7 @@
         private ExtendFileInfo selectedDirectory;
         private ObservableCollection<ExtendFileInfo> directories = new ObservableCollection<ExtendFileInfo>();
         private List<ISound> musics;
+        private int selectedSoundIndex;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
         private IDialogService dialogService;
 
@@ -69,6 +70,8 @@
 
         public SoundViewer SoundViewer => player.SoundViewer;
 
+        public int SelectedSoundIndex { get => selectedSoundIndex; set => SetProperty(ref selectedSoundIndex, value); }
+
         public DelegateCommand<TreeView> SetTreeViewSelectedItemCommand
         {
             get => setTreeViewSelectedItemCommand ?? (setTreeViewSelectedItemCommand = new DelegateCommand<TreeView>((tv) =>
@@ -97,6 +100,11 @@
         public DelegateCommand StopCommand => new DelegateCommand(() =>
         {
             player.Stop();
+        });
+
+        public DelegateCommand PlayFromIndexCommand => new DelegateCommand(() =>
+        {
+            player.Play(SelectedSoundIndex);
         });
 
         public DelegateCommand ShowSettingWindowCommand => new DelegateCommand(() =>

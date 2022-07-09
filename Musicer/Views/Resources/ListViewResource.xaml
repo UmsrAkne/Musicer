@@ -1,4 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors">
 
     <DataTemplate x:Key="listViewTemplate">
 
@@ -8,11 +11,16 @@
             </Style>
         </DataTemplate.Resources>
 
-        <Border>
+        <ContentControl>
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding ElementName=window, Path=DataContext.PlayFromIndexCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
 
             <TextBlock Text="{Binding Name}" />
-
-        </Border>
+        </ContentControl>
 
     </DataTemplate>
 
@@ -32,6 +40,7 @@
             </DataTrigger>
 
         </Style.Triggers>
+
     </Style>
 
 </ResourceDictionary>
