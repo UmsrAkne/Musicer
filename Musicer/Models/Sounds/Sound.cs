@@ -24,7 +24,14 @@
 
         public event EventHandler BeforeEnd;
 
-        public static TimeSpan LongSoundLength { get; set; } = TimeSpan.FromSeconds(50);
+        public static TimeSpan LongSoundLength
+        {
+            get
+            {
+                var fadeDuration = Math.Max(Properties.Settings.Default.CrossFadeGoDownSec, Properties.Settings.Default.CrossFadeGoUpSec);
+                return TimeSpan.FromSeconds(fadeDuration * 1.2);
+            }
+        }
 
         public string Name => fileInfo.Name;
 
