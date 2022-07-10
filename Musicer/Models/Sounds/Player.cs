@@ -55,6 +55,7 @@
         {
             timer.Stop();
             PlayingSound.Last().Stop();
+            SoundViewer.Reset();
             SoundViewer.SetAutoUpdate(false);
             SoundProvider.Index = 0;
             fader.Reset();
