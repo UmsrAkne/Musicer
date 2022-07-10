@@ -34,7 +34,6 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -184,13 +183,6 @@
 
             </Grid>
         </Border>
-
-        <StatusBar
-            Grid.Row="3"
-            Grid.Column="0"
-            Grid.ColumnSpan="2">
-            <StatusBarItem Content="statusBar" />
-        </StatusBar>
 
     </Grid>
 </Window>
