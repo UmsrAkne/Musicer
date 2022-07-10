@@ -109,7 +109,7 @@
 
         public DelegateCommand PlayCommand => new DelegateCommand(() =>
         {
-            player.Play();
+            player.Play(0);
         });
 
         public DelegateCommand StopCommand => new DelegateCommand(() =>

@@ -35,14 +35,6 @@
 
         public double VolumeUpperLimit { get => fader.VolumeUpperLimit; set => fader.VolumeUpperLimit = value; }
 
-        public void Play()
-        {
-            SoundProvider.Index = 0;
-            SoundViewer.SetAutoUpdate(true);
-            timer.Start();
-            ToNext();
-        }
-
         public void Play(int index)
         {
             SoundProvider.Index = index;
