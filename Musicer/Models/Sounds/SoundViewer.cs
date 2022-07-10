@@ -62,6 +62,7 @@
             {
                 PlayingMusicName = string.Empty;
                 CurrentTime = TimeSpan.Zero;
+                TotalTime = TimeSpan.Zero;
             }
             else if (sounds.Count == 1)
             {
