@@ -56,8 +56,8 @@
 
             Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
-            player.UpdateSetting();
             Volume = Properties.Settings.Default.Volume;
+            player.UpdateSetting();
         }
 
         public string Title
@@ -83,6 +83,7 @@
                 SetProperty(ref volume, value);
                 Properties.Settings.Default.Volume = value;
                 Properties.Settings.Default.Save();
+                player.UpdateSetting();
             }
         }
 
