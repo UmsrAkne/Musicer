@@ -30,9 +30,6 @@
 
     </HierarchicalDataTemplate>
 
-    <!--
-    -->
-
     <Style x:Key="TreeViewItemFocusVisual">
 
         <Setter Property="Control.Template">
