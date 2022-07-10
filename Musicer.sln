@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musicer", "Musicer\Musicer.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicerTests", "MusicerTests\MusicerTests.csproj", "{0F26F7FE-B01B-46FE-A6E2-5F2B877E143C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDEED89B-AEE3-4933-B513-A7A0A9BF1D5A}"
+	ProjectSection(SolutionItems) = preProject
+		note.md = note.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
