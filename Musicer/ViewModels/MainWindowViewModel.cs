@@ -15,7 +15,7 @@
 
     public class MainWindowViewModel : BindableBase
     {
-        private string title = "Prism Application";
+        private string title = "Musicer";
 
         private Player player = new Player();
         private ExtendFileInfo selectedDirectory;
