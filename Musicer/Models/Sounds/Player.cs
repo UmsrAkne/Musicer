@@ -96,6 +96,12 @@
                 }
 
                 PlayingSound.Add(sound);
+
+                while (PlayingSound.Count >= 3)
+                {
+                    PlayingSound.RemoveAt(0);
+                }
+
                 fader.AddSound(sound);
                 SoundViewer.Add(sound);
                 PlayStarted?.Invoke(this, EventArgs.Empty);
