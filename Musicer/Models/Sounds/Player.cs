@@ -46,7 +46,7 @@
         public void Stop()
         {
             timer.Stop();
-            PlayingSound.Last().Stop();
+            PlayingSound.ForEach(s => s.Stop());
             SoundViewer.Reset();
             SoundViewer.SetAutoUpdate(false);
             SoundProvider.Index = 0;
@@ -96,6 +96,12 @@
                 }
 
                 PlayingSound.Add(sound);
+
+                while (PlayingSound.Count >= 3)
+                {
+                    PlayingSound.RemoveAt(0);
+                }
+
                 fader.AddSound(sound);
                 SoundViewer.Add(sound);
                 PlayStarted?.Invoke(this, EventArgs.Empty);
