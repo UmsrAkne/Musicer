@@ -77,6 +77,9 @@
             var sound1 = new DummySound() { IsLongSound = true };
             var sound2 = new DummySound() { IsLongSound = true };
 
+            sound1.Play();
+            sound2.Play();
+
             fader.AddSound(sound1);
             fader.AddSound(sound2);
 

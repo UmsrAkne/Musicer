@@ -22,7 +22,7 @@
 
         public void Play()
         {
-            throw new NotImplementedException();
+            IsPlaying = true;
         }
 
         public void Stop()
