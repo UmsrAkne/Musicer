@@ -65,7 +65,7 @@
 
             lastAddedSound = sound;
 
-            if (sounds.Count >= 2)
+            if (sounds.Count >= 2 && sounds.Where(s => s != sound).Any(s => s.IsPlaying))
             {
                 // 長い曲の場合は、この後でボリュームを徐々に上げるので 0 にセットする。
                 sound.Volume = sound.IsLongSound ? 0 : VolumeUpperLimit;
