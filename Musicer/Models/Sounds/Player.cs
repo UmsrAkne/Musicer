@@ -89,8 +89,6 @@
 
             if (sound != null)
             {
-                sound.Play();
-
                 var currentIndex = SoundProvider.Index;
                 var nextSound = SoundProvider.GetSound();
                 var nextSoundIsLongSound = nextSound != null && nextSound.IsLongSound;
@@ -114,6 +112,7 @@
 
                 fader.AddSound(sound);
                 SoundViewer.Add(sound);
+                sound.Play();
                 PlayStarted?.Invoke(this, EventArgs.Empty);
             }
         }
