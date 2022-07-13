@@ -45,7 +45,14 @@
         public void Stop()
         {
             timer.Stop();
-            PlayingSound.ForEach(s => s.Stop());
+
+            PlayingSound.ForEach(s =>
+            {
+                s.Stop();
+                s.Ended -= SoundEndedEventHandler;
+                s.BeforeEnd -= SoundBeforeEndEventHandler;
+            });
+
             SoundViewer.Reset();
             SoundViewer.SetAutoUpdate(false);
             SoundProvider.Index = 0;
