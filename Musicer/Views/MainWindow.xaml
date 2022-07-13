@@ -177,9 +177,16 @@
                     Height="5"
                     VerticalAlignment="Bottom"
                     Background="PaleGreen"
-                    Foreground="LimeGreen"
                     Maximum="{Binding SoundViewer.TotalTime.Ticks, Mode=OneWay}"
-                    Value="{Binding SoundViewer.CurrentTime.Ticks, Mode=OneWay}" />
+                    Value="{Binding SoundViewer.CurrentTime.Ticks, Mode=OneWay}">
+
+                    <ProgressBar.Foreground>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="0" Color="ForestGreen" />
+                            <GradientStop Offset="1" Color="LimeGreen" />
+                        </LinearGradientBrush>
+                    </ProgressBar.Foreground>
+                </ProgressBar>
 
             </Grid>
         </Border>
