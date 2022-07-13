@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows.Threading;
 
     public class Player
@@ -46,7 +45,14 @@
         public void Stop()
         {
             timer.Stop();
-            PlayingSound.ForEach(s => s.Stop());
+
+            PlayingSound.ForEach(s =>
+            {
+                s.Stop();
+                s.Ended -= SoundEndedEventHandler;
+                s.BeforeEnd -= SoundBeforeEndEventHandler;
+            });
+
             SoundViewer.Reset();
             SoundViewer.SetAutoUpdate(false);
             SoundProvider.Index = 0;
@@ -84,9 +90,13 @@
             if (sound != null)
             {
                 sound.Play();
-                sound.Volume = VolumeUpperLimit;
 
-                if (sound.IsLongSound)
+                var currentIndex = SoundProvider.Index;
+                var nextSound = SoundProvider.GetSound();
+                var nextSoundIsLongSound = nextSound != null && nextSound.IsLongSound;
+                SoundProvider.Index = currentIndex;
+
+                if (sound.IsLongSound && nextSoundIsLongSound)
                 {
                     sound.BeforeEnd += SoundBeforeEndEventHandler;
                 }
@@ -111,7 +121,6 @@
         private void SoundBeforeEndEventHandler(object sender, EventArgs e)
         {
             ToNext();
-            PlayingSound.Last().Volume = 0;
             (sender as ISound).BeforeEnd -= SoundBeforeEndEventHandler;
         }
 

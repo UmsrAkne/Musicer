@@ -57,7 +57,7 @@
             {
                 if (reader == null)
                 {
-                    return false;
+                    reader = new AudioFileReader(fileInfo.FullName);
                 }
 
                 return reader.TotalTime >= LongSoundLength;
@@ -68,7 +68,11 @@
 
         public void Play()
         {
-            reader = new AudioFileReader(fileInfo.FullName);
+            if (reader == null)
+            {
+                reader = new AudioFileReader(fileInfo.FullName);
+            }
+
             waveOut = new WaveOutEvent();
             waveOut.Init(reader);
             waveOut.Play();
