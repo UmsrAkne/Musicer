@@ -84,7 +84,12 @@
             {
                 sound.Play();
 
-                if (sound.IsLongSound)
+                var currentIndex = SoundProvider.Index;
+                var nextSound = SoundProvider.GetSound();
+                var nextSoundIsLongSound = nextSound != null && nextSound.IsLongSound;
+                SoundProvider.Index = currentIndex;
+
+                if (sound.IsLongSound && nextSoundIsLongSound)
                 {
                     sound.BeforeEnd += SoundBeforeEndEventHandler;
                 }
