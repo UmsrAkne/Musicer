@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows.Threading;
 
     public class Player
@@ -84,7 +83,6 @@
             if (sound != null)
             {
                 sound.Play();
-                sound.Volume = VolumeUpperLimit;
 
                 if (sound.IsLongSound)
                 {
@@ -111,7 +109,6 @@
         private void SoundBeforeEndEventHandler(object sender, EventArgs e)
         {
             ToNext();
-            PlayingSound.Last().Volume = 0;
             (sender as ISound).BeforeEnd -= SoundBeforeEndEventHandler;
         }
 

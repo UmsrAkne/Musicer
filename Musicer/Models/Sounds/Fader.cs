@@ -62,7 +62,14 @@
             }
 
             sounds.Add(sound);
+
             lastAddedSound = sound;
+
+            if (sounds.Count >= 2)
+            {
+                // 長い曲の場合は、この後でボリュームを徐々に上げるので 0 にセットする。
+                sound.Volume = sound.IsLongSound ? 0 : VolumeUpperLimit;
+            }
 
             while (sounds.Count > 2)
             {

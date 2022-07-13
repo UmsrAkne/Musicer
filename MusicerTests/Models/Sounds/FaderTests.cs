@@ -74,10 +74,8 @@
             Fader fader = new Fader();
             fader.VolumeUpperLimit = 1.0;
 
-            var sound1 = new DummySound();
-            var sound2 = new DummySound();
-            sound1.Volume = 1;
-            sound2.Volume = 0;
+            var sound1 = new DummySound() { IsLongSound = true };
+            var sound2 = new DummySound() { IsLongSound = true };
 
             fader.AddSound(sound1);
             fader.AddSound(sound2);
