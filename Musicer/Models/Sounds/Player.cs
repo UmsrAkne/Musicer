@@ -28,6 +28,8 @@
 
         public SoundViewer SoundViewer { get; } = new SoundViewer();
 
+        public Trimmer Trimmer { get; } = new Trimmer() { FrontCut = 5.0, BackCut = 5.0 };
+
         public double VolumeUpAmount { get; set; } = 0.01;
 
         public double VolumeDownAmount { get; set; } = 0.01;
@@ -55,6 +57,7 @@
 
             SoundViewer.Reset();
             SoundViewer.SetAutoUpdate(false);
+            Trimmer.Reset();
             SoundProvider.Index = 0;
             fader.Reset();
         }
@@ -112,6 +115,7 @@
 
                 fader.AddSound(sound);
                 SoundViewer.Add(sound);
+                Trimmer.Cut(sound, nextSoundIsLongSound);
                 sound.Play();
                 PlayStarted?.Invoke(this, EventArgs.Empty);
             }

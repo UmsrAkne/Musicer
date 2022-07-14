@@ -1,22 +1,47 @@
 ﻿namespace Musicer.Models.Sounds
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// 入力されたサウンドの冒頭、末尾をカットするクラスです。
     /// </summary>
     public class Trimmer
     {
-        public List<ISound> Sounds { get; set; }
+        private int inputCount;
+        private bool lastSoundIsLong;
 
-        public void Add(ISound sound)
+        public double FrontCut { get; set; }
+
+        public double BackCut { get; set; }
+
+        public void Cut(ISound sound, bool nextSoundIsLong)
         {
-            Sounds.Add(sound);
+            inputCount++;
 
-            while (Sounds.Count > 2)
+            if (inputCount == 1 && sound.IsLongSound)
             {
-                Sounds.RemoveAt(0);
+                sound.BackCut = BackCut;
+                return;
             }
+
+            if (sound.IsLongSound)
+            {
+                if (lastSoundIsLong)
+                {
+                    sound.FrontCut = FrontCut;
+                }
+
+                if (nextSoundIsLong)
+                {
+                    sound.BackCut = BackCut;
+                }
+            }
+
+            lastSoundIsLong = sound.IsLongSound;
+        }
+
+        public void Reset()
+        {
+            inputCount = 0;
+            lastSoundIsLong = false;
         }
     }
 }

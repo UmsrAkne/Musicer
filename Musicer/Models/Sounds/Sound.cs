@@ -77,6 +77,8 @@
                 reader = new AudioFileReader(fileInfo.FullName);
             }
 
+            reader.CurrentTime = TimeSpan.FromSeconds(FrontCut);
+
             waveOut = new WaveOutEvent();
             waveOut.Init(reader);
             waveOut.Play();
@@ -87,7 +89,7 @@
             if (IsLongSound)
             {
                 timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - Properties.Settings.Default.CrossFadeGoDownSec);
+                timer.Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - FrontCut - BackCut - Properties.Settings.Default.CrossFadeGoDownSec);
                 timer.Tick += BeforeEndEventHandler;
                 timer.Start();
             }
