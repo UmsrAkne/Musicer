@@ -183,7 +183,7 @@
                     <ProgressBar.Foreground>
                         <LinearGradientBrush>
                             <GradientStop Offset="0" Color="ForestGreen" />
-                            <GradientStop Offset="1" Color="LimeGreen" />
+                            <GradientStop Offset="2" Color="LimeGreen" />
                         </LinearGradientBrush>
                     </ProgressBar.Foreground>
                 </ProgressBar>
