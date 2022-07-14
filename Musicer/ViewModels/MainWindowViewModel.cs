@@ -42,7 +42,7 @@
 
             if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
             {
-                var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new DirectoryInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
+                var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new ExtendFileInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
 
                 if (dir == null)
                 {
@@ -119,6 +119,7 @@
 
         public DelegateCommand PlayFromIndexCommand => new DelegateCommand(() =>
         {
+            player.Stop();
             player.Play(SelectedSoundIndex);
         });
 

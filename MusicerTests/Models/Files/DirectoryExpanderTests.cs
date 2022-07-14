@@ -21,7 +21,7 @@
             testDirectory3.Create();
 
             var rootDirectory = new ExtendFileInfo("test");
-            var targetDirectory = new DirectoryInfo("test\\test2\\test3");
+            var targetDirectory = new ExtendFileInfo("test\\test2\\test3");
             DirectoryExpander.ExpandDirectories(rootDirectory, targetDirectory);
 
             Assert.AreEqual(rootDirectory.ChildDirectories[0].Name, "test2");
