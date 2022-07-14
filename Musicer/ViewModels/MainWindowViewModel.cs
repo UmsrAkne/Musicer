@@ -119,6 +119,7 @@
 
         public DelegateCommand PlayFromIndexCommand => new DelegateCommand(() =>
         {
+            player.Stop();
             player.Play(SelectedSoundIndex);
         });
 
