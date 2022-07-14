@@ -20,6 +20,10 @@
 
         bool IsPlaying { get; }
 
+        double FrontCut { get; set; }
+
+        double BackCut { get; set; }
+
         void Play();
 
         void Stop();

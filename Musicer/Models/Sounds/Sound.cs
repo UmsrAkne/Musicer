@@ -66,6 +66,10 @@
 
         public bool IsPlaying { get => isPlaying; set => SetProperty(ref isPlaying, value); }
 
+        public double FrontCut { get; set; }
+
+        public double BackCut { get; set; }
+
         public void Play()
         {
             if (reader == null)
