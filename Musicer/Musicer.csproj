@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Sounds\Trimmer.cs" />
     <Compile Include="ViewModels\SettingPageViewModel.cs" />
     <Compile Include="Views\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
