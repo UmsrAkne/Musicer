@@ -11,6 +11,9 @@
         private int crossFadeGoDownSec = Properties.Settings.Default.CrossFadeGoDownSec;
         private int crossFadeGoUpSec = Properties.Settings.Default.CrossFadeGoUpSec;
 
+        private int frontCutSec = Properties.Settings.Default.FrontCutSec;
+        private int backCutSec = Properties.Settings.Default.BackCutSec;
+
         public event Action<IDialogResult> RequestClose;
 
         public string Title => "Setting";
@@ -42,6 +45,26 @@
             {
                 Properties.Settings.Default.CrossFadeGoDownSec = value;
                 SetProperty(ref crossFadeGoDownSec, value);
+            }
+        }
+
+        public int FrontCutSec
+        {
+            get => frontCutSec;
+            set
+            {
+                Properties.Settings.Default.FrontCutSec = value;
+                SetProperty(ref frontCutSec, value);
+            }
+        }
+
+        public int BackCutSec
+        {
+            get => backCutSec;
+            set
+            {
+                Properties.Settings.Default.BackCutSec = value;
+                SetProperty(ref backCutSec, value);
             }
         }
 

@@ -28,7 +28,7 @@
 
         public SoundViewer SoundViewer { get; } = new SoundViewer();
 
-        public Trimmer Trimmer { get; } = new Trimmer() { FrontCut = 5.0, BackCut = 5.0 };
+        public Trimmer Trimmer { get; } = new Trimmer();
 
         public double VolumeUpAmount { get; set; } = 0.01;
 
@@ -84,6 +84,9 @@
             // ボリュームの変化は １秒あたり５回行われる(インターバルが 200ms)
             VolumeUpAmount = 1.0 / Properties.Settings.Default.CrossFadeGoUpSec / 5;
             VolumeDownAmount = 1.0 / Properties.Settings.Default.CrossFadeGoDownSec / 5;
+
+            Trimmer.FrontCut = Properties.Settings.Default.FrontCutSec;
+            Trimmer.BackCut = Properties.Settings.Default.BackCutSec;
         }
 
         private void ToNext()

@@ -80,6 +80,43 @@
 
             </StackPanel>
 
+            <Border
+                Height="1"
+                Margin="5,10"
+                HorizontalAlignment="Stretch"
+                Background="Gray" />
+
+            <TextBlock Text="冒頭と末尾のスキップ" />
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Text="開始後" />
+
+                <TextBox
+                    Width="30"
+                    Margin="5,0"
+                    HorizontalContentAlignment="Center"
+                    Text="{Binding FrontCutSec}" />
+
+                <TextBlock Text="秒" />
+
+                <Border
+                    Width="1"
+                    Margin="10,0"
+                    Background="Gray" />
+
+                <TextBlock Text="終了前" />
+
+                <TextBox
+                    Width="30"
+                    Margin="5,0"
+                    HorizontalContentAlignment="Center"
+                    Text="{Binding BackCutSec}" />
+
+                <TextBlock Text="秒" />
+
+
+            </StackPanel>
+
         </StackPanel>
 
         <Button
