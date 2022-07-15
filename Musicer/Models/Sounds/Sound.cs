@@ -28,7 +28,7 @@
         {
             get
             {
-                var fadeDuration = Math.Max(Properties.Settings.Default.CrossFadeGoDownSec, Properties.Settings.Default.CrossFadeGoUpSec);
+                var fadeDuration = Properties.Settings.Default.CrossFadeGoDownSec + Properties.Settings.Default.CrossFadeGoUpSec;
                 return TimeSpan.FromSeconds(fadeDuration * 1.2);
             }
         }
@@ -60,7 +60,9 @@
                     reader = new AudioFileReader(fileInfo.FullName);
                 }
 
-                return reader.TotalTime >= LongSoundLength;
+
+                var ts = TimeSpan.FromSeconds((LongSoundLength.TotalSeconds + FrontCut + BackCut) * 1.5);
+                return reader.TotalTime >= TimeSpan.FromSeconds((LongSoundLength.TotalSeconds + FrontCut + BackCut) * 1.5);
             }
         }
 
