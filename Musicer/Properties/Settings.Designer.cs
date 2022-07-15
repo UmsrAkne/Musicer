@@ -82,5 +82,29 @@ namespace Musicer.Properties {
                 this["Volume"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int FrontCutSec {
+            get {
+                return ((int)(this["FrontCutSec"]));
+            }
+            set {
+                this["FrontCutSec"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int BackCutSec {
+            get {
+                return ((int)(this["BackCutSec"]));
+            }
+            set {
+                this["BackCutSec"] = value;
+            }
+        }
     }
 }

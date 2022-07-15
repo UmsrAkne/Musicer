@@ -28,7 +28,7 @@
         {
             get
             {
-                var fadeDuration = Math.Max(Properties.Settings.Default.CrossFadeGoDownSec, Properties.Settings.Default.CrossFadeGoUpSec);
+                var fadeDuration = Properties.Settings.Default.CrossFadeGoDownSec + Properties.Settings.Default.CrossFadeGoUpSec;
                 return TimeSpan.FromSeconds(fadeDuration * 1.2);
             }
         }
@@ -60,11 +60,17 @@
                     reader = new AudioFileReader(fileInfo.FullName);
                 }
 
-                return reader.TotalTime >= LongSoundLength;
+
+                var ts = TimeSpan.FromSeconds((LongSoundLength.TotalSeconds + FrontCut + BackCut) * 1.5);
+                return reader.TotalTime >= TimeSpan.FromSeconds((LongSoundLength.TotalSeconds + FrontCut + BackCut) * 1.5);
             }
         }
 
         public bool IsPlaying { get => isPlaying; set => SetProperty(ref isPlaying, value); }
+
+        public double FrontCut { get; set; }
+
+        public double BackCut { get; set; }
 
         public void Play()
         {
@@ -72,6 +78,8 @@
             {
                 reader = new AudioFileReader(fileInfo.FullName);
             }
+
+            reader.CurrentTime = TimeSpan.FromSeconds(FrontCut);
 
             waveOut = new WaveOutEvent();
             waveOut.Init(reader);
@@ -83,7 +91,7 @@
             if (IsLongSound)
             {
                 timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - Properties.Settings.Default.CrossFadeGoDownSec);
+                timer.Interval = TimeSpan.FromSeconds(Duration.TotalSeconds - FrontCut - BackCut - Properties.Settings.Default.CrossFadeGoDownSec);
                 timer.Tick += BeforeEndEventHandler;
                 timer.Start();
             }

@@ -20,6 +20,10 @@
 
         public bool IsLongSound { get; set; }
 
+        public double FrontCut { get; set; }
+
+        public double BackCut { get; set; }
+
         public void Play()
         {
             IsPlaying = true;

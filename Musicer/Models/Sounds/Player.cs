@@ -28,6 +28,8 @@
 
         public SoundViewer SoundViewer { get; } = new SoundViewer();
 
+        public Trimmer Trimmer { get; } = new Trimmer();
+
         public double VolumeUpAmount { get; set; } = 0.01;
 
         public double VolumeDownAmount { get; set; } = 0.01;
@@ -55,6 +57,7 @@
 
             SoundViewer.Reset();
             SoundViewer.SetAutoUpdate(false);
+            Trimmer.Reset();
             SoundProvider.Index = 0;
             fader.Reset();
         }
@@ -81,6 +84,9 @@
             // ボリュームの変化は １秒あたり５回行われる(インターバルが 200ms)
             VolumeUpAmount = 1.0 / Properties.Settings.Default.CrossFadeGoUpSec / 5;
             VolumeDownAmount = 1.0 / Properties.Settings.Default.CrossFadeGoDownSec / 5;
+
+            Trimmer.FrontCut = Properties.Settings.Default.FrontCutSec;
+            Trimmer.BackCut = Properties.Settings.Default.BackCutSec;
         }
 
         private void ToNext()
@@ -112,6 +118,7 @@
 
                 fader.AddSound(sound);
                 SoundViewer.Add(sound);
+                Trimmer.Cut(sound, nextSoundIsLongSound);
                 sound.Play();
                 PlayStarted?.Invoke(this, EventArgs.Empty);
             }
