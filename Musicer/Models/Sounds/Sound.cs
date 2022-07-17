@@ -13,6 +13,8 @@
         private WaveOutEvent waveOut;
         private DispatcherTimer timer;
 
+        private int index;
+
         private bool isPlaying;
 
         public Sound(FileInfo f)
@@ -71,6 +73,8 @@
         public double FrontCut { get; set; }
 
         public double BackCut { get; set; }
+
+        public int Index { get => index; set => SetProperty(ref index, value); }
 
         public void Play()
         {

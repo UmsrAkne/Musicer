@@ -141,6 +141,7 @@
                 var fileInfos = directory.GetPlayListFromM3U(File.ReadAllLines(directory.FileSystemInfo.FullName));
                 Musics = GetSoundFiles(fileInfos.Select(f => f.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
+                ReIndex();
                 return;
             }
 
@@ -148,6 +149,7 @@
             {
                 Musics = GetSoundFiles(Directory.GetFiles(directory.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
+                ReIndex();
             }
         }
 
@@ -159,6 +161,11 @@
             .Select(f => new Sound(f.FileSystemInfo as FileInfo))
             .Cast<ISound>()
             .ToList();
+        }
+
+        private void ReIndex()
+        {
+            Enumerable.Range(0, Musics.Count).ToList().ForEach(i => (Musics[i] as Sound).Index = i + 1);
         }
     }
 }

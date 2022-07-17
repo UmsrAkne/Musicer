@@ -19,7 +19,19 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 
-            <TextBlock Text="{Binding Name}" />
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock Width="45" Text="{Binding Index}" />
+
+                <Border
+                    Width="1"
+                    Margin="5,0"
+                    Background="DarkGray" />
+
+                <TextBlock Text="{Binding Name}" />
+
+            </StackPanel>
+
         </ContentControl>
 
     </DataTemplate>
