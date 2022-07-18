@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Resources/ListViewResource.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewResource.xaml" />
                 <ResourceDictionary Source="Resources/ButtonResource.xaml" />
+                <ResourceDictionary Source="Resources/ToggleButtonResource.xaml" />
                 <ResourceDictionary Source="Resources/TextBlockResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
@@ -123,6 +124,14 @@
                         Command="{Binding StopCommand}"
                         Content="Stop"
                         Template="{StaticResource buttonTemplate}" />
+
+                    <ToggleButton
+                        Width="100"
+                        Margin="5,0"
+                        VerticalAlignment="Top"
+                        Content="ループ"
+                        Template="{StaticResource toggleButtonTemplate}" />
+
                 </StackPanel>
 
                 <Grid Grid.Row="0" Grid.Column="1">
