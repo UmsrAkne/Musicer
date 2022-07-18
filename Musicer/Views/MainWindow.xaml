@@ -126,10 +126,10 @@
                         Template="{StaticResource buttonTemplate}" />
 
                     <ToggleButton
-                        Width="100"
-                        Margin="5,0"
+                        Width="80"
+                        Margin="15,0"
                         VerticalAlignment="Top"
-                        Content="ループ"
+                        Content="Loop"
                         IsChecked="{Binding LoopPlay}"
                         Template="{StaticResource toggleButtonTemplate}" />
 
