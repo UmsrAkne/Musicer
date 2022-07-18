@@ -62,8 +62,6 @@
                     reader = new AudioFileReader(fileInfo.FullName);
                 }
 
-
-                var ts = TimeSpan.FromSeconds((LongSoundLength.TotalSeconds + FrontCut + BackCut) * 1.5);
                 return reader.TotalTime >= TimeSpan.FromSeconds((LongSoundLength.TotalSeconds + FrontCut + BackCut) * 1.5);
             }
         }
