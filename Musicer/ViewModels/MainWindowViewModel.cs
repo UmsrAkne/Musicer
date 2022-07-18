@@ -23,6 +23,7 @@
         private List<ISound> musics;
         private int selectedSoundIndex;
         private double volume = 1.0;
+        private bool loopPlay;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
         private IDialogService dialogService;
 
@@ -57,6 +58,7 @@
             Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
             Volume = Properties.Settings.Default.Volume;
+            LoopPlay = true;
             player.UpdateSetting();
         }
 
@@ -105,6 +107,16 @@
         public string PlayingMusicName
         {
             get => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
+        }
+
+        public bool LoopPlay
+        {
+            get => loopPlay;
+            set
+            {
+                SetProperty(ref loopPlay, value);
+                player.SoundProvider.LoopPlay = value;
+            }
         }
 
         public DelegateCommand PlayCommand => new DelegateCommand(() =>
