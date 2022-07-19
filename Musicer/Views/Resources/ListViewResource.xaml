@@ -8,6 +8,7 @@
         <DataTemplate.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="{StaticResource fgColor}" />
             </Style>
         </DataTemplate.Resources>
 
@@ -44,7 +45,7 @@
 
         <Style.Triggers>
             <Trigger Property="ListView.AlternationIndex" Value="0">
-                <Setter Property="Background" Value="WhiteSmoke" />
+                <Setter Property="Background" Value="#333333" />
             </Trigger>
 
             <DataTrigger Binding="{Binding IsPlaying}" Value="True">

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="SettingPage"
     Width="500"
-    Background="White"
+    Background="{StaticResource bgColor}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -19,6 +19,7 @@
 
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="{StaticResource fgColor}" />
             </Style>
 
         </ResourceDictionary>
