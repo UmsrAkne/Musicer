@@ -49,7 +49,7 @@
             </Trigger>
 
             <DataTrigger Binding="{Binding IsPlaying}" Value="True">
-                <Setter Property="Background" Value="Pink" />
+                <Setter Property="Background" Value="RoyalBlue" />
             </DataTrigger>
 
         </Style.Triggers>
