@@ -3,6 +3,7 @@
     <Style x:Key="TextOpacityAnimationStyle" TargetType="TextBlock">
 
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="{StaticResource fgColor}" />
 
         <Style.Triggers>
             <EventTrigger RoutedEvent="Binding.TargetUpdated">

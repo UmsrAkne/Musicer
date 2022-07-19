@@ -9,7 +9,8 @@
     Title="{Binding Title}"
     Width="1024"
     Height="700"
-    prism:ViewModelLocator.AutoWireViewModel="True">
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Background="{StaticResource bgColor}">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -25,6 +26,7 @@
 
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="{StaticResource fgColor}" />
             </Style>
 
         </ResourceDictionary>
@@ -62,6 +64,7 @@
             Name="treeView"
             Grid.Row="1"
             Grid.Column="0"
+            Background="{StaticResource bgColor}"
             ItemContainerStyle="{StaticResource TreeViewItemStyle1}"
             ItemTemplate="{StaticResource ResourceKey=hierarchicalDataTemplate}"
             ItemsSource="{Binding Directories}">
@@ -78,6 +81,7 @@
             Grid.Column="1"
             HorizontalContentAlignment="Stretch"
             AlternationCount="2"
+            Background="{StaticResource bgColor}"
             ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
             ItemsSource="{Binding Musics}"
