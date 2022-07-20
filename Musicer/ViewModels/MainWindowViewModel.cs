@@ -37,7 +37,12 @@
             listenHistoryDbContext.Database.EnsureCreated();
             LoadRootDirectory(Properties.Settings.Default.RootDirectoryPath);
 
-            player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
+            player.PlayStarted += (sedenr, e) =>
+            {
+                listenHistoryDbContext.Save(player.StartedSoundInfo);
+                RaisePropertyChanged(nameof(PlayingMusicName));
+            };
+
             Volume = Properties.Settings.Default.Volume;
             LoopPlay = true;
             player.UpdateSetting();
