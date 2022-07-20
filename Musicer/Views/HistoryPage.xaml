@@ -17,7 +17,10 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0" Background="{StaticResource bgColor}" />
+        <ListView
+            Grid.Row="0"
+            Background="{StaticResource bgColor}"
+            ItemsSource="{Binding ListenHistories}" />
 
         <StackPanel
             Grid.Row="1"

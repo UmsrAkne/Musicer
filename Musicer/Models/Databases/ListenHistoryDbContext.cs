@@ -1,6 +1,7 @@
 ﻿namespace Musicer.Models.Databases
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.SQLite;
     using System.IO;
     using System.Linq;
@@ -36,6 +37,13 @@
             }
 
             SaveChanges();
+        }
+
+        public List<ListenHistory> GetAll()
+        {
+            return ListenHistories.Where(l => true)
+                .OrderBy(l => l.LastListenDateTime)
+                .ToList();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

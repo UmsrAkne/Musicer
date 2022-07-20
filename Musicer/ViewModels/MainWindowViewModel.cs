@@ -135,6 +135,13 @@
             player.UpdateSetting();
         });
 
+        public DelegateCommand ShowHistoryWindowCommand => new DelegateCommand(() =>
+        {
+            var dialogParam = new DialogParameters();
+            dialogParam.Add(nameof(ListenHistoryDbContext), listenHistoryDbContext);
+            dialogService.ShowDialog(nameof(HistoryPage), dialogParam, result => { });
+        });
+
         public void LoadMusics(ExtendFileInfo directory)
         {
             if (directory == null)
