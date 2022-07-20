@@ -10,6 +10,8 @@
 
         string Name { get; }
 
+        string FullName { get; }
+
         TimeSpan Duration { get; }
 
         double CurrentPosition { get; }
