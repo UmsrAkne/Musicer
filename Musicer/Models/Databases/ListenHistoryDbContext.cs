@@ -42,7 +42,7 @@
         public List<ListenHistory> GetAll()
         {
             return ListenHistories.Where(l => true)
-                .OrderBy(l => l.LastListenDateTime)
+                .OrderByDescending(l => l.LastListenDateTime)
                 .ToList();
         }
 
