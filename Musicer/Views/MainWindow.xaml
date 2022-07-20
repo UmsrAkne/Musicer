@@ -54,6 +54,7 @@
             <Menu>
                 <MenuItem Header="File" />
                 <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
+                <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
             </Menu>
 
             <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />

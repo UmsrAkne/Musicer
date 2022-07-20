@@ -18,6 +18,7 @@
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<SettingPage, SettingPageViewModel>();
+            containerRegistry.RegisterDialog<HistoryPage, HistoryPageViewModel>();
         }
     }
 }

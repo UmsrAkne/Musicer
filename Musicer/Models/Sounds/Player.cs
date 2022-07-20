@@ -30,6 +30,14 @@
 
         public Trimmer Trimmer { get; } = new Trimmer();
 
+        /// <summary>
+        /// 最後に再生開始したサウンドの情報が格納されています。
+        /// 型はダミーなので、このプロパティを介してプレイヤーのサウンドを操作することは一切できません。
+        /// サウンドの情報を取得する用途でのみ使用します。
+        /// </summary>
+        /// <value>最後に再生開始したサウンドの情報を記録したダミーサウンド</value>
+        public DummySound StartedSoundInfo { get; private set; }
+
         public double VolumeUpAmount { get; set; } = 0.01;
 
         public double VolumeDownAmount { get; set; } = 0.01;
@@ -120,6 +128,13 @@
                 SoundViewer.Add(sound);
                 Trimmer.Cut(sound, nextSoundIsLongSound);
                 sound.Play();
+
+                StartedSoundInfo = new DummySound()
+                {
+                    FullName = sound.FullName,
+                    Name = sound.Name,
+                };
+
                 PlayStarted?.Invoke(this, EventArgs.Empty);
             }
         }

@@ -37,6 +37,8 @@
 
         public string Name => fileInfo.Name;
 
+        public string FullName => fileInfo.FullName;
+
         public TimeSpan Duration { get; set; }
 
         public double CurrentPosition => reader != null ? reader.CurrentTime.TotalSeconds : 0;

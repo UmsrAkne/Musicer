@@ -6,6 +6,7 @@
     using System.IO;
     using System.Linq;
     using System.Windows.Controls;
+    using Musicer.Models.Databases;
     using Musicer.Models.Files;
     using Musicer.Models.Sounds;
     using Musicer.Views;
@@ -26,15 +27,22 @@
         private bool loopPlay;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
         private IDialogService dialogService;
+        private ListenHistoryDbContext listenHistoryDbContext = new ListenHistoryDbContext();
 
         private string currentDirectoryPath;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
             this.dialogService = dialogService;
+            listenHistoryDbContext.Database.EnsureCreated();
             LoadRootDirectory(Properties.Settings.Default.RootDirectoryPath);
 
-            player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
+            player.PlayStarted += (sedenr, e) =>
+            {
+                listenHistoryDbContext.Save(player.StartedSoundInfo);
+                RaisePropertyChanged(nameof(PlayingMusicName));
+            };
+
             Volume = Properties.Settings.Default.Volume;
             LoopPlay = true;
             player.UpdateSetting();
@@ -125,6 +133,13 @@
             }
 
             player.UpdateSetting();
+        });
+
+        public DelegateCommand ShowHistoryWindowCommand => new DelegateCommand(() =>
+        {
+            var dialogParam = new DialogParameters();
+            dialogParam.Add(nameof(ListenHistoryDbContext), listenHistoryDbContext);
+            dialogService.ShowDialog(nameof(HistoryPage), dialogParam, result => { });
         });
 
         public void LoadMusics(ExtendFileInfo directory)
