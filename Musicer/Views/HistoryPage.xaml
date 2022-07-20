@@ -88,8 +88,16 @@
 
             <Button
                 Margin="5"
+                Padding="10,3"
+                Command="{Binding ReloadCommand}"
+                Content="更新" />
+
+            <Button
+                Margin="5"
+                Padding="10,3"
                 Command="{Binding CloseCommand}"
                 Content="閉じる" />
+
         </StackPanel>
 
     </Grid>

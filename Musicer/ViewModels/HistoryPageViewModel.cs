@@ -10,6 +10,7 @@
     public class HistoryPageViewModel : BindableBase, IDialogAware
     {
         private List<ListenHistory> listenHistories;
+        private ListenHistoryDbContext dbContext;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -20,6 +21,11 @@
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
             RequestClose?.Invoke(new DialogResult());
+        });
+
+        public DelegateCommand ReloadCommand => new DelegateCommand(() =>
+        {
+            listenHistories = dbContext.GetAll();
         });
 
         public bool CanCloseDialog()
@@ -33,7 +39,8 @@
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            ListenHistories = parameters.GetValue<ListenHistoryDbContext>(nameof(ListenHistoryDbContext)).GetAll();
+            dbContext = parameters.GetValue<ListenHistoryDbContext>(nameof(ListenHistoryDbContext));
+            ReloadCommand.Execute();
         }
     }
 }
