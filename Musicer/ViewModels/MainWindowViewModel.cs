@@ -129,6 +129,12 @@
 
         public void LoadMusics(ExtendFileInfo directory)
         {
+            if (directory == null)
+            {
+                Musics = new List<ISound>();
+                return;
+            }
+
             selectedDirectory = directory;
             CurrentDirectoryPath = directory.FileSystemInfo.FullName;
             Properties.Settings.Default.LastSelectedDirectoryPath = directory.FileSystemInfo.FullName;
