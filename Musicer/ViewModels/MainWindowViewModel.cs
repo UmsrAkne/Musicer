@@ -19,7 +19,7 @@
 
         private Player player = new Player();
         private ExtendFileInfo selectedDirectory;
-        private ObservableCollection<ExtendFileInfo> directories = new ObservableCollection<ExtendFileInfo>();
+        private ObservableCollection<ExtendFileInfo> directories;
         private List<ISound> musics;
         private int selectedSoundIndex;
         private double volume = 1.0;
@@ -32,30 +32,8 @@
         public MainWindowViewModel(IDialogService dialogService)
         {
             this.dialogService = dialogService;
+            LoadRootDirectory(Properties.Settings.Default.RootDirectoryPath);
 
-            var rootPath = Properties.Settings.Default.RootDirectoryPath;
-
-            ExtendFileInfo defaultFileInfo = (!string.IsNullOrWhiteSpace(rootPath) && Directory.Exists(rootPath))
-                ? new ExtendFileInfo(rootPath)
-                : new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
-
-            defaultFileInfo.IsExpanded = true;
-
-            if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
-            {
-                var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new ExtendFileInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
-
-                if (dir == null)
-                {
-                    LoadMusics(defaultFileInfo);
-                }
-                else
-                {
-                    LoadMusics(dir);
-                }
-            }
-
-            Directories.Add(defaultFileInfo);
             player.PlayStarted += (sedenr, e) => RaisePropertyChanged(nameof(PlayingMusicName));
             Volume = Properties.Settings.Default.Volume;
             LoopPlay = true;
@@ -163,6 +141,33 @@
                 player.SoundProvider.Source = Musics;
                 ReIndex();
             }
+        }
+
+        private void LoadRootDirectory(string path)
+        {
+            Directories = new ObservableCollection<ExtendFileInfo>();
+
+            ExtendFileInfo defaultFileInfo = (!string.IsNullOrWhiteSpace(path) && Directory.Exists(path))
+                ? new ExtendFileInfo(path)
+                : new ExtendFileInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
+
+            defaultFileInfo.IsExpanded = true;
+
+            if (Properties.Settings.Default.LastSelectedDirectoryPath != string.Empty)
+            {
+                var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new ExtendFileInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
+
+                if (dir == null)
+                {
+                    LoadMusics(defaultFileInfo);
+                }
+                else
+                {
+                    LoadMusics(dir);
+                }
+            }
+
+            Directories.Add(defaultFileInfo);
         }
 
         private List<ISound> GetSoundFiles(List<string> soundFilePaths)
