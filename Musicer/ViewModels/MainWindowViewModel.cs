@@ -115,7 +115,15 @@
 
         public DelegateCommand ShowSettingWindowCommand => new DelegateCommand(() =>
         {
+            var currentRootPath = Properties.Settings.Default.RootDirectoryPath;
+
             dialogService.ShowDialog(nameof(SettingPage), new DialogParameters(), result => { });
+
+            if (currentRootPath != Properties.Settings.Default.RootDirectoryPath)
+            {
+                LoadRootDirectory(Properties.Settings.Default.RootDirectoryPath);
+            }
+
             player.UpdateSetting();
         });
 
