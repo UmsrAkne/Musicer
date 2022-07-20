@@ -75,10 +75,18 @@
     <Compile Include="Models\Databases\ListenHistory.cs" />
     <Compile Include="Models\Databases\ListenHistoryDbContext.cs" />
     <Compile Include="Models\Sounds\Trimmer.cs" />
+    <Compile Include="ViewModels\HistoryPageViewModel.cs" />
     <Compile Include="ViewModels\SettingPageViewModel.cs" />
+    <Compile Include="Views\HistoryPage.xaml.cs">
+      <DependentUpon>HistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\HistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
