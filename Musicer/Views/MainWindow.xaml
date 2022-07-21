@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="Resources/ButtonResource.xaml" />
                 <ResourceDictionary Source="Resources/ToggleButtonResource.xaml" />
                 <ResourceDictionary Source="Resources/TextBlockResource.xaml" />
+                <ResourceDictionary Source="Resources/ScrollbarResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <models:TimeSpanConverter x:Key="TimeSpanConverter" />
