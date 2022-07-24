@@ -201,12 +201,15 @@
 
         private List<ISound> GetSoundFiles(List<string> soundFilePaths)
         {
-            return soundFilePaths
+            var sounds = soundFilePaths
             .Select(path => new ExtendFileInfo(path))
             .Where(f => f.IsSoundFile)
             .Select(f => new Sound(f.FileSystemInfo as FileInfo))
             .Cast<ISound>()
             .ToList();
+
+            sounds.ForEach(s => s.ListenCount = listenHistoryDbContext.GetListenCount(s.FullName));
+            return sounds;
         }
 
         private void ReIndex()

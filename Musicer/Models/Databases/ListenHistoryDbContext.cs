@@ -46,6 +46,12 @@
                 .ToList();
         }
 
+        public int GetListenCount(string fullName)
+        {
+            var history = ListenHistories.FirstOrDefault(h => h.FullName == fullName);
+            return history != null ? history.ListenCount : 0;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!File.Exists(dbFileName))
