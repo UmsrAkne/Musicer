@@ -12,6 +12,8 @@
 
         string FullName { get; }
 
+        int ListenCount { get; set; }
+
         TimeSpan Duration { get; }
 
         double CurrentPosition { get; }

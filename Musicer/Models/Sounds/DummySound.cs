@@ -26,6 +26,8 @@
 
         public double BackCut { get; set; }
 
+        public int ListenCount { get; set; }
+
         public void Play()
         {
             IsPlaying = true;

@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Converters\DateTimeConverter.cs" />
     <Compile Include="Models\Databases\ListenHistory.cs" />
     <Compile Include="Models\Databases\ListenHistoryDbContext.cs" />
     <Compile Include="Models\Sounds\Trimmer.cs" />
