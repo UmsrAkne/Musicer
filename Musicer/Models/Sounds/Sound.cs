@@ -79,6 +79,8 @@
 
         public int Index { get => index; set => SetProperty(ref index, value); }
 
+        public int ListenCount { get; set; }
+
         public void Play()
         {
             if (reader == null)
