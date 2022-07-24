@@ -127,6 +127,7 @@
                 fader.AddSound(sound);
                 SoundViewer.Add(sound);
                 Trimmer.Cut(sound, nextSoundIsLongSound);
+                sound.ListenCount++;
                 sound.Play();
 
                 StartedSoundInfo = new DummySound()

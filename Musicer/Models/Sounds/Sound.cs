@@ -12,6 +12,7 @@
         private AudioFileReader reader;
         private WaveOutEvent waveOut;
         private DispatcherTimer timer;
+        private int listenCount;
 
         private int index;
 
@@ -79,7 +80,7 @@
 
         public int Index { get => index; set => SetProperty(ref index, value); }
 
-        public int ListenCount { get; set; }
+        public int ListenCount { get => listenCount; set => SetProperty(ref listenCount, value); }
 
         public void Play()
         {
