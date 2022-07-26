@@ -142,6 +142,13 @@
             dialogService.ShowDialog(nameof(HistoryPage), dialogParam, result => { });
         });
 
+        public DelegateCommand RandomSortCommand => new DelegateCommand(() =>
+        {
+            Musics = Musics.OrderBy(i => Guid.NewGuid()).ToList();
+            player.SoundProvider.Source = Musics;
+            ReIndex();
+        });
+
         public void LoadMusics(ExtendFileInfo directory)
         {
             if (directory == null)

@@ -139,6 +139,15 @@
                         IsChecked="{Binding LoopPlay}"
                         Template="{StaticResource toggleButtonTemplate}" />
 
+                    <Button
+                        Width="80"
+                        Margin="5,0"
+                        VerticalAlignment="Top"
+                        Command="{Binding RandomSortCommand}"
+                        Content="Shuffle"
+                        Template="{StaticResource buttonTemplate}" />
+
+
                 </StackPanel>
 
                 <Grid Grid.Row="0" Grid.Column="1">
