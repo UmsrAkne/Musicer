@@ -54,6 +54,12 @@
 
             <Menu>
                 <MenuItem Header="File" />
+
+                <MenuItem Header="Sort">
+                    <MenuItem Command="{Binding NameSortCommand}" Header="Name" />
+                    <MenuItem Command="{Binding RandomSortCommand}" Header="Random" />
+                </MenuItem>
+
                 <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
                 <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
             </Menu>
@@ -138,15 +144,6 @@
                         Content="Loop"
                         IsChecked="{Binding LoopPlay}"
                         Template="{StaticResource toggleButtonTemplate}" />
-
-                    <Button
-                        Width="80"
-                        Margin="5,0"
-                        VerticalAlignment="Top"
-                        Command="{Binding RandomSortCommand}"
-                        Content="Shuffle"
-                        Template="{StaticResource buttonTemplate}" />
-
 
                 </StackPanel>
 
