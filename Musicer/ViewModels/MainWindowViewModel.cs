@@ -142,6 +142,22 @@
             dialogService.ShowDialog(nameof(HistoryPage), dialogParam, result => { });
         });
 
+        public DelegateCommand RandomSortCommand => new DelegateCommand(() =>
+        {
+            Musics = Musics.OrderBy(i => Guid.NewGuid()).ToList();
+            player.SoundProvider.Source = Musics;
+            ReIndex();
+            SelectedSoundIndex = 0;
+        });
+
+        public DelegateCommand NameSortCommand => new DelegateCommand(() =>
+        {
+            Musics = Musics.OrderBy(s => s.Name).ToList();
+            player.SoundProvider.Source = Musics;
+            ReIndex();
+            SelectedSoundIndex = 0;
+        });
+
         public void LoadMusics(ExtendFileInfo directory)
         {
             if (directory == null)
