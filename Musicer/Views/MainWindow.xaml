@@ -55,13 +55,15 @@
             <Menu>
                 <MenuItem Header="File" />
 
+                <MenuItem Header="View">
+                    <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
+                    <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
+                </MenuItem>
+
                 <MenuItem Header="Sort">
                     <MenuItem Command="{Binding NameSortCommand}" Header="Name" />
                     <MenuItem Command="{Binding RandomSortCommand}" Header="Random" />
                 </MenuItem>
-
-                <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
-                <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
             </Menu>
 
             <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />
