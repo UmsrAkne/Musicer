@@ -55,13 +55,15 @@
             <Menu>
                 <MenuItem Header="File" />
 
+                <MenuItem Header="View">
+                    <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
+                    <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
+                </MenuItem>
+
                 <MenuItem Header="Sort">
                     <MenuItem Command="{Binding NameSortCommand}" Header="Name" />
                     <MenuItem Command="{Binding RandomSortCommand}" Header="Random" />
                 </MenuItem>
-
-                <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
-                <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
             </Menu>
 
             <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />
@@ -119,23 +121,18 @@
                     Grid.Column="0"
                     Orientation="Horizontal">
 
-                    <Button
-                        Grid.Row="0"
-                        Width="100"
-                        Margin="5,0"
-                        VerticalAlignment="Top"
-                        Command="{Binding PlayCommand}"
-                        Content="Play"
-                        Template="{StaticResource buttonTemplate}" />
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Width" Value="100" />
+                            <Setter Property="Margin" Value="5,0" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="Template" Value="{StaticResource buttonTemplate}" />
+                        </Style>
+                    </StackPanel.Resources>
 
-                    <Button
-                        Grid.Row="0"
-                        Width="100"
-                        Margin="5,0"
-                        VerticalAlignment="Top"
-                        Command="{Binding StopCommand}"
-                        Content="Stop"
-                        Template="{StaticResource buttonTemplate}" />
+                    <Button Command="{Binding PlayCommand}" Content="Play" />
+
+                    <Button Command="{Binding StopCommand}" Content="Stop" />
 
                     <ToggleButton
                         Width="80"
