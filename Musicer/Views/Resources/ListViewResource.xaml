@@ -22,7 +22,7 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                     <ColumnDefinition Width="auto" />
@@ -31,19 +31,11 @@
 
                 <TextBlock Grid.Column="0" Text="{Binding Index}" />
 
-                <Border
-                    Grid.Column="1"
-                    Width="1"
-                    Margin="5,0"
-                    Background="DarkGray" />
+                <Border Grid.Column="1" Style="{StaticResource lineBorderStyle}" />
 
                 <TextBlock Grid.Column="2" Text="{Binding Name}" />
 
-                <Border
-                    Grid.Column="3"
-                    Width="1"
-                    Margin="5,0"
-                    Background="DarkGray" />
+                <Border Grid.Column="3" Style="{StaticResource lineBorderStyle}" />
 
                 <TextBlock Grid.Column="5" Text="{Binding ListenCount}" />
 

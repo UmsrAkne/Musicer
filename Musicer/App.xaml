@@ -9,5 +9,11 @@
         <SolidColorBrush x:Key="bgColor" Color="#444444" />
         <SolidColorBrush x:Key="fgColor" Color="WhiteSmoke" />
 
+        <Style x:Key="lineBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Margin" Value="5,0" />
+        </Style>
+
     </Application.Resources>
 </prism:PrismApplication>

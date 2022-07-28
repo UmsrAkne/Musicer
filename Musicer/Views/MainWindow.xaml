@@ -86,16 +86,46 @@
             </i:Interaction.Triggers>
         </TreeView>
 
-        <ListView
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalContentAlignment="Stretch"
-            AlternationCount="2"
-            Background="{StaticResource bgColor}"
-            ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
-            ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
-            ItemsSource="{Binding Musics}"
-            SelectedIndex="{Binding SelectedSoundIndex}" />
+        <StackPanel Grid.Row="1" Grid.Column="1">
+
+            <Border
+                Padding="7,0"
+                BorderBrush="Gray"
+                BorderThickness="0,1,0,0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Index" />
+
+                    <Border Grid.Column="1" Style="{StaticResource lineBorderStyle}" />
+
+                    <TextBlock Grid.Column="2" Text="Name" />
+
+                    <Border Grid.Column="3" Style="{StaticResource lineBorderStyle}" />
+
+                    <TextBlock Grid.Column="5" Text="Count" />
+                </Grid>
+
+            </Border>
+            <ListView
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalContentAlignment="Stretch"
+                AlternationCount="2"
+                Background="{StaticResource bgColor}"
+                ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
+                ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
+                ItemsSource="{Binding Musics}"
+                SelectedIndex="{Binding SelectedSoundIndex}" />
+
+        </StackPanel>
 
         <Border
             Grid.Row="2"
