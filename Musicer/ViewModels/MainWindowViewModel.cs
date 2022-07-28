@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Windows.Controls;
@@ -16,8 +17,7 @@
 
     public class MainWindowViewModel : BindableBase
     {
-        private string title = "Musicer";
-
+        private string title = $"Musicer [ {FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion} ]";
         private Player player = new Player();
         private ExtendFileInfo selectedDirectory;
         private ObservableCollection<ExtendFileInfo> directories;
