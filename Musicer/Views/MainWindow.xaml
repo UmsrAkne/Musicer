@@ -131,6 +131,10 @@
                 ItemsSource="{Binding Musics}"
                 SelectedIndex="{Binding SelectedSoundIndex}">
 
+                <ScrollViewer.VerticalScrollBarVisibility>
+                    Visible
+                </ScrollViewer.VerticalScrollBarVisibility>
+
                 <i:Interaction.Behaviors>
                     <m:ScrollBehavior />
                 </i:Interaction.Behaviors>
