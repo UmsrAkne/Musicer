@@ -39,6 +39,7 @@
 
             player.PlayStarted += (sedenr, e) =>
             {
+                SelectedSoundIndex = player.StartedSoundInfo.Index - 1;
                 listenHistoryDbContext.Save(player.StartedSoundInfo);
                 RaisePropertyChanged(nameof(PlayingMusicName));
             };

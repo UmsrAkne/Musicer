@@ -8,6 +8,8 @@
 
         event EventHandler BeforeEnd;
 
+        int Index { get; }
+
         string Name { get; }
 
         string FullName { get; }
