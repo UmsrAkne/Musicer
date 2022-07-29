@@ -28,6 +28,8 @@
 
         public int ListenCount { get; set; }
 
+        public int Index { get; set; }
+
         public void Play()
         {
             IsPlaying = true;

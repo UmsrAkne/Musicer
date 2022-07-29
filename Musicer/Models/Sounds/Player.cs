@@ -134,6 +134,7 @@
                 {
                     FullName = sound.FullName,
                     Name = sound.Name,
+                    Index = sound.Index,
                 };
 
                 PlayStarted?.Invoke(this, EventArgs.Empty);
