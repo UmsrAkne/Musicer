@@ -18,7 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="TextBlock">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="13" />
                 <Setter Property="Foreground" Value="{StaticResource fgColor}" />
             </Style>
 
