@@ -54,8 +54,6 @@
             Grid.ColumnSpan="2">
 
             <Menu>
-                <MenuItem Header="File" />
-
                 <MenuItem Header="View">
                     <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
                     <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
