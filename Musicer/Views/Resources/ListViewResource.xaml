@@ -26,7 +26,10 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                     <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="25" />
+
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="{Binding Index}" />
@@ -37,7 +40,11 @@
 
                 <Border Grid.Column="3" Style="{StaticResource lineBorderStyle}" />
 
-                <TextBlock Grid.Column="5" Text="{Binding ListenCount}" />
+                <TextBlock Grid.Column="4" Text="{Binding ListenCount}" />
+
+                <Border Grid.Column="5" Style="{StaticResource lineBorderStyle}" />
+
+                <TextBlock Grid.Column="6" Text="{Binding Duration}" />
 
             </Grid>
 
