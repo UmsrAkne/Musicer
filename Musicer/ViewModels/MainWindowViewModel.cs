@@ -6,6 +6,7 @@
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Windows.Controls;
     using Musicer.Models.Databases;
     using Musicer.Models.Files;
@@ -178,6 +179,7 @@
                 Musics = GetSoundFiles(fileInfos.Select(f => f.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
                 ReIndex();
+                Task task = LoadSounds(Musics);
                 return;
             }
 
@@ -185,6 +187,7 @@
             {
                 Musics = GetSoundFiles(Directory.GetFiles(directory.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
+                Task task = LoadSounds(Musics);
                 ReIndex();
             }
         }
@@ -233,5 +236,7 @@
         {
             Enumerable.Range(0, Musics.Count).ToList().ForEach(i => (Musics[i] as Sound).Index = i + 1);
         }
+
+        private async Task LoadSounds(List<ISound> sounds) => await Task.Run(() => sounds.ForEach(s => s.Load()));
     }
 }
