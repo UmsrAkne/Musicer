@@ -33,5 +33,7 @@
         void Play();
 
         void Stop();
+
+        void Load();
     }
 }

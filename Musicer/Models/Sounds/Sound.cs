@@ -13,6 +13,7 @@
         private WaveOutEvent waveOut;
         private DispatcherTimer timer;
         private int listenCount;
+        private TimeSpan duration;
 
         private int index;
 
@@ -40,7 +41,7 @@
 
         public string FullName => fileInfo.FullName;
 
-        public TimeSpan Duration { get; set; }
+        public TimeSpan Duration { get => duration; set => SetProperty(ref duration, value); }
 
         public double CurrentPosition => reader != null ? reader.CurrentTime.TotalSeconds : 0;
 
@@ -123,6 +124,15 @@
             }
 
             IsPlaying = false;
+        }
+
+        public void Load()
+        {
+            if (reader == null)
+            {
+                reader = new AudioFileReader(fileInfo.FullName);
+                Duration = reader.TotalTime;
+            }
         }
 
         private void EndedEventHandler(object sender, EventArgs e)

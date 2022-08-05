@@ -49,5 +49,10 @@
         {
             BeforeEnd.Invoke(this, EventArgs.Empty);
         }
+
+        public void Load()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
