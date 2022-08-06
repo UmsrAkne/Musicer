@@ -6,14 +6,21 @@
     xmlns:prism="http://prismlibrary.com/">
     <Application.Resources>
 
-        <SolidColorBrush x:Key="bgColor" Color="#444444" />
-        <SolidColorBrush x:Key="fgColor" Color="WhiteSmoke" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/Resources/ButtonResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style x:Key="lineBorderStyle" TargetType="Border">
-            <Setter Property="Width" Value="1" />
-            <Setter Property="Background" Value="Gray" />
-            <Setter Property="Margin" Value="5,0" />
-        </Style>
+            <SolidColorBrush x:Key="bgColor" Color="#444444" />
+            <SolidColorBrush x:Key="fgColor" Color="WhiteSmoke" />
+
+            <Style x:Key="lineBorderStyle" TargetType="Border">
+                <Setter Property="Width" Value="1" />
+                <Setter Property="Background" Value="Gray" />
+                <Setter Property="Margin" Value="5,0" />
+            </Style>
+
+        </ResourceDictionary>
 
     </Application.Resources>
 </prism:PrismApplication>
