@@ -160,6 +160,10 @@
             SelectedSoundIndex = 0;
         });
 
+        /// <summary>
+        /// ディレクトリ、またはM3U ファイルに含まれているサウンドファイルを読み込んでビューのリストに表示します。
+        /// </summary>
+        /// <param name="directory">サウンドファイルを含むディレクトリ、または M3U を指す ExtendFileInfo を入力します。</param>
         public void LoadMusics(ExtendFileInfo directory)
         {
             if (directory == null)
@@ -192,6 +196,12 @@
             }
         }
 
+        /// <summary>
+        /// ルートディレクトリ（このアプリの読み込みの起点となるディレクトリ）を読み込みます。
+        /// ルートディレクトリは設定で決めることができますが、設定されていない場合はユーザーの MyMusic が読み込まれます。
+        /// また、前回のアプリ終了時に選択していたディレクトリが選択可能な場合、そのフォルダがデフォルトで展開、選択状態になります。
+        /// </summary>
+        /// <param name="path">ルートディレクトリのパスを入力します。</param>
         private void LoadRootDirectory(string path)
         {
             Directories = new ObservableCollection<ExtendFileInfo>();
@@ -219,6 +229,11 @@
             Directories.Add(defaultFileInfo);
         }
 
+        /// <summary>
+        /// ファイルパスのリストから ISound のリストを生成します。
+        /// </summary>
+        /// <param name="soundFilePaths">ファイルパスのリストです。サウンドファイル以外のファイルはスキップされます。</param>
+        /// <returns>サウンドファイルの情報を格納した ISound のリストを返します。</returns>
         private List<ISound> GetSoundFiles(List<string> soundFilePaths)
         {
             var sounds = soundFilePaths
@@ -232,6 +247,9 @@
             return sounds;
         }
 
+        /// <summary>
+        /// Musics 内の要素に Index を設定します。番号はリストのインデックス順で割り振られます。
+        /// </summary>
         private void ReIndex()
         {
             Enumerable.Range(0, Musics.Count).ToList().ForEach(i => (Musics[i] as Sound).Index = i + 1);
