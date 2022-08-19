@@ -35,6 +35,7 @@
                         <Grid>
 
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="40" />
@@ -50,22 +51,24 @@
                                 </Style>
                             </Grid.Resources>
 
-                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                            <TextBlock Grid.Column="0" Text="{Binding Index}" />
+
+                            <TextBlock Grid.Column="1" Text="{Binding Name}" />
 
                             <Border
-                                Grid.Column="1"
+                                Grid.Column="2"
                                 Width="1"
                                 Background="{StaticResource fgColor}" />
 
-                            <TextBlock Grid.Column="2" Text="{Binding ListenCount}" />
+                            <TextBlock Grid.Column="3" Text="{Binding ListenCount}" />
 
                             <Border
-                                Grid.Column="3"
+                                Grid.Column="4"
                                 Width="1"
                                 Margin="5,0"
                                 Background="{StaticResource fgColor}" />
 
-                            <TextBlock Grid.Column="4" Text="{Binding LastListenDateTime, Converter={StaticResource dateTimeConverter}}" />
+                            <TextBlock Grid.Column="5" Text="{Binding LastListenDateTime, Converter={StaticResource dateTimeConverter}}" />
 
                         </Grid>
                     </Border>

@@ -25,7 +25,10 @@
 
         public DelegateCommand ReloadCommand => new DelegateCommand(() =>
         {
-            listenHistories = dbContext.GetAll();
+            int counter = 0;
+            var histories = dbContext.GetAll();
+            histories.ForEach(l => l.Index = ++counter);
+            listenHistories = histories;
         });
 
         public bool CanCloseDialog()
