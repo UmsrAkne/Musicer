@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class ListenHistory
     {
@@ -20,5 +21,8 @@
 
         [Required]
         public DateTime LastListenDateTime { get; set; }
+
+        [NotMapped]
+        public int Index { get; set; }
     }
 }
