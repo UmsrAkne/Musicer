@@ -8,7 +8,7 @@
     xmlns:prism="http://prismlibrary.com/"
     x:Name="window"
     Title="{Binding Title}"
-    Width="1024"
+    Width="1200"
     Height="700"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{StaticResource bgColor}">
@@ -41,8 +41,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1.2*" />
         </Grid.ColumnDefinitions>
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
@@ -98,7 +98,7 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="auto" />
