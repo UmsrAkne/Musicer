@@ -2,14 +2,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:models="clr-namespace:Musicer.Models.Converters">
+    xmlns:models="clr-namespace:Musicer.Models.Converters"
+    xmlns:sounds="clr-namespace:Musicer.Models.Sounds">
 
-    <DataTemplate x:Key="listViewTemplate">
+    <DataTemplate x:Key="ListViewTemplate" DataType="{x:Type sounds:ISound}">
 
         <DataTemplate.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="13" />
-                <Setter Property="Foreground" Value="{StaticResource fgColor}" />
+                <Setter Property="Foreground" Value="{StaticResource FgColor}" />
             </Style>
 
             <models:TimeSpanConverter x:Key="TimeSpanConverter" />
@@ -37,15 +38,15 @@
 
                 <TextBlock Grid.Column="0" Text="{Binding Index}" />
 
-                <Border Grid.Column="1" Style="{StaticResource lineBorderStyle}" />
+                <Border Grid.Column="1" Style="{StaticResource LineBorderStyle}" />
 
                 <TextBlock Grid.Column="2" Text="{Binding Name}" />
 
-                <Border Grid.Column="3" Style="{StaticResource lineBorderStyle}" />
+                <Border Grid.Column="3" Style="{StaticResource LineBorderStyle}" />
 
                 <TextBlock Grid.Column="4" Text="{Binding ListenCount}" />
 
-                <Border Grid.Column="5" Style="{StaticResource lineBorderStyle}" />
+                <Border Grid.Column="5" Style="{StaticResource LineBorderStyle}" />
 
                 <TextBlock Grid.Column="6" Text="{Binding Duration, Converter={StaticResource TimeSpanConverter}}" />
 

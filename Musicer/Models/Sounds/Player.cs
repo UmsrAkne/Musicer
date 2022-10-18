@@ -12,7 +12,7 @@
 
         public Player()
         {
-            timer.Tick += (object sender, EventArgs e) =>
+            timer.Tick += (sender, e) =>
             {
                 ExecuteFader();
             };
@@ -144,13 +144,13 @@
         private void SoundBeforeEndEventHandler(object sender, EventArgs e)
         {
             ToNext();
-            (sender as ISound).BeforeEnd -= SoundBeforeEndEventHandler;
+            ((ISound)sender).BeforeEnd -= SoundBeforeEndEventHandler;
         }
 
         private void SoundEndedEventHandler(object sender, EventArgs e)
         {
             ToNext();
-            (sender as ISound).Ended -= SoundEndedEventHandler;
+            ((ISound)sender).Ended -= SoundEndedEventHandler;
         }
     }
 }

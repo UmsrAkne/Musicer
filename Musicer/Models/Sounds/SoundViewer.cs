@@ -1,10 +1,10 @@
-﻿namespace Musicer.Models.Sounds
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Windows.Threading;
-    using Prism.Mvvm;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Threading;
+using Prism.Mvvm;
 
+namespace Musicer.Models.Sounds
+{
     public class SoundViewer : BindableBase
     {
         private List<ISound> sounds = new List<ISound>();
@@ -78,7 +78,7 @@
             }
         }
 
-        private void SoundEndedEventHandler(object sender, System.EventArgs e)
+        private void SoundEndedEventHandler(object sender, EventArgs e)
         {
             sounds.Remove(sender as ISound);
             (sender as ISound).Ended -= SoundEndedEventHandler;

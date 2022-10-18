@@ -6,12 +6,12 @@
     xmlns:m="clr-namespace:Musicer.Models"
     xmlns:models="clr-namespace:Musicer.Models.Converters"
     xmlns:prism="http://prismlibrary.com/"
-    x:Name="window"
+    x:Name="Window"
     Title="{Binding Title}"
     Width="1200"
     Height="700"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Background="{StaticResource bgColor}">
+    Background="{StaticResource BgColor}">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -27,7 +27,7 @@
 
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="13" />
-                <Setter Property="Foreground" Value="{StaticResource fgColor}" />
+                <Setter Property="Foreground" Value="{StaticResource FgColor}" />
             </Style>
 
         </ResourceDictionary>
@@ -69,17 +69,17 @@
         </StackPanel>
 
         <TreeView
-            Name="treeView"
+            Name="TreeView"
             Grid.Row="1"
             Grid.Column="0"
-            Background="{StaticResource bgColor}"
+            Background="{StaticResource BgColor}"
             ItemContainerStyle="{StaticResource TreeViewItemStyle1}"
-            ItemTemplate="{StaticResource ResourceKey=hierarchicalDataTemplate}"
+            ItemTemplate="{StaticResource ResourceKey=HierarchicalDataTemplate}"
             ItemsSource="{Binding Directories}">
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
-                    <i:InvokeCommandAction Command="{Binding SetTreeViewSelectedItemCommand}" CommandParameter="{Binding ElementName=treeView}" />
+                    <i:InvokeCommandAction Command="{Binding SetTreeViewSelectedItemCommand}" CommandParameter="{Binding ElementName=TreeView}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TreeView>
@@ -110,15 +110,15 @@
 
                     <TextBlock Grid.Column="0" Text="Index" />
 
-                    <Border Grid.Column="1" Style="{StaticResource lineBorderStyle}" />
+                    <Border Grid.Column="1" Style="{StaticResource LineBorderStyle}" />
 
                     <TextBlock Grid.Column="2" Text="Name" />
 
-                    <Border Grid.Column="3" Style="{StaticResource lineBorderStyle}" />
+                    <Border Grid.Column="3" Style="{StaticResource LineBorderStyle}" />
 
                     <TextBlock Grid.Column="4" Text="Cnt" />
 
-                    <Border Grid.Column="5" Style="{StaticResource lineBorderStyle}" />
+                    <Border Grid.Column="5" Style="{StaticResource LineBorderStyle}" />
 
                     <TextBlock Grid.Column="6" Text="Len" />
                 </Grid>
@@ -129,9 +129,9 @@
                 Grid.Row="1"
                 HorizontalContentAlignment="Stretch"
                 AlternationCount="2"
-                Background="{StaticResource bgColor}"
+                Background="{StaticResource BgColor}"
                 ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
-                ItemTemplate="{StaticResource ResourceKey=listViewTemplate}"
+                ItemTemplate="{StaticResource ResourceKey=ListViewTemplate}"
                 ItemsSource="{Binding Musics}"
                 SelectedIndex="{Binding SelectedSoundIndex}">
 
@@ -159,6 +159,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -176,7 +177,7 @@
                             <Setter Property="Width" Value="100" />
                             <Setter Property="Margin" Value="5,0" />
                             <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="Template" Value="{StaticResource buttonTemplate}" />
+                            <Setter Property="Template" Value="{StaticResource ButtonTemplate}" />
                         </Style>
                     </StackPanel.Resources>
 
@@ -190,7 +191,7 @@
                         VerticalAlignment="Top"
                         Content="Loop"
                         IsChecked="{Binding LoopPlay}"
-                        Template="{StaticResource toggleButtonTemplate}" />
+                        Template="{StaticResource ToggleButtonTemplate}" />
 
                 </StackPanel>
 
@@ -242,7 +243,7 @@
                 <ProgressBar
                     Grid.Row="2"
                     Grid.Column="0"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="2"
                     Height="5"
                     VerticalAlignment="Bottom"
                     Background="PaleGreen"

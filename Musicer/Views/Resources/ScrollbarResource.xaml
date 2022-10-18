@@ -163,7 +163,7 @@
                         x:Name="rectangle"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Fill="{StaticResource fgColor}"
+                        Fill="{StaticResource FgColor}"
                         SnapsToDevicePixels="True" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -188,7 +188,7 @@
                         x:Name="rectangle"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Fill="{StaticResource fgColor}"
+                        Fill="{StaticResource FgColor}"
                         SnapsToDevicePixels="True" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -206,7 +206,7 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-        <Setter Property="Background" Value="{StaticResource bgColor}" />
+        <Setter Property="Background" Value="{StaticResource BgColor}" />
         <Setter Property="BorderBrush" Value="{StaticResource ScrollBar.Static.Border}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="BorderThickness" Value="0.5,0" />
@@ -228,6 +228,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}" />
                         <RepeatButton
                             x:Name="PART_LineUpButton"
+                            Grid.Row="0"
                             Command="{x:Static ScrollBar.LineUpCommand}"
                             IsEnabled="{TemplateBinding IsMouseOver}"
                             Style="{StaticResource ScrollBarButton}">
@@ -327,6 +328,7 @@
                                     BorderThickness="{TemplateBinding BorderThickness}" />
                                 <RepeatButton
                                     x:Name="PART_LineLeftButton"
+                                    Grid.Column="1"
                                     Command="{x:Static ScrollBar.LineLeftCommand}"
                                     IsEnabled="{TemplateBinding IsMouseOver}"
                                     Style="{StaticResource ScrollBarButton}">

@@ -4,16 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:Musicer.Models.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Musicer.Views"
+    xmlns:databases="clr-namespace:Musicer.Models.Databases"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="HistoryPage"
     Width="800"
     Height="600"
-    Background="{StaticResource bgColor}"
+    Background="{StaticResource BgColor}"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <converters:DateTimeConverter x:Key="dateTimeConverter" />
+        <converters:DateTimeConverter x:Key="DateTimeConverter" />
     </Page.Resources>
 
     <Grid>
@@ -26,11 +26,11 @@
             Grid.Row="0"
             HorizontalContentAlignment="Stretch"
             AlternationCount="2"
-            Background="{StaticResource bgColor}"
+            Background="{StaticResource BgColor}"
             ItemsSource="{Binding ListenHistories}">
 
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate DataType="{x:Type databases:ListenHistory}">
                     <Border>
                         <Grid>
 
@@ -46,7 +46,7 @@
                             <Grid.Resources>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="FontSize" Value="13" />
-                                    <Setter Property="Foreground" Value="{StaticResource fgColor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource FgColor}" />
                                     <Setter Property="Margin" Value="5,0" />
                                 </Style>
                             </Grid.Resources>
@@ -58,7 +58,7 @@
                             <Border
                                 Grid.Column="2"
                                 Width="1"
-                                Background="{StaticResource fgColor}" />
+                                Background="{StaticResource FgColor}" />
 
                             <TextBlock Grid.Column="3" Text="{Binding ListenCount}" />
 
@@ -66,9 +66,9 @@
                                 Grid.Column="4"
                                 Width="1"
                                 Margin="5,0"
-                                Background="{StaticResource fgColor}" />
+                                Background="{StaticResource FgColor}" />
 
-                            <TextBlock Grid.Column="5" Text="{Binding LastListenDateTime, Converter={StaticResource dateTimeConverter}}" />
+                            <TextBlock Grid.Column="5" Text="{Binding LastListenDateTime, Converter={StaticResource DateTimeConverter}}" />
 
                         </Grid>
                     </Border>
@@ -91,7 +91,7 @@
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Right"
-            Background="{StaticResource bgColor}"
+            Background="{StaticResource BgColor}"
             Orientation="Horizontal">
 
             <Button
@@ -99,14 +99,14 @@
                 Padding="10,3"
                 Command="{Binding ReloadCommand}"
                 Content="更新"
-                Template="{StaticResource buttonTemplate}" />
+                Template="{StaticResource ButtonTemplate}" />
 
             <Button
                 Margin="5"
                 Padding="10,3"
                 Command="{Binding CloseCommand}"
                 Content="閉じる"
-                Template="{StaticResource buttonTemplate}" />
+                Template="{StaticResource ButtonTemplate}" />
 
         </StackPanel>
 

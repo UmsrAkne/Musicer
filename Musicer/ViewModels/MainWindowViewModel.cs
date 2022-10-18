@@ -1,21 +1,22 @@
-﻿namespace Musicer.ViewModels
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows.Controls;
-    using Musicer.Models.Databases;
-    using Musicer.Models.Files;
-    using Musicer.Models.Sounds;
-    using Musicer.Views;
-    using Prism.Commands;
-    using Prism.Mvvm;
-    using Prism.Services.Dialogs;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using Musicer.Models.Databases;
+using Musicer.Models.Files;
+using Musicer.Models.Sounds;
+using Musicer.Views;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Services.Dialogs;
 
+namespace Musicer.ViewModels
+{
+    // ReSharper disable once UnusedType.Global
     public class MainWindowViewModel : BindableBase
     {
         private string title = $"Musicer [ {FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion} ]";
@@ -183,6 +184,8 @@
                 Musics = GetSoundFiles(fileInfos.Select(f => f.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
                 ReIndex();
+
+                // ReSharper disable once UnusedVariable
                 Task task = LoadSounds(Musics);
                 return;
             }
@@ -191,6 +194,8 @@
             {
                 Musics = GetSoundFiles(Directory.GetFiles(directory.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
+
+                // ReSharper disable once UnusedVariable
                 Task task = LoadSounds(Musics);
                 ReIndex();
             }

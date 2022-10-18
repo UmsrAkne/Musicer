@@ -1,6 +1,7 @@
-﻿namespace Musicer.Models.Files.Tests
+﻿namespace MusicerTests.Models.Files
 {
     using System.IO;
+    using Musicer.Models.Files;
     using NUnit.Framework;
 
     public class DirectoryExpanderTests
