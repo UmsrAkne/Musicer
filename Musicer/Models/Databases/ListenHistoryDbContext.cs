@@ -1,18 +1,19 @@
-﻿namespace Musicer.Models.Databases
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Data.SQLite;
-    using System.IO;
-    using System.Linq;
-    using Microsoft.Data.Sqlite;
-    using Microsoft.EntityFrameworkCore;
-    using Musicer.Models.Sounds;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
+using System.Linq;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Musicer.Models.Sounds;
 
+namespace Musicer.Models.Databases
+{
     public class ListenHistoryDbContext : DbContext
     {
         private string dbFileName = "listenHistory.sqlite";
 
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private DbSet<ListenHistory> ListenHistories { get; set; }
 
         public void Save(ISound sound)

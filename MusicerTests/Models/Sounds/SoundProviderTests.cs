@@ -1,6 +1,7 @@
-﻿namespace Musicer.Models.Sounds.Tests
+﻿namespace MusicerTests.Models.Sounds
 {
     using System.Collections.Generic;
+    using Musicer.Models.Sounds;
     using NUnit.Framework;
 
     public class SoundProviderTests

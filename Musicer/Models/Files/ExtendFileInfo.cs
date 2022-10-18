@@ -48,8 +48,10 @@
 
                 if (HasChildDirectory && IsDirectory)
                 {
-                    var directories = (FileSystemInfo as DirectoryInfo).GetDirectories().ToList();
-                    var m3us = (FileSystemInfo as DirectoryInfo).GetFiles().Where(f => IsM3UExtension(f.Extension)).ToList();
+                    var directories = (FileSystemInfo as DirectoryInfo)?.GetDirectories().ToList();
+
+                    // ReSharper disable once InconsistentNaming
+                    var m3us = (FileSystemInfo as DirectoryInfo)?.GetFiles().Where(f => IsM3UExtension(f.Extension)).ToList();
 
                     childDirectories = directories.Select(d => new ExtendFileInfo(d.FullName)).ToList();
                     childDirectories.AddRange(m3us.Select(f => new ExtendFileInfo(f.FullName)).ToList());
@@ -74,8 +76,8 @@
             {
                 if (IsDirectory)
                 {
-                    var innerFiles = (FileSystemInfo as DirectoryInfo).GetFiles();
-                    return innerFiles.Any(f => IsSoundFileExtension(f.Extension));
+                    var innerFiles = (FileSystemInfo as DirectoryInfo)?.GetFiles();
+                    return innerFiles != null && innerFiles.Any(f => IsSoundFileExtension(f.Extension));
                 }
 
                 if (IsM3U)
@@ -98,6 +100,7 @@
         /// </summary>
         /// <param name="m3uText">m3u ファイルを System.IO.File.ReadAllLines() で読み込んだ値を入力する。</param>
         /// <returns>サウンドファイルの情報をもった ExtendFileInfo のリストを返します。</returns>
+        // ReSharper disable once InconsistentNaming
         public List<ExtendFileInfo> GetPlayListFromM3U(string[] m3uText)
         {
             return m3uText.Where(line => !line.StartsWith("#") && File.Exists(line))

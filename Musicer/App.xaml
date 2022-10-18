@@ -2,7 +2,6 @@
     x:Class="Musicer.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Musicer"
     xmlns:prism="http://prismlibrary.com/">
     <Application.Resources>
 
@@ -11,10 +10,10 @@
                 <ResourceDictionary Source="Views/Resources/ButtonResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="bgColor" Color="#444444" />
-            <SolidColorBrush x:Key="fgColor" Color="WhiteSmoke" />
+            <SolidColorBrush x:Key="BgColor" Color="#444444" />
+            <SolidColorBrush x:Key="FgColor" Color="WhiteSmoke" />
 
-            <Style x:Key="lineBorderStyle" TargetType="Border">
+            <Style x:Key="LineBorderStyle" TargetType="Border">
                 <Setter Property="Width" Value="1" />
                 <Setter Property="Background" Value="Gray" />
                 <Setter Property="Margin" Value="5,0" />

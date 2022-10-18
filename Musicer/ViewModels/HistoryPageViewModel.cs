@@ -1,12 +1,13 @@
-﻿namespace Musicer.ViewModels
-{
-    using System;
-    using System.Collections.Generic;
-    using Musicer.Models.Databases;
-    using Prism.Commands;
-    using Prism.Mvvm;
-    using Prism.Services.Dialogs;
+﻿using System;
+using System.Collections.Generic;
+using Musicer.Models.Databases;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Services.Dialogs;
 
+namespace Musicer.ViewModels
+{
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class HistoryPageViewModel : BindableBase, IDialogAware
     {
         private List<ListenHistory> listenHistories;

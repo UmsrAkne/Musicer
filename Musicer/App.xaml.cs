@@ -1,10 +1,10 @@
-﻿namespace Musicer
-{
-    using System.Windows;
-    using Musicer.ViewModels;
-    using Musicer.Views;
-    using Prism.Ioc;
+﻿using System.Windows;
+using Musicer.ViewModels;
+using Musicer.Views;
+using Prism.Ioc;
 
+namespace Musicer
+{
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

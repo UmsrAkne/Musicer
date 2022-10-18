@@ -19,7 +19,7 @@
             }
 
             var differencePath = targetPath.FileSystemInfo.FullName.Substring(rootDirectory.FileSystemInfo.FullName.Length);
-            var directoryNames = differencePath.Split(new string[] { "\\" }, System.StringSplitOptions.RemoveEmptyEntries);
+            var directoryNames = differencePath.Split(new[] { "\\" }, System.StringSplitOptions.RemoveEmptyEntries);
 
             rootDirectory.IsExpanded = true;
 

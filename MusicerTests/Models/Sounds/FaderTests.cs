@@ -1,5 +1,6 @@
-﻿namespace Musicer.Models.Sounds.Tests
+﻿namespace MusicerTests.Models.Sounds
 {
+    using Musicer.Models.Sounds;
     using NUnit.Framework;
 
     public class FaderTests
