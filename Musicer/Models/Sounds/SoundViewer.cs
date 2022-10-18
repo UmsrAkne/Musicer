@@ -8,7 +8,7 @@ namespace Musicer.Models.Sounds
     public class SoundViewer : BindableBase
     {
         private List<ISound> sounds = new List<ISound>();
-        private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
+        private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(200) };
         private string playingMusicName;
         private TimeSpan currentTime;
         private TimeSpan totalTime;
