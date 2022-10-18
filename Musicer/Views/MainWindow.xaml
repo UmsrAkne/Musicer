@@ -151,8 +151,7 @@
             Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Height="60"
-            Padding="0,1,1,0">
+            Padding="0,5,1,0">
 
             <Grid Margin="0,5,0,0">
 
@@ -225,6 +224,7 @@
                     Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
+                    Margin="0,5"
                     Orientation="Horizontal">
 
                     <TextBlock
