@@ -20,7 +20,7 @@
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding ElementName=window, Path=DataContext.PlayFromIndexCommand}" />
+                    <i:InvokeCommandAction Command="{Binding ElementName=Window, Path=DataContext.PlayFromIndexCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 
