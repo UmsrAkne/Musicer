@@ -59,6 +59,7 @@
             PlayingSound.ForEach(s =>
             {
                 s.Stop();
+                s.Volume = 1.0;
                 s.Ended -= SoundEndedEventHandler;
                 s.BeforeEnd -= SoundBeforeEndEventHandler;
             });

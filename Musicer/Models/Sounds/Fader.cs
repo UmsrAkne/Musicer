@@ -62,6 +62,7 @@
             }
 
             sounds.Add(sound);
+            sound.Volume = VolumeUpperLimit;
 
             lastAddedSound = sound;
 
