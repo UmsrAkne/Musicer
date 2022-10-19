@@ -8,7 +8,7 @@
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((DateTime)value).ToString("MM/dd HH:mm");
+            return ((DateTime)value).ToString("yy/MM/dd HH:mm");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
