@@ -27,7 +27,7 @@ namespace Musicer.ViewModels
         public DelegateCommand ReloadCommand => new DelegateCommand(() =>
         {
             int counter = 0;
-            var histories = dbContext.GetAll();
+            var histories = dbContext.GetHistories(200);
             histories.ForEach(l => l.Index = ++counter);
             listenHistories = histories;
         });
