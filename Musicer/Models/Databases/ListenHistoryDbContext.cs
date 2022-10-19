@@ -40,10 +40,11 @@ namespace Musicer.Models.Databases
             SaveChanges();
         }
 
-        public List<ListenHistory> GetAll()
+        public List<ListenHistory> GetHistories(int takeCount)
         {
             return ListenHistories.Where(l => true)
                 .OrderByDescending(l => l.LastListenDateTime)
+                .Take(takeCount)
                 .ToList();
         }
 
