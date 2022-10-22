@@ -98,7 +98,7 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="25" />
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="auto" />
@@ -108,7 +108,7 @@
                         <ColumnDefinition Width="60" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Index" />
+                    <TextBlock Grid.Column="0" Text="No" />
 
                     <Border Grid.Column="1" Style="{StaticResource LineBorderStyle}" />
 
