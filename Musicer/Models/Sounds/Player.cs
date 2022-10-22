@@ -6,9 +6,8 @@
 
     public class Player
     {
-        private SoundProvider soundProvider = new SoundProvider();
-        private Fader fader = new Fader();
-        private DispatcherTimer timer = new DispatcherTimer();
+        private readonly Fader fader = new Fader();
+        private readonly DispatcherTimer timer = new DispatcherTimer();
 
         public Player()
         {
@@ -24,7 +23,7 @@
 
         public List<ISound> PlayingSound { get; private set; } = new List<ISound>();
 
-        public SoundProvider SoundProvider { get => soundProvider; set => soundProvider = value; }
+        public SoundProvider SoundProvider { get; set; } = new SoundProvider();
 
         public SoundViewer SoundViewer { get; } = new SoundViewer();
 

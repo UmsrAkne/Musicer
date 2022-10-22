@@ -19,8 +19,11 @@ namespace Musicer.ViewModels
     // ReSharper disable once UnusedType.Global
     public class MainWindowViewModel : BindableBase
     {
+        private readonly Player player = new Player();
+        private readonly IDialogService dialogService;
+        private readonly ListenHistoryDbContext listenHistoryDbContext = new ListenHistoryDbContext();
+
         private string title = $"Musicer [ {FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion} ]";
-        private Player player = new Player();
         private ExtendFileInfo selectedDirectory;
         private ObservableCollection<ExtendFileInfo> directories;
         private List<ISound> musics;
@@ -28,8 +31,6 @@ namespace Musicer.ViewModels
         private double volume = 1.0;
         private bool loopPlay;
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
-        private IDialogService dialogService;
-        private ListenHistoryDbContext listenHistoryDbContext = new ListenHistoryDbContext();
 
         private string currentDirectoryPath;
 
@@ -39,7 +40,7 @@ namespace Musicer.ViewModels
             listenHistoryDbContext.Database.EnsureCreated();
             LoadRootDirectory(Properties.Settings.Default.RootDirectoryPath);
 
-            player.PlayStarted += (sedenr, e) =>
+            player.PlayStarted += (sender, e) =>
             {
                 SelectedSoundIndex = player.StartedSoundInfo.Index - 1;
                 listenHistoryDbContext.Save(player.StartedSoundInfo);
@@ -51,11 +52,7 @@ namespace Musicer.ViewModels
             player.UpdateSetting();
         }
 
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
+        public string Title { get => title; set => SetProperty(ref title, value); }
 
         public ObservableCollection<ExtendFileInfo> Directories { get => directories; set => SetProperty(ref directories, value); }
 
@@ -140,8 +137,7 @@ namespace Musicer.ViewModels
 
         public DelegateCommand ShowHistoryWindowCommand => new DelegateCommand(() =>
         {
-            var dialogParam = new DialogParameters();
-            dialogParam.Add(nameof(ListenHistoryDbContext), listenHistoryDbContext);
+            var dialogParam = new DialogParameters { { nameof(ListenHistoryDbContext), listenHistoryDbContext } };
             dialogService.ShowDialog(nameof(HistoryPage), dialogParam, result => { });
         });
 
@@ -221,14 +217,7 @@ namespace Musicer.ViewModels
             {
                 var dir = DirectoryExpander.ExpandDirectories(defaultFileInfo, new ExtendFileInfo(Properties.Settings.Default.LastSelectedDirectoryPath));
 
-                if (dir == null)
-                {
-                    LoadMusics(defaultFileInfo);
-                }
-                else
-                {
-                    LoadMusics(dir);
-                }
+                LoadMusics(dir ?? defaultFileInfo);
             }
 
             Directories.Add(defaultFileInfo);
@@ -257,7 +246,7 @@ namespace Musicer.ViewModels
         /// </summary>
         private void ReIndex()
         {
-            Enumerable.Range(0, Musics.Count).ToList().ForEach(i => (Musics[i] as Sound).Index = i + 1);
+            Enumerable.Range(0, Musics.Count).ToList().ForEach(i => ((Sound)Musics[i]).Index = i + 1);
         }
 
         private async Task LoadSounds(List<ISound> sounds) => await Task.Run(() => sounds.ForEach(s => s.Load()));
