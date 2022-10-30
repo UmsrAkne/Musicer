@@ -1,4 +1,6 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Musicer.Models.Databases
 {
@@ -16,5 +18,11 @@ namespace Musicer.Models.Databases
 
         [Required]
         public long PlaybackTimeTicks { get; set; } = 0;
+
+        [NotMapped]
+        public long Index { get; set; } = 0;
+
+        [NotMapped]
+        public DateTime LastListenDateTime { get; set; }
     }
 }

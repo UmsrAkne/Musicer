@@ -16,29 +16,25 @@ namespace Musicer.Models.Databases
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private DbSet<ListenHistory> ListenHistories { get; set; }
 
+        private DbSet<SoundData> Sounds { get; set; }
+
         public void Save(ISound sound)
         {
-            // Todo
-            // var history = ListenHistories.FirstOrDefault(l => l.FullName == sound.FullName);
+            var soundData = Sounds.FirstOrDefault(s => s.FullName == sound.FullName);
 
-            // if (history == null)
-            // {
-            //     ListenHistories.Add(
-            //         new ListenHistory()
-            //         {
-            //             FullName = sound.FullName,
-            //             Name = sound.Name,
-            //             LastListenDateTime = DateTime.Now,
-            //             ListenCount = 1,
-            //         });
-            // }
-            // else
-            // {
-            //     history.ListenCount++;
-            //     history.LastListenDateTime = DateTime.Now;
-            // }
+            if (soundData == null)
+            {
+                soundData = new SoundData() { FullName = sound.FullName, Name = sound.Name, };
+                Sounds.Add(soundData);
+            }
 
-            // SaveChanges();
+            ListenHistories.Add(new ListenHistory()
+            {
+                ListenDateTime = DateTime.Now,
+                SoundDataId = soundData.Id,
+            });
+
+            SaveChanges();
         }
 
         public List<ListenHistory> GetHistories(int takeCount)
@@ -54,10 +50,13 @@ namespace Musicer.Models.Databases
 
         public int GetListenCount(string fullName)
         {
-            // Todo
-            // var history = ListenHistories.FirstOrDefault(h => h.FullName == fullName);
-            // return history != null ? history.ListenCount : 0;
-            return 0;
+            if (!Sounds.Any(s => s.FullName == fullName))
+            {
+                return 0;
+            }
+
+            var id = Sounds.First(s => s.FullName == fullName).Id;
+            return ListenHistories.Count(l => l.SoundDataId == id);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
