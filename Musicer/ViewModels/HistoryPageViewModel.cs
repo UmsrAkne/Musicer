@@ -28,7 +28,10 @@ namespace Musicer.ViewModels
         {
             int counter = 0;
             var histories = dbContext.GetHistories(200);
-            histories.ForEach(l => l.Index = ++counter);
+
+            // Todo
+            // histories.ForEach(l => l.Index = ++counter);
+
             listenHistories = histories;
         });
 

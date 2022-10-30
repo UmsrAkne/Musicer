@@ -2,7 +2,6 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class ListenHistory
     {
@@ -11,18 +10,9 @@
         public int Id { get; set; }
 
         [Required]
-        public string FullName { get; set; } = string.Empty;
+        public int SoundDataId { get; set; }
 
         [Required]
-        public string Name { get; set; } = string.Empty;
-
-        [Required]
-        public int ListenCount { get; set; }
-
-        [Required]
-        public DateTime LastListenDateTime { get; set; }
-
-        [NotMapped]
-        public int Index { get; set; }
+        public DateTime ListenDateTime { get; set; }
     }
 }

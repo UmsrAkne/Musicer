@@ -18,40 +18,46 @@ namespace Musicer.Models.Databases
 
         public void Save(ISound sound)
         {
-            var history = ListenHistories.FirstOrDefault(l => l.FullName == sound.FullName);
+            // Todo
+            // var history = ListenHistories.FirstOrDefault(l => l.FullName == sound.FullName);
 
-            if (history == null)
-            {
-                ListenHistories.Add(
-                    new ListenHistory()
-                    {
-                        FullName = sound.FullName,
-                        Name = sound.Name,
-                        LastListenDateTime = DateTime.Now,
-                        ListenCount = 1,
-                    });
-            }
-            else
-            {
-                history.ListenCount++;
-                history.LastListenDateTime = DateTime.Now;
-            }
+            // if (history == null)
+            // {
+            //     ListenHistories.Add(
+            //         new ListenHistory()
+            //         {
+            //             FullName = sound.FullName,
+            //             Name = sound.Name,
+            //             LastListenDateTime = DateTime.Now,
+            //             ListenCount = 1,
+            //         });
+            // }
+            // else
+            // {
+            //     history.ListenCount++;
+            //     history.LastListenDateTime = DateTime.Now;
+            // }
 
-            SaveChanges();
+            // SaveChanges();
         }
 
         public List<ListenHistory> GetHistories(int takeCount)
         {
-            return ListenHistories.Where(l => true)
-                .OrderByDescending(l => l.LastListenDateTime)
-                .Take(takeCount)
-                .ToList();
+            return new List<ListenHistory>();
+
+            // Todo
+            // return ListenHistories.Where(l => true)
+            //     .OrderByDescending(l => l.LastListenDateTime)
+            //     .Take(takeCount)
+            //     .ToList();
         }
 
         public int GetListenCount(string fullName)
         {
-            var history = ListenHistories.FirstOrDefault(h => h.FullName == fullName);
-            return history != null ? history.ListenCount : 0;
+            // Todo
+            // var history = ListenHistories.FirstOrDefault(h => h.FullName == fullName);
+            // return history != null ? history.ListenCount : 0;
+            return 0;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
