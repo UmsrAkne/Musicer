@@ -68,7 +68,7 @@
                                 Margin="5,0"
                                 Background="{StaticResource FgColor}" />
 
-                            <TextBlock Grid.Column="5" Text="{Binding LastListenDateTime, Converter={StaticResource DateTimeConverter}}" />
+                            <TextBlock Grid.Column="5" Text="{Binding ListenDateTime, Converter={StaticResource DateTimeConverter}}" />
 
                         </Grid>
                     </Border>

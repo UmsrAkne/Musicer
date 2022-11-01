@@ -11,16 +11,16 @@
         public int Id { get; set; }
 
         [Required]
-        public string FullName { get; set; } = string.Empty;
+        public int SoundDataId { get; set; }
 
         [Required]
+        public DateTime ListenDateTime { get; set; }
+
+        [NotMapped]
         public string Name { get; set; } = string.Empty;
 
-        [Required]
+        [NotMapped]
         public int ListenCount { get; set; }
-
-        [Required]
-        public DateTime LastListenDateTime { get; set; }
 
         [NotMapped]
         public int Index { get; set; }

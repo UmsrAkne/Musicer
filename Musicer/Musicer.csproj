@@ -75,6 +75,7 @@
     <Compile Include="Models\Converters\DateTimeConverter.cs" />
     <Compile Include="Models\Databases\ListenHistory.cs" />
     <Compile Include="Models\Databases\ListenHistoryDbContext.cs" />
+    <Compile Include="Models\Databases\SoundData.cs" />
     <Compile Include="Models\ScrollBehavior.cs" />
     <Compile Include="Models\Sounds\Trimmer.cs" />
     <Compile Include="ViewModels\HistoryPageViewModel.cs" />

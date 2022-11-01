@@ -26,10 +26,7 @@ namespace Musicer.ViewModels
 
         public DelegateCommand ReloadCommand => new DelegateCommand(() =>
         {
-            int counter = 0;
-            var histories = dbContext.GetHistories(200);
-            histories.ForEach(l => l.Index = ++counter);
-            listenHistories = histories;
+            ListenHistories = dbContext.GetHistories(200);
         });
 
         public bool CanCloseDialog()
