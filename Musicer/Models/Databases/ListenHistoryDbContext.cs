@@ -41,13 +41,19 @@ namespace Musicer.Models.Databases
 
         public List<ListenHistory> GetHistories(int takeCount)
         {
-            return new List<ListenHistory>();
+            var listenHistories = ListenHistories.OrderBy(l => l.ListenDateTime).Take(takeCount);
+            var soundListenHistories = new List<ListenHistory>();
+            var index = 1;
 
-            // Todo
-            // return ListenHistories.Where(l => true)
-            //     .OrderByDescending(l => l.LastListenDateTime)
-            //     .Take(takeCount)
-            //     .ToList();
+            foreach (var l in listenHistories)
+            {
+                l.Name = Sounds.FirstOrDefault(s => s.Id == l.SoundDataId)?.Name;
+                l.ListenCount = ListenHistories.Count(lh => l.SoundDataId == lh.SoundDataId);
+                l.Index = index++;
+                soundListenHistories.Add(l);
+            }
+
+            return soundListenHistories;
         }
 
         public int GetListenCount(string fullName)

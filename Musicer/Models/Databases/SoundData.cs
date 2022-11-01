@@ -24,5 +24,8 @@ namespace Musicer.Models.Databases
 
         [NotMapped]
         public DateTime LastListenDateTime { get; set; }
+
+        [NotMapped]
+        public int ListenCount { get; set; }
     }
 }

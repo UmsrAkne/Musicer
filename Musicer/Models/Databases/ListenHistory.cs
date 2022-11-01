@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class ListenHistory
     {
@@ -14,5 +15,14 @@
 
         [Required]
         public DateTime ListenDateTime { get; set; }
+
+        [NotMapped]
+        public string Name { get; set; } = string.Empty;
+
+        [NotMapped]
+        public int ListenCount { get; set; }
+
+        [NotMapped]
+        public int Index { get; set; }
     }
 }
