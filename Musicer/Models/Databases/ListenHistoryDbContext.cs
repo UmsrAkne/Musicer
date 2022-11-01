@@ -20,14 +20,16 @@ namespace Musicer.Models.Databases
 
         public void Save(ISound sound)
         {
-            var soundData = Sounds.FirstOrDefault(s => s.FullName == sound.FullName);
-
-            if (soundData == null)
+            // サウンドの情報を記録
+            if (!Sounds.Any(s => s.FullName == sound.FullName))
             {
-                soundData = new SoundData() { FullName = sound.FullName, Name = sound.Name, };
-                Sounds.Add(soundData);
+                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
             }
 
+            SaveChanges();
+
+            // 視聴履歴の記録
+            var soundData = Sounds.First(s => sound.FullName == s.FullName);
             ListenHistories.Add(new ListenHistory()
             {
                 ListenDateTime = DateTime.Now,
