@@ -18,15 +18,9 @@ namespace Musicer.Models.Databases
 
         private DbSet<SoundData> Sounds { get; set; }
 
-        public void Save(ISound sound)
+        public void AddListenCount(ISound sound)
         {
-            // サウンドの情報を記録
-            if (!Sounds.Any(s => s.FullName == sound.FullName))
-            {
-                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
-            }
-
-            SaveChanges();
+            SaveSoundData(sound);
 
             // 視聴履歴の記録
             var soundData = Sounds.First(s => sound.FullName == s.FullName);
@@ -35,6 +29,17 @@ namespace Musicer.Models.Databases
                 ListenDateTime = DateTime.Now,
                 SoundDataId = soundData.Id,
             });
+
+            SaveChanges();
+        }
+
+        public void SaveSoundData(ISound sound)
+        {
+            // サウンドの情報を記録
+            if (!Sounds.Any(s => s.FullName == sound.FullName))
+            {
+                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
+            }
 
             SaveChanges();
         }
