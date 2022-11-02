@@ -91,9 +91,7 @@ namespace Musicer.ViewModels
         public string CurrentDirectoryPath { get => currentDirectoryPath; set => SetProperty(ref currentDirectoryPath, value); }
 
         public string PlayingMusicName
-        {
-            get => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
-        }
+             => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
 
         public bool LoopPlay
         {
@@ -161,7 +159,7 @@ namespace Musicer.ViewModels
         /// ディレクトリ、またはM3U ファイルに含まれているサウンドファイルを読み込んでビューのリストに表示します。
         /// </summary>
         /// <param name="directory">サウンドファイルを含むディレクトリ、または M3U を指す ExtendFileInfo を入力します。</param>
-        public void LoadMusics(ExtendFileInfo directory)
+        private void LoadMusics(ExtendFileInfo directory)
         {
             if (directory == null)
             {
