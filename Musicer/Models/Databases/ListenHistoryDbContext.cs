@@ -33,15 +33,27 @@ namespace Musicer.Models.Databases
             SaveChanges();
         }
 
+        public void UpdateSoundDuration(ISound sound)
+        {
+            SaveSoundData(sound);
+            var snd = Sounds.First(s => s.FullName == sound.FullName);
+            snd.PlaybackTimeTicks = sound.Duration.Ticks;
+            SaveChanges();
+        }
+
         public void SaveSoundData(ISound sound)
         {
             // サウンドの情報を記録
             if (!Sounds.Any(s => s.FullName == sound.FullName))
             {
                 Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
+                SaveChanges();
             }
+        }
 
-            SaveChanges();
+        public SoundData GetSoundData(string fullName)
+        {
+            return Sounds.FirstOrDefault(s => s.FullName == fullName);
         }
 
         public List<ListenHistory> GetHistories(int takeCount)

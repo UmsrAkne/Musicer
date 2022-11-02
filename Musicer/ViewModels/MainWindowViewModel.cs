@@ -249,6 +249,21 @@ namespace Musicer.ViewModels
             Enumerable.Range(0, Musics.Count).ToList().ForEach(i => ((Sound)Musics[i]).Index = i + 1);
         }
 
-        private async Task LoadSounds(List<ISound> sounds) => await Task.Run(() => sounds.ForEach(s => s.Load()));
+        private async Task LoadSounds(List<ISound> sounds)
+        {
+          await Task.Run(() => sounds.ForEach(s =>
+          {
+              var soundInfo = listenHistoryDbContext.GetSoundData(s.FullName);
+              if (soundInfo == null || soundInfo.PlaybackTimeTicks == 0)
+              {
+                  s.Load();
+                  listenHistoryDbContext.UpdateSoundDuration(s);
+              }
+              else
+              {
+                  ((Sound)s).Duration = new TimeSpan(soundInfo.PlaybackTimeTicks);
+              }
+          }));
+        }
     }
 }
