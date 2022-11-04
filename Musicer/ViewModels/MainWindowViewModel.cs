@@ -43,7 +43,9 @@ namespace Musicer.ViewModels
             player.PlayStarted += (sender, e) =>
             {
                 SelectedSoundIndex = player.StartedSoundInfo.Index - 1;
-                listenHistoryDbContext.AddListenCount(player.StartedSoundInfo);
+                var context = new ListenHistoryDbContext();
+                context.Database.EnsureCreated();
+                context.AddListenCount(player.StartedSoundInfo);
                 RaisePropertyChanged(nameof(PlayingMusicName));
             };
 
