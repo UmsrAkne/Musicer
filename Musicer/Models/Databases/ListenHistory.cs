@@ -20,6 +20,9 @@
         public string Name { get; set; } = string.Empty;
 
         [NotMapped]
+        public string ParentDirectoryName { get; set; } = string.Empty;
+
+        [NotMapped]
         public int ListenCount { get; set; }
 
         [NotMapped]

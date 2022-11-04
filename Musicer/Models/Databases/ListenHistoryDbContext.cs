@@ -64,7 +64,14 @@ namespace Musicer.Models.Databases
 
             foreach (var l in listenHistories)
             {
-                l.Name = Sounds.FirstOrDefault(s => s.Id == l.SoundDataId)?.Name;
+                var currentData = Sounds.FirstOrDefault(s => s.Id == l.SoundDataId);
+                if (currentData != null)
+                {
+                    l.Name = currentData.Name;
+                    var fileInfo = new FileInfo(currentData.FullName);
+                    l.ParentDirectoryName = fileInfo.Directory?.Name;
+                }
+
                 l.ListenCount = ListenHistories.Count(lh => l.SoundDataId == lh.SoundDataId);
                 l.Index = index++;
                 soundListenHistories.Add(l);
