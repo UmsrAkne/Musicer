@@ -112,6 +112,24 @@
 
             </StackPanel>
 
+            <StackPanel>
+
+                <Border
+                    Height="1"
+                    Margin="5,10"
+                    Background="Gray" />
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="履歴の表示件数" />
+                    <TextBox
+                        Width="50"
+                        Margin="10,0"
+                        Text="{Binding HistoryDisplayCount}" />
+                    <TextBlock Text="件" />
+                </StackPanel>
+
+            </StackPanel>
+
         </StackPanel>
 
         <Button

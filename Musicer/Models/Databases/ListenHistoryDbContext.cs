@@ -59,7 +59,7 @@ namespace Musicer.Models.Databases
 
         public List<ListenHistory> GetHistories(int takeCount)
         {
-            var listenHistories = ListenHistories.OrderBy(l => l.ListenDateTime).Take(takeCount);
+            var listenHistories = ListenHistories.OrderByDescending(l => l.ListenDateTime).Take(takeCount);
             var soundListenHistories = new List<ListenHistory>();
             var index = 1;
 
