@@ -15,6 +15,8 @@
         private int frontCutSec = Properties.Settings.Default.FrontCutSec;
         private int backCutSec = Properties.Settings.Default.BackCutSec;
 
+        private int historyDisplayCount = Properties.Settings.Default.HistoryDisplayCount;
+
         public event Action<IDialogResult> RequestClose;
 
         public string Title => "Setting";
@@ -66,6 +68,16 @@
             {
                 Properties.Settings.Default.BackCutSec = value;
                 SetProperty(ref backCutSec, value);
+            }
+        }
+
+        public int HistoryDisplayCount
+        {
+            get => historyDisplayCount;
+            set
+            {
+                Properties.Settings.Default.HistoryDisplayCount = value;
+                SetProperty(ref historyDisplayCount, value);
             }
         }
 
