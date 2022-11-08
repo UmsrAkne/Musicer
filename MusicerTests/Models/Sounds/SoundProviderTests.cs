@@ -10,9 +10,11 @@
         [TestCase(false)]
         public void 空のリストが入っている場合のテスト(bool isLoopPlay)
         {
-            SoundProvider soundProvider = new SoundProvider();
-            soundProvider.Source = new List<ISound>();
-            soundProvider.LoopPlay = isLoopPlay;
+            SoundProvider soundProvider = new SoundProvider
+            {
+                Source = new List<ISound>(),
+                LoopPlay = isLoopPlay,
+            };
 
             Assert.IsNull(soundProvider.GetSound(), "中のリストは空なので null が返ってくるはず");
             Assert.IsNull(soundProvider.GetSound(), "中のリストは空なので null が返ってくるはず");
@@ -87,9 +89,11 @@
         [TestCase(false)]
         public void 空のリストの逆順取得(bool isLoopPlay)
         {
-            SoundProvider soundProvider = new SoundProvider();
-            soundProvider.Source = new List<ISound>();
-            soundProvider.LoopPlay = isLoopPlay;
+            SoundProvider soundProvider = new SoundProvider
+            {
+                Source = new List<ISound>(),
+                LoopPlay = isLoopPlay,
+            };
 
             Assert.IsNull(soundProvider.GetPreviousSound(), "中のリストは空なので null が返ってくるはず");
             Assert.IsNull(soundProvider.GetPreviousSound(), "中のリストは空なので null が返ってくるはず");

@@ -50,8 +50,10 @@
         [Test]
         public void サウンド入力０と１のときのクロスフェードのテスト()
         {
-            Fader fader = new Fader();
-            fader.VolumeUpperLimit = 1.0;
+            Fader fader = new Fader
+            {
+                VolumeUpperLimit = 1.0,
+            };
 
             var sound1 = new DummySound();
 
@@ -72,8 +74,10 @@
         [Test]
         public void サウンドを２つ入力している状態のテスト()
         {
-            Fader fader = new Fader();
-            fader.VolumeUpperLimit = 1.0;
+            Fader fader = new Fader
+            {
+                VolumeUpperLimit = 1.0,
+            };
 
             var sound1 = new DummySound() { IsLongSound = true };
             var sound2 = new DummySound() { IsLongSound = true };

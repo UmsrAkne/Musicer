@@ -53,8 +53,11 @@
                     // ReSharper disable once InconsistentNaming
                     var m3us = (FileSystemInfo as DirectoryInfo)?.GetFiles().Where(f => IsM3UExtension(f.Extension)).ToList();
 
-                    childDirectories = directories.Select(d => new ExtendFileInfo(d.FullName)).ToList();
-                    childDirectories.AddRange(m3us.Select(f => new ExtendFileInfo(f.FullName)).ToList());
+                    if (directories != null)
+                    {
+                        childDirectories = directories.Select(d => new ExtendFileInfo(d.FullName)).ToList();
+                        childDirectories.AddRange(m3us.Select(f => new ExtendFileInfo(f.FullName)).ToList());
+                    }
 
                     return childDirectories;
                 }

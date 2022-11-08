@@ -16,7 +16,7 @@ using Prism.Services.Dialogs;
 
 namespace Musicer.ViewModels
 {
-    // ReSharper disable once UnusedType.Global
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class MainWindowViewModel : BindableBase
     {
         private readonly Player player = new Player();
@@ -56,9 +56,17 @@ namespace Musicer.ViewModels
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
-        public ObservableCollection<ExtendFileInfo> Directories { get => directories; set => SetProperty(ref directories, value); }
+        public ObservableCollection<ExtendFileInfo> Directories
+        {
+            get => directories;
+            private set => SetProperty(ref directories, value);
+        }
 
-        public List<ISound> Musics { get => musics; set => SetProperty(ref musics, value); }
+        public List<ISound> Musics
+        {
+            get => musics;
+            private set => SetProperty(ref musics, value);
+        }
 
         public SoundViewer SoundViewer => player.SoundViewer;
 
@@ -77,9 +85,8 @@ namespace Musicer.ViewModels
             }
         }
 
-        public DelegateCommand<TreeView> SetTreeViewSelectedItemCommand
-        {
-            get => setTreeViewSelectedItemCommand ?? (setTreeViewSelectedItemCommand = new DelegateCommand<TreeView>((tv) =>
+        public DelegateCommand<TreeView> SetTreeViewSelectedItemCommand =>
+            setTreeViewSelectedItemCommand ?? (setTreeViewSelectedItemCommand = new DelegateCommand<TreeView>((tv) =>
             {
                 var directory = tv.SelectedItem as ExtendFileInfo;
 
@@ -88,9 +95,12 @@ namespace Musicer.ViewModels
                     LoadMusics(directory);
                 }
             }));
-        }
 
-        public string CurrentDirectoryPath { get => currentDirectoryPath; set => SetProperty(ref currentDirectoryPath, value); }
+        public string CurrentDirectoryPath
+        {
+            get => currentDirectoryPath;
+            private set => SetProperty(ref currentDirectoryPath, value);
+        }
 
         public string PlayingMusicName
              => player == null || player.PlayingSound.Count == 0 ? string.Empty : player.PlayingSound.Last().Name;
