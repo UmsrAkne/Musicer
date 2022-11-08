@@ -16,6 +16,7 @@ namespace Musicer.Models.Databases
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private DbSet<ListenHistory> ListenHistories { get; set; }
 
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private DbSet<SoundData> Sounds { get; set; }
 
         public void AddListenCount(ISound sound)

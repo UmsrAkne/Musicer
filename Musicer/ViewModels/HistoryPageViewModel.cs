@@ -17,7 +17,10 @@ namespace Musicer.ViewModels
 
         public string Title => "Listen history";
 
-        public List<ListenHistory> ListenHistories { get => listenHistories; set => SetProperty(ref listenHistories, value); }
+        public List<ListenHistory> ListenHistories
+        {
+            get => listenHistories; private set => SetProperty(ref listenHistories, value);
+        }
 
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {

@@ -6,9 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:databases="clr-namespace:Musicer.Models.Databases"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Musicer.ViewModels"
     Title="HistoryPage"
     Width="1024"
     Height="600"
+    d:DataContext="{d:DesignInstance viewModels:HistoryPageViewModel}"
     Background="{StaticResource BgColor}"
     mc:Ignorable="d">
 

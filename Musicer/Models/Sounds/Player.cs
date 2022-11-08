@@ -27,7 +27,7 @@
 
         public SoundViewer SoundViewer { get; } = new SoundViewer();
 
-        public Trimmer Trimmer { get; } = new Trimmer();
+        private Trimmer Trimmer { get; } = new Trimmer();
 
         /// <summary>
         /// 最後に再生開始したサウンドの情報が格納されています。
@@ -37,11 +37,11 @@
         /// <value>最後に再生開始したサウンドの情報を記録したダミーサウンド</value>
         public DummySound StartedSoundInfo { get; private set; }
 
-        public double VolumeUpAmount { get; set; } = 0.01;
-
-        public double VolumeDownAmount { get; set; } = 0.01;
-
         public double VolumeUpperLimit { get => fader.VolumeUpperLimit; set => fader.VolumeUpperLimit = value; }
+
+        private double VolumeUpAmount { get; set; } = 0.01;
+
+        private double VolumeDownAmount { get; set; } = 0.01;
 
         public void Play(int index)
         {
@@ -80,11 +80,6 @@
 
         public void Prev()
         {
-        }
-
-        public void ExecuteFader()
-        {
-            fader.CrossFade(VolumeDownAmount, VolumeUpAmount);
         }
 
         public void UpdateSetting()
@@ -151,6 +146,11 @@
         {
             ToNext();
             ((ISound)sender).Ended -= SoundEndedEventHandler;
+        }
+
+        private void ExecuteFader()
+        {
+            fader.CrossFade(VolumeDownAmount, VolumeUpAmount);
         }
     }
 }

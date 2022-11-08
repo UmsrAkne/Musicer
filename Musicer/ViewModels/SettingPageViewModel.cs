@@ -5,6 +5,7 @@
     using Prism.Mvvm;
     using Prism.Services.Dialogs;
 
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class SettingPageViewModel : BindableBase, IDialogAware
     {
         private string rootDirectoryPath = Properties.Settings.Default.RootDirectoryPath;
