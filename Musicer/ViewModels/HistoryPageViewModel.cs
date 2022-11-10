@@ -27,7 +27,7 @@ namespace Musicer.ViewModels
 
         public int PageCount { get => pageCount; private set => SetProperty(ref pageCount, value); }
 
-        public int MaxPageNumber { get => maxPageNumber; set => SetProperty(ref maxPageNumber, value); }
+        public int MaxPageNumber { get => maxPageNumber; private set => SetProperty(ref maxPageNumber, value); }
 
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
