@@ -93,6 +93,23 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button
+                Margin="5"
+                Padding="10,0"
+                Content="前のページ" />
+
+            <TextBlock Text="" />
+            <TextBlock Text="/" />
+            <TextBlock Text="" />
+
+            <Button
+                Margin="5"
+                Padding="10,0"
+                Content="次のページ" />
+
+        </StackPanel>
+
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Right"
