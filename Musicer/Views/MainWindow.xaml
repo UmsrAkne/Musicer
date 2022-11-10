@@ -69,7 +69,10 @@
                 </MenuItem>
             </Menu>
 
-            <TextBlock Margin="5,1" Text="{Binding CurrentDirectoryPath}" />
+            <TextBlock
+                Margin="5,1"
+                Padding="1,2"
+                Text="{Binding CurrentDirectoryPath}" />
 
         </StackPanel>
 
