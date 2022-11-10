@@ -81,6 +81,8 @@ namespace Musicer.Models.Databases
             return soundListenHistories;
         }
 
+        public int GetHistoryCount() => ListenHistories.Count();
+
         public int GetListenCount(string fullName)
         {
             if (!Sounds.Any(s => s.FullName == fullName))

@@ -14,6 +14,7 @@ namespace Musicer.ViewModels
         private ListenHistoryDbContext dbContext;
 
         private int pageCount;
+        private int maxPageNumber;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -26,6 +27,8 @@ namespace Musicer.ViewModels
 
         public int PageCount { get => pageCount; private set => SetProperty(ref pageCount, value); }
 
+        public int MaxPageNumber { get => maxPageNumber; set => SetProperty(ref maxPageNumber, value); }
+
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
             RequestClose?.Invoke(new DialogResult());
@@ -35,6 +38,7 @@ namespace Musicer.ViewModels
         {
             var displayCount = Properties.Settings.Default.HistoryDisplayCount;
             ListenHistories = dbContext.GetHistories(PageCount * displayCount, displayCount);
+            MaxPageNumber = (int)Math.Floor((double)dbContext.GetHistoryCount() / displayCount);
         });
 
         public DelegateCommand NextPageCommand => new DelegateCommand(() =>

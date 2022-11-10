@@ -102,7 +102,7 @@
 
             <TextBlock Text="{Binding PageCount}" />
             <TextBlock Text="/" />
-            <TextBlock Text="" />
+            <TextBlock Text="{Binding MaxPageNumber}" />
 
             <Button
                 Margin="5"
