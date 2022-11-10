@@ -93,6 +93,40 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+            <Button
+                Margin="5"
+                Padding="10,0"
+                Command="{Binding PrevPageCommand}"
+                Content="前のページ" />
+
+            <TextBlock
+                Margin="5,5"
+                FontSize="15"
+                Foreground="{StaticResource FgColor}"
+                Text="{Binding PageCount}" />
+
+            <TextBlock
+                Margin="4,5"
+                FontSize="15"
+                Foreground="{StaticResource FgColor}"
+                Text="/" />
+
+            <TextBlock
+                Margin="5,5"
+                FontSize="15"
+                Foreground="{StaticResource FgColor}"
+                Text="{Binding MaxPageNumber}" />
+
+            <Button
+                Margin="5"
+                Padding="10,0"
+                Command="{Binding NextPageCommand}"
+                Content="次のページ" />
+
+        </StackPanel>
+
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Right"

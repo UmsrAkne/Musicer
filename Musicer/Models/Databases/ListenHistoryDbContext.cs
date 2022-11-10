@@ -57,9 +57,9 @@ namespace Musicer.Models.Databases
             return Sounds.FirstOrDefault(s => s.FullName == fullName);
         }
 
-        public List<ListenHistory> GetHistories(int takeCount)
+        public List<ListenHistory> GetHistories(int skipCount, int takeCount)
         {
-            var listenHistories = ListenHistories.OrderByDescending(l => l.ListenDateTime).Take(takeCount);
+            var listenHistories = ListenHistories.OrderByDescending(l => l.ListenDateTime).Skip(skipCount).Take(takeCount);
             var soundListenHistories = new List<ListenHistory>();
             var index = 1;
 
@@ -80,6 +80,8 @@ namespace Musicer.Models.Databases
 
             return soundListenHistories;
         }
+
+        public int GetHistoryCount() => ListenHistories.Count();
 
         public int GetListenCount(string fullName)
         {
