@@ -97,15 +97,17 @@
             <Button
                 Margin="5"
                 Padding="10,0"
+                Command="{Binding PrevPageCommand}"
                 Content="前のページ" />
 
-            <TextBlock Text="" />
+            <TextBlock Text="{Binding PageCount}" />
             <TextBlock Text="/" />
             <TextBlock Text="" />
 
             <Button
                 Margin="5"
                 Padding="10,0"
+                Command="{Binding NextPageCommand}"
                 Content="次のページ" />
 
         </StackPanel>

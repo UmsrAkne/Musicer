@@ -13,6 +13,8 @@ namespace Musicer.ViewModels
         private List<ListenHistory> listenHistories;
         private ListenHistoryDbContext dbContext;
 
+        private int pageCount;
+
         public event Action<IDialogResult> RequestClose;
 
         public string Title => "Listen history";
@@ -22,6 +24,8 @@ namespace Musicer.ViewModels
             get => listenHistories; private set => SetProperty(ref listenHistories, value);
         }
 
+        public int PageCount { get => pageCount; private set => SetProperty(ref pageCount, value); }
+
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
             RequestClose?.Invoke(new DialogResult());
@@ -29,7 +33,30 @@ namespace Musicer.ViewModels
 
         public DelegateCommand ReloadCommand => new DelegateCommand(() =>
         {
-            ListenHistories = dbContext.GetHistories(Properties.Settings.Default.HistoryDisplayCount);
+            var displayCount = Properties.Settings.Default.HistoryDisplayCount;
+            ListenHistories = dbContext.GetHistories(PageCount * displayCount, displayCount);
+        });
+
+        public DelegateCommand NextPageCommand => new DelegateCommand(() =>
+        {
+            if (PageCount >= MaxPageNumber)
+            {
+                return;
+            }
+
+            PageCount++;
+            ReloadCommand.Execute();
+        });
+
+        public DelegateCommand PrevPageCommand => new DelegateCommand(() =>
+        {
+            if (PageCount <= 0)
+            {
+                return;
+            }
+
+            PageCount--;
+            ReloadCommand.Execute();
         });
 
         public bool CanCloseDialog()
@@ -43,6 +70,7 @@ namespace Musicer.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            PageCount = 0;
             dbContext = parameters.GetValue<ListenHistoryDbContext>(nameof(ListenHistoryDbContext));
             ReloadCommand.Execute();
         }
