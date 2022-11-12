@@ -27,8 +27,6 @@
 
         public SoundViewer SoundViewer { get; } = new SoundViewer();
 
-        private Trimmer Trimmer { get; } = new Trimmer();
-
         /// <summary>
         /// 最後に再生開始したサウンドの情報が格納されています。
         /// 型はダミーなので、このプロパティを介してプレイヤーのサウンドを操作することは一切できません。
@@ -42,6 +40,8 @@
         private double VolumeUpAmount { get; set; } = 0.01;
 
         private double VolumeDownAmount { get; set; } = 0.01;
+
+        private Trimmer Trimmer { get; } = new Trimmer();
 
         public void Play(int index)
         {

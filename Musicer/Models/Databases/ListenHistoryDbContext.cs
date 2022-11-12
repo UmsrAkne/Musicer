@@ -11,7 +11,7 @@ namespace Musicer.Models.Databases
 {
     public class ListenHistoryDbContext : DbContext
     {
-        private string dbFileName = "listenHistory.sqlite";
+        private readonly string dbFileName = "listenHistory.sqlite";
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private DbSet<ListenHistory> ListenHistories { get; set; }
@@ -40,16 +40,6 @@ namespace Musicer.Models.Databases
             var snd = Sounds.First(s => s.FullName == sound.FullName);
             snd.PlaybackTimeTicks = sound.Duration.Ticks;
             SaveChanges();
-        }
-
-        public void SaveSoundData(ISound sound)
-        {
-            // サウンドの情報を記録
-            if (!Sounds.Any(s => s.FullName == sound.FullName))
-            {
-                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
-                SaveChanges();
-            }
         }
 
         public SoundData GetSoundData(string fullName)
@@ -103,6 +93,16 @@ namespace Musicer.Models.Databases
 
             var connectionString = new SqliteConnectionStringBuilder { DataSource = dbFileName }.ToString();
             optionsBuilder.UseSqlite(new SQLiteConnection(connectionString));
+        }
+
+        private void SaveSoundData(ISound sound)
+        {
+            // サウンドの情報を記録
+            if (!Sounds.Any(s => s.FullName == sound.FullName))
+            {
+                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
+                SaveChanges();
+            }
         }
     }
 }
