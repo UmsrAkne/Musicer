@@ -14,6 +14,12 @@
 
         public ExtendFileInfo(string path)
         {
+            if (!File.Exists(path) && !Directory.Exists(path))
+            {
+                FileSystemInfo = new FileInfo(path);
+                return;
+            }
+
             IsDirectory = File.GetAttributes(path).HasFlag(FileAttributes.Directory);
 
             if (IsDirectory)
