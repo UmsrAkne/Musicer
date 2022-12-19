@@ -4,6 +4,12 @@
     {
         public static ExtendFileInfo ExpandDirectories(ExtendFileInfo rootDirectory, ExtendFileInfo targetPath)
         {
+            // targetPath のファイルが存在しない場合
+            if (!targetPath.FileSystemInfo.Exists)
+            {
+                return null;
+            }
+
             if (targetPath.FileSystemInfo.FullName == rootDirectory.FileSystemInfo.FullName)
             {
                 // 目的となるパスがルートディレクトリと同じなら、ルートディレクトリだけ展開して終了
