@@ -192,6 +192,8 @@
 
                     <Button Command="{Binding StopCommand}" Content="Stop" />
 
+                    <Button Command="{Binding RandomSortCommand}" Content="Shuffle" />
+
                     <ToggleButton
                         Width="80"
                         Margin="15,0"
