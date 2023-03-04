@@ -57,21 +57,97 @@
     </DataTemplate>
 
     <Style x:Key="ListViewItemContainerStyle" TargetType="ListViewItem">
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="5,2" />
+        <Style.Resources>
+            <models:TimeSpanConverter x:Key="TimeSpanConverter" />
+
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="Foreground" Value="{StaticResource FgColor}" />
+            </Style>
+        </Style.Resources>
+
         <Setter Property="BorderThickness" Value="0,0.5" />
         <Setter Property="BorderBrush" Value="LightGray" />
 
-        <Style.Triggers>
-            <Trigger Property="ListView.AlternationIndex" Value="0">
-                <Setter Property="Background" Value="#333333" />
-            </Trigger>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ListView.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="#333333" />
+                        </Trigger>
 
-            <DataTrigger Binding="{Binding IsPlaying}" Value="True">
-                <Setter Property="Background" Value="RoyalBlue" />
-            </DataTrigger>
+                        <Trigger Property="ListView.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="#222222" />
+                        </Trigger>
 
-        </Style.Triggers>
+                        <DataTrigger Binding="{Binding IsPlaying}" Value="True">
+                            <Setter Property="Background" Value="RoyalBlue" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+
+                    <ContentControl
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        Height="auto"
+                        d:DataContext="{d:DesignInstance {x:Type sounds:ISound}}"
+                        mc:Ignorable="d">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding ElementName=Window, Path=DataContext.PlayFromIndexCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <Grid Background="{TemplateBinding Background}">
+
+                            <Grid.Resources>
+                                <Style
+                                    x:Key="ListViewItemBorderStyle"
+                                    BasedOn="{StaticResource LineBorderStyle}"
+                                    TargetType="Border">
+                                    <Setter Property="Padding" Value="0,2" />
+
+                                </Style>
+
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Padding" Value="0,2" />
+                                    <Setter Property="Foreground" Value="{StaticResource FgColor}" />
+                                    <Setter Property="FontSize" Value="13" />
+                                </Style>
+
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="25" />
+
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="60" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding Index}" />
+
+                            <Border Grid.Column="1" Style="{StaticResource ListViewItemBorderStyle}" />
+
+                            <TextBlock Grid.Column="2" Text="{Binding Name}" />
+
+                            <Border Grid.Column="3" Style="{StaticResource ListViewItemBorderStyle}" />
+
+                            <TextBlock Grid.Column="4" Text="{Binding ListenCount}" />
+
+                            <Border Grid.Column="5" Style="{StaticResource ListViewItemBorderStyle}" />
+
+                            <TextBlock Grid.Column="6" Text="{Binding Duration, Converter={StaticResource TimeSpanConverter}}" />
+
+                        </Grid>
+
+                    </ContentControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
 
     </Style>
 
