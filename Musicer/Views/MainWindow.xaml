@@ -132,7 +132,6 @@
                 AlternationCount="2"
                 Background="{StaticResource BgColor}"
                 ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
-                ItemTemplate="{StaticResource ResourceKey=ListViewTemplate}"
                 ItemsSource="{Binding Musics}"
                 SelectedIndex="{Binding SelectedSoundIndex}">
 
