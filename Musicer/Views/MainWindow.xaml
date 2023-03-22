@@ -46,14 +46,23 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
 
             <Menu>
                 <MenuItem Header="View">
                     <MenuItem Command="{Binding ShowSettingWindowCommand}" Header="Setting" />
                     <MenuItem Command="{Binding ShowHistoryWindowCommand}" Header="History" />
+                    <MenuItem Command="{Binding ToggleLayoutCommand}" Header="Toggle Layout" />
                 </MenuItem>
 
                 <MenuItem Header="Sort">
@@ -72,7 +81,9 @@
         <TreeView
             Name="TreeView"
             Grid.Row="1"
+            Grid.RowSpan="{Binding Layout.ViewRowSpan}"
             Grid.Column="0"
+            Grid.ColumnSpan="{Binding Layout.ViewColumnSpan}"
             Background="{StaticResource BgColor}"
             ItemContainerStyle="{StaticResource TreeViewItemStyle1}"
             ItemTemplate="{StaticResource ResourceKey=HierarchicalDataTemplate}"
@@ -85,7 +96,12 @@
             </i:Interaction.Triggers>
         </TreeView>
 
-        <Grid Grid.Row="2" Grid.Column="0">
+        <Grid
+            Grid.Row="{Binding Layout.SoundListRowIndex}"
+            Grid.RowSpan="{Binding Layout.ViewRowSpan}"
+            Grid.Column="{Binding Layout.SoundListColumnIndex}"
+            Grid.ColumnSpan="{Binding Layout.ViewColumnSpan}">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition />

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Musicer.Models;
 using Musicer.Models.Databases;
 using Musicer.Models.Files;
 using Musicer.Models.Sounds;
@@ -71,6 +72,8 @@ namespace Musicer.ViewModels
         public SoundViewer SoundViewer => player.SoundViewer;
 
         public int SelectedSoundIndex { get => selectedSoundIndex; set => SetProperty(ref selectedSoundIndex, value); }
+
+        public Layout Layout { get; } = new Layout();
 
         public double Volume
         {
@@ -166,6 +169,8 @@ namespace Musicer.ViewModels
             ReIndex();
             SelectedSoundIndex = 0;
         });
+
+        public DelegateCommand ToggleLayoutCommand => new DelegateCommand(() => Layout.ToggleLayout());
 
         /// <summary>
         /// ディレクトリ、またはM3U ファイルに含まれているサウンドファイルを読み込んでビューのリストに表示します。
