@@ -118,17 +118,20 @@
 
                             </Grid.Resources>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="25" />
 
                                 <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="66" />
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Text="{Binding Index}" />
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="2,0"
+                                Text="{Binding Index}" />
 
                             <Border Grid.Column="1" Style="{StaticResource ListViewItemBorderStyle}" />
 
