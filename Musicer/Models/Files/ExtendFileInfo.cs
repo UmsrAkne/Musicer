@@ -112,7 +112,13 @@
         // ReSharper disable once InconsistentNaming
         public List<ExtendFileInfo> GetPlayListFromM3U(string[] m3uText)
         {
-            return m3uText.Where(line => !line.StartsWith("#") && File.Exists(line))
+            // このメソッドがコールされる時点で、このオブジェクトがもつ FileSystemInfo は m3u を指していると断言できる。
+            var parentDirectory = new FileInfo(FileSystemInfo.FullName).Directory;
+            var urlConverter = new UrlConverter(parentDirectory);
+
+            return m3uText.Where(line => !line.StartsWith("#"))
+                          .Select(line => Path.IsPathRooted(line) ? line : urlConverter.GetFileInfo(line).FullName)
+                          .Where(File.Exists)
                           .Select(line => new ExtendFileInfo(line))
                           .Where(fi => fi.IsSoundFile)
                           .ToList();
