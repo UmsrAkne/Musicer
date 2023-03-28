@@ -76,6 +76,7 @@
     <Compile Include="Models\Databases\ListenHistory.cs" />
     <Compile Include="Models\Databases\ListenHistoryDbContext.cs" />
     <Compile Include="Models\Databases\SoundData.cs" />
+    <Compile Include="Models\Files\UrlConverter.cs" />
     <Compile Include="Models\Layout.cs" />
     <Compile Include="Models\ScrollBehavior.cs" />
     <Compile Include="Models\Sounds\Trimmer.cs" />
