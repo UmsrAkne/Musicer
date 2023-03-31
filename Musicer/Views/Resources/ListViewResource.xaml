@@ -81,6 +81,10 @@
                             <Setter Property="Background" Value="#222222" />
                         </Trigger>
 
+                        <Trigger Property="ListView.IsSelected" Value="True">
+                            <Setter Property="Background" Value="SlateBlue" />
+                        </Trigger>
+
                         <DataTrigger Binding="{Binding IsPlaying}" Value="True">
                             <Setter Property="Background" Value="RoyalBlue" />
                         </DataTrigger>
