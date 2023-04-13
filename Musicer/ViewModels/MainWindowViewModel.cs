@@ -34,6 +34,7 @@ namespace Musicer.ViewModels
         private DelegateCommand<TreeView> setTreeViewSelectedItemCommand;
 
         private string currentDirectoryPath;
+        private TimeSpan folderTotalPlayTime;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -118,6 +119,12 @@ namespace Musicer.ViewModels
             }
         }
 
+        public TimeSpan FolderTotalPlayTime
+        {
+            get => folderTotalPlayTime;
+            set => SetProperty(ref folderTotalPlayTime, value);
+        }
+
         public DelegateCommand PlayCommand => new DelegateCommand(() =>
         {
             player.Play(0);
@@ -196,6 +203,8 @@ namespace Musicer.ViewModels
                 player.SoundProvider.Source = Musics;
                 ReIndex();
 
+                FolderTotalPlayTime = TimeSpan.Zero;
+
                 // ReSharper disable once UnusedVariable
                 Task task = LoadSounds(Musics);
                 return;
@@ -205,6 +214,8 @@ namespace Musicer.ViewModels
             {
                 Musics = GetSoundFiles(Directory.GetFiles(directory.FileSystemInfo.FullName).ToList());
                 player.SoundProvider.Source = Musics;
+
+                FolderTotalPlayTime = TimeSpan.Zero;
 
                 // ReSharper disable once UnusedVariable
                 Task task = LoadSounds(Musics);
@@ -278,6 +289,8 @@ namespace Musicer.ViewModels
               {
                   ((Sound)s).Duration = new TimeSpan(soundInfo.PlaybackTimeTicks);
               }
+
+              FolderTotalPlayTime += s.Duration;
           }));
         }
     }
