@@ -141,6 +141,14 @@ namespace Musicer.ViewModels
             player.Play(SelectedSoundIndex);
         });
 
+        public DelegateCommand<ExtendFileInfo> EditPlayListCommand => new DelegateCommand<ExtendFileInfo>(extendFileInfo =>
+        {
+            if (extendFileInfo != null && extendFileInfo.IsM3U)
+            {
+                Process.Start(extendFileInfo.FileSystemInfo.FullName);
+            }
+        });
+
         public DelegateCommand ShowSettingWindowCommand => new DelegateCommand(() =>
         {
             var currentRootPath = Properties.Settings.Default.RootDirectoryPath;
