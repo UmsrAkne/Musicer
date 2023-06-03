@@ -69,6 +69,14 @@
                     <MenuItem Command="{Binding NameSortCommand}" Header="Name" />
                     <MenuItem Command="{Binding RandomSortCommand}" Header="Random" />
                 </MenuItem>
+
+                <MenuItem Header="Edit">
+                    <MenuItem
+                        Command="{Binding EditPlayListCommand}"
+                        CommandParameter="{Binding ElementName=TreeView, Path=SelectedItem}"
+                        Header="Edit playList"
+                        IsEnabled="{Binding ElementName=TreeView, Path=SelectedItem.IsM3U}" />
+                </MenuItem>
             </Menu>
 
             <TextBlock
