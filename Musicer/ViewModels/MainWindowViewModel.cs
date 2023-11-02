@@ -185,6 +185,14 @@ namespace Musicer.ViewModels
             SelectedSoundIndex = 0;
         });
 
+        public DelegateCommand ListenCountSortCommand => new DelegateCommand(() =>
+        {
+            Musics = Musics.OrderBy(s => s.ListenCount).ThenBy(s => s.Name).ToList();
+            player.SoundProvider.Source = Musics;
+            ReIndex();
+            SelectedSoundIndex = 0;
+        });
+
         public DelegateCommand ToggleLayoutCommand => new DelegateCommand(() => Layout.ToggleLayout());
 
         /// <summary>
