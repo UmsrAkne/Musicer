@@ -68,6 +68,7 @@
                 <MenuItem Header="Sort">
                     <MenuItem Command="{Binding NameSortCommand}" Header="Name" />
                     <MenuItem Command="{Binding RandomSortCommand}" Header="Random" />
+                    <MenuItem Command="{Binding ListenCountSortCommand}" Header="Listen count" />
                 </MenuItem>
 
                 <MenuItem Header="Edit">
