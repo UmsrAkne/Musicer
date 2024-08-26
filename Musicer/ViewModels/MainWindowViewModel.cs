@@ -24,7 +24,6 @@ namespace Musicer.ViewModels
         private readonly IDialogService dialogService;
         private readonly ListenHistoryDbContext listenHistoryDbContext = new ListenHistoryDbContext();
 
-        private string title = $"Musicer [ {FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion} ]";
         private ExtendFileInfo selectedDirectory;
         private ObservableCollection<ExtendFileInfo> directories;
         private List<ISound> musics;
@@ -35,6 +34,40 @@ namespace Musicer.ViewModels
 
         private string currentDirectoryPath;
         private TimeSpan folderTotalPlayTime;
+
+        [Obsolete("このコンストラクタはプレビュー用に宣言されています。明示的に呼び出さないでください。")]
+        public MainWindowViewModel()
+        {
+            var sounds = new List<ISound>();
+            for (var i = 0; i < 30; i++)
+            {
+                sounds.Add(new DummySound
+                {
+                    Name = $"music{i}",
+                    FullName = $"C:\\test\\music{i}",
+                    Duration = TimeSpan.FromMinutes(2),
+                    CurrentPosition = 0,
+                    Volume = 1.0,
+                    IsLongSound = true,
+                    FrontCut = 0,
+                    BackCut = 0,
+                    ListenCount = 0,
+                    Index = i,
+                });
+            }
+
+            Musics = sounds;
+
+            var ds = new List<ExtendFileInfo>();
+
+            for (var i = 0; i < 30; i++)
+            {
+                ds.Add(new ExtendFileInfo($"C:\\test{i}"));
+            }
+
+            ds[0].IsSelected = true;
+            Directories = new ObservableCollection<ExtendFileInfo>(ds);
+        }
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -56,7 +89,7 @@ namespace Musicer.ViewModels
             player.UpdateSetting();
         }
 
-        public string Title { get => title; set => SetProperty(ref title, value); }
+        public TextWrapper TitleBarTextWrapper { get; set; } = new TextWrapper();
 
         public ObservableCollection<ExtendFileInfo> Directories
         {
@@ -229,8 +262,7 @@ namespace Musicer.ViewModels
 
                 FolderTotalPlayTime = TimeSpan.Zero;
 
-                // ReSharper disable once UnusedVariable
-                Task task = LoadSounds(Musics);
+                _ = LoadSounds(Musics);
                 return;
             }
 
@@ -241,8 +273,7 @@ namespace Musicer.ViewModels
 
                 FolderTotalPlayTime = TimeSpan.Zero;
 
-                // ReSharper disable once UnusedVariable
-                Task task = LoadSounds(Musics);
+                _ = LoadSounds(Musics);
                 ReIndex();
             }
         }
