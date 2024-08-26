@@ -262,8 +262,7 @@ namespace Musicer.ViewModels
 
                 FolderTotalPlayTime = TimeSpan.Zero;
 
-                // ReSharper disable once UnusedVariable
-                Task task = LoadSounds(Musics);
+                _ = LoadSounds(Musics);
                 return;
             }
 
@@ -274,8 +273,7 @@ namespace Musicer.ViewModels
 
                 FolderTotalPlayTime = TimeSpan.Zero;
 
-                // ReSharper disable once UnusedVariable
-                Task task = LoadSounds(Musics);
+                _ = LoadSounds(Musics);
                 ReIndex();
             }
         }
