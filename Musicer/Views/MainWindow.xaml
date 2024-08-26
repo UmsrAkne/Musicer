@@ -10,7 +10,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:viewModels="clr-namespace:Musicer.ViewModels"
     x:Name="Window"
-    Title="{Binding Title}"
+    Title="{Binding TitleBarTextWrapper}"
     Width="1024"
     Height="800"
     d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"

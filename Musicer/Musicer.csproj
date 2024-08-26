@@ -80,6 +80,7 @@
     <Compile Include="Models\Layout.cs" />
     <Compile Include="Models\ScrollBehavior.cs" />
     <Compile Include="Models\Sounds\Trimmer.cs" />
+    <Compile Include="Models\TextWrapper.cs" />
     <Compile Include="ViewModels\HistoryPageViewModel.cs" />
     <Compile Include="ViewModels\SettingPageViewModel.cs" />
     <Compile Include="Views\HistoryPage.xaml.cs">

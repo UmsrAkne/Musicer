@@ -24,7 +24,6 @@ namespace Musicer.ViewModels
         private readonly IDialogService dialogService;
         private readonly ListenHistoryDbContext listenHistoryDbContext = new ListenHistoryDbContext();
 
-        private string title = $"Musicer [ {FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion} ]";
         private ExtendFileInfo selectedDirectory;
         private ObservableCollection<ExtendFileInfo> directories;
         private List<ISound> musics;
@@ -56,7 +55,7 @@ namespace Musicer.ViewModels
             player.UpdateSetting();
         }
 
-        public string Title { get => title; set => SetProperty(ref title, value); }
+        public TextWrapper TitleBarTextWrapper { get; set; } = new TextWrapper();
 
         public ObservableCollection<ExtendFileInfo> Directories
         {
