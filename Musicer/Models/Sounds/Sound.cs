@@ -83,6 +83,8 @@
 
         public int ListenCount { get => listenCount; set => SetProperty(ref listenCount, value); }
 
+        public bool IsSkipped { get; set; }
+
         public void Play()
         {
             if (reader == null)

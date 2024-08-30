@@ -30,6 +30,8 @@
 
         public int Index { get; set; }
 
+        public bool IsSkipped { get; set; }
+
         public void Play()
         {
             IsPlaying = true;

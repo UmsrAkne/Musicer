@@ -19,6 +19,9 @@ namespace Musicer.Models.Databases
         [Required]
         public long PlaybackTimeTicks { get; set; } = 0;
 
+        [Required]
+        public bool IsSkipped { get; set; }
+
         [NotMapped]
         public long Index { get; set; } = 0;
 

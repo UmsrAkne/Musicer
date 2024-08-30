@@ -30,6 +30,8 @@
 
         double BackCut { get; set; }
 
+        bool IsSkipped { get; set; }
+
         void Play();
 
         void Stop();
