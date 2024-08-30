@@ -84,6 +84,12 @@ namespace Musicer.Models.Databases
             return ListenHistories.Count(l => l.SoundDataId == id);
         }
 
+        public void UpdateIsSkippedProperty(SoundData soundData)
+        {
+            Entry(soundData).Property(s => s.IsSkipped).IsModified = true;
+            SaveChanges();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!File.Exists(dbFileName))

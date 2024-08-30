@@ -157,10 +157,26 @@
             soundProvider.Source = new List<ISound>() { soundA, soundB };
             soundProvider.LoopPlay = true;
 
-            Assert.AreEqual(soundProvider.GetPreviousSound(), soundB);
-            Assert.AreEqual(soundProvider.GetPreviousSound(), soundA);
-            Assert.AreEqual(soundProvider.GetPreviousSound(), soundB);
-            Assert.AreEqual(soundProvider.GetPreviousSound(), soundA);
+            Assert.AreEqual(soundProvider.GetPreviousSound().Name, soundB.Name);
+            Assert.AreEqual(soundProvider.GetPreviousSound().Name, soundA.Name);
+            Assert.AreEqual(soundProvider.GetPreviousSound().Name, soundB.Name);
+            Assert.AreEqual(soundProvider.GetPreviousSound().Name, soundA.Name);
+        }
+
+        [Test]
+        public void スキップありのときの取得()
+        {
+            var soundProvider = new SoundProvider();
+            soundProvider.Source = new List<ISound>()
+            {
+                new DummySound() { Name = "A.mp3", },
+                new DummySound() { Name = "B.mp3", IsSkipped = true, },
+                new DummySound() { Name = "C.mp3", },
+            };
+
+            soundProvider.LoopPlay = true;
+            Assert.AreEqual(soundProvider.GetSound().Name, "A.mp3");
+            Assert.AreEqual(soundProvider.GetSound().Name, "C.mp3");
         }
 
         [Test]
