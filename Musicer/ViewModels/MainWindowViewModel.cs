@@ -56,6 +56,8 @@ namespace Musicer.ViewModels
                 });
             }
 
+            sounds[1].IsSkipped = true;
+
             Musics = sounds;
 
             var ds = new List<ExtendFileInfo>();
@@ -236,6 +238,21 @@ namespace Musicer.ViewModels
 
         public DelegateCommand ToggleLayoutCommand => new DelegateCommand(() => Layout.ToggleLayout());
 
+        public DelegateCommand ToggleSkipPropertyCommand => new DelegateCommand(() =>
+        {
+            if (SelectedSoundIndex < 0)
+            {
+                return;
+            }
+
+            var s = Musics[SelectedSoundIndex];
+            s.IsSkipped = !s.IsSkipped;
+
+            var data = listenHistoryDbContext.GetSoundData(s.FullName);
+            data.IsSkipped = s.IsSkipped;
+            listenHistoryDbContext.UpdateIsSkippedProperty(data);
+        });
+
         /// <summary>
         /// ディレクトリ、またはM3U ファイルに含まれているサウンドファイルを読み込んでビューのリストに表示します。
         /// </summary>
@@ -343,6 +360,7 @@ namespace Musicer.ViewModels
               else
               {
                   ((Sound)s).Duration = new TimeSpan(soundInfo.PlaybackTimeTicks);
+                  s.IsSkipped = soundInfo.IsSkipped;
               }
 
               FolderTotalPlayTime += s.Duration;

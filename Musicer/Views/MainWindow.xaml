@@ -164,6 +164,13 @@
                 ItemsSource="{Binding Musics}"
                 SelectedIndex="{Binding SelectedSoundIndex}">
 
+                <ListView.InputBindings>
+                    <KeyBinding
+                        Key="I"
+                        Command="{Binding ToggleSkipPropertyCommand}"
+                        Modifiers="Control" />
+                </ListView.InputBindings>
+
                 <ScrollViewer.VerticalScrollBarVisibility>
                     Visible
                 </ScrollViewer.VerticalScrollBarVisibility>
