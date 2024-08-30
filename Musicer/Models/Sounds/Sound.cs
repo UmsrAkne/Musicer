@@ -18,6 +18,7 @@
         private int index;
 
         private bool isPlaying;
+        private bool isSkipped;
 
         public Sound(FileInfo f)
         {
@@ -82,6 +83,8 @@
         public int Index { get => index; set => SetProperty(ref index, value); }
 
         public int ListenCount { get => listenCount; set => SetProperty(ref listenCount, value); }
+
+        public bool IsSkipped { get => isSkipped; set => SetProperty(ref isSkipped, value); }
 
         public void Play()
         {

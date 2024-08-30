@@ -1,4 +1,6 @@
-﻿namespace Musicer.Models.Sounds
+﻿using System.Linq;
+
+namespace Musicer.Models.Sounds
 {
     using System.Collections.Generic;
 
@@ -26,12 +28,14 @@
         /// <returns>Source に含まれるサウンドを取得します。</returns>
         public ISound GetSound()
         {
-            if (Source == null || Source.Count == 0)
+            if (Source == null || Source.Count == 0 || Source.All(s => s.IsSkipped))
             {
                 return null;
             }
 
-            if (Source.Count < Index + 1)
+            var filtered = Source.Where(s => !s.IsSkipped).ToList();
+
+            if (filtered.Count < Index + 1)
             {
                 if (!LoopPlay)
                 {
@@ -43,7 +47,7 @@
                 }
             }
 
-            return Source[Index++];
+            return filtered[Index++];
         }
 
         /// <summary>
@@ -52,14 +56,14 @@
         /// <returns>Source に含まれるサウンドを取得します</returns>
         public ISound GetPreviousSound()
         {
-            if (Source == null || Source.Count == 0)
+            if (Source == null || Source.Count == 0 || Source.All(s => s.IsSkipped))
             {
                 return null;
             }
 
-            Index--;
+            var filtered = Source.Where(s => !s.IsSkipped).ToList();
 
-            if (Index < 0)
+            if (Index - 1 < 0)
             {
                 if (!LoopPlay)
                 {
@@ -67,11 +71,12 @@
                 }
                 else
                 {
-                    Index = Source.Count - 1;
+                    Index = filtered.Count - 1;
+                    return filtered[Index];
                 }
             }
 
-            return Source[Index];
+            return filtered[--Index];
         }
     }
 }
