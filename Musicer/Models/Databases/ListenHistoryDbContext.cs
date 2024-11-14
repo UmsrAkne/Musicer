@@ -97,7 +97,7 @@ namespace Musicer.Models.Databases
                 SQLiteConnection.CreateFile(dbFileName); // ファイルが存在している場合は問答無用で上書き。
             }
 
-            var connectionString = new SqliteConnectionStringBuilder { DataSource = dbFileName }.ToString();
+            var connectionString = new SqliteConnectionStringBuilder { DataSource = dbFileName, }.ToString();
             optionsBuilder.UseSqlite(new SQLiteConnection(connectionString));
         }
 
@@ -106,7 +106,7 @@ namespace Musicer.Models.Databases
             // サウンドの情報を記録
             if (!Sounds.Any(s => s.FullName == sound.FullName))
             {
-                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name });
+                Sounds.Add(new SoundData() { FullName = sound.FullName, Name = sound.Name, });
                 SaveChanges();
             }
         }

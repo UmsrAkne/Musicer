@@ -6,6 +6,8 @@ namespace Musicer.Models.Databases
 {
     public class SoundData
     {
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        // EntityFramework で使用するため、get, set の両方が必要。
         [Key]
         [Required]
         public int Id { get; set; }
@@ -17,7 +19,7 @@ namespace Musicer.Models.Databases
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        public long PlaybackTimeTicks { get; set; } = 0;
+        public long PlaybackTimeTicks { get; set; }
 
         [Required]
         public bool IsSkipped { get; set; }
