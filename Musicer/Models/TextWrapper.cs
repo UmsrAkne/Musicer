@@ -34,7 +34,7 @@ namespace Musicer.Models
         [Conditional("RELEASE")]
         private void SetVersion()
         {
-            Version = "20240912" + "a" + ", " + "Database ver" + "20240831";
+            Version = "20241114" + "a" + ", " + "Database ver" + "20240831";
         }
 
         [Conditional("DEBUG")]
